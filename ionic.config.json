@@ -1,0 +1,7 @@
+{
+  "name": "cy-arcade-editon",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}
