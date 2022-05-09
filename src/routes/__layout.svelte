@@ -2,7 +2,15 @@
     import "../app.css";
 </script>
 
-<main>
-    <slot />
-</main>
+<div class="safearea">
+    <main>
+        <slot />
+    </main>
+</div>
 
+
+<style lang="scss">
+    .safearea {
+        @apply pt-2
+    }
+</style>
