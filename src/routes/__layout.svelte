@@ -15,7 +15,7 @@ import "../app.css";
         <main class="flex flex-col place-content-center">
             <slot />
         </main>
-        <span id="bg-attr" class="text-white text-opacity-20 text-center">Light Rays Over Green Hillside by videvo.net</span>
+        <span id="bg-attr" class="text-white text-opacity-20 text-center">made with ❤️ @climactivity</span>
     </div>
 </div>
 
