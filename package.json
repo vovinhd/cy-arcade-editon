@@ -32,6 +32,7 @@
   "dependencies": {
     "@capacitor/core": "^3.5.1",
     "@capacitor/ios": "^3.5.1",
+    "@capacitor/status-bar": "^1.0.8",
     "svelte-qrcode": "^1.0.0",
     "three": "^0.140.1",
     "typeface-montserrat": "^1.1.13"

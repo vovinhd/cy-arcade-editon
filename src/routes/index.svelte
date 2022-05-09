@@ -1,6 +1,14 @@
 <script>
 import QrCode from "$lib/components/qr-code.svelte";
+import { StatusBar } from '@capacitor/status-bar';
+import { onMount } from "svelte";
+const hideStatusBar = async () => {
+  await StatusBar.hide();
+};
 
+onMount(() => {
+    hideStatusBar().catch((e) => console.log("not hiding status bar on web"))
+})
 </script>
 
 <div class="bg-zinc-50 rounded-md shadow-lg w-96">
