@@ -4,7 +4,9 @@ const config: CapacitorConfig = {
   appId: 'de.climactivity.exhib',
   appName: 'cy-arcade-editon',
   webDir: 'build',
-  bundledWebRuntime: false
+  bundledWebRuntime: false,
+  ios: {}
 };
 
 export default config;
+

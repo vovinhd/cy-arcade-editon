@@ -10,7 +10,8 @@
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "ionic:build": "npm run build",
-    "ionic:serve": "svelte-kit dev"
+    "ionic:serve": "svelte-kit dev",
+    "preview:ios": "npx cap run ios"
   },
   "devDependencies": {
     "@capacitor/cli": "^3.5.1",
@@ -18,8 +19,8 @@
     "@sveltejs/adapter-static": "^1.0.0-next.29",
     "@sveltejs/kit": "next",
     "autoprefixer": "^10.4.7",
-    "node-sass": "^7.0.1",
     "postcss": "^8.4.13",
+    "sass": "^1.51.0",
     "svelte": "^3.44.0",
     "svelte-check": "^2.2.6",
     "svelte-preprocess": "^4.10.1",
@@ -30,6 +31,9 @@
   "type": "module",
   "dependencies": {
     "@capacitor/core": "^3.5.1",
-    "@capacitor/ios": "^3.5.1"
+    "@capacitor/ios": "^3.5.1",
+    "svelte-qrcode": "^1.0.0",
+    "three": "^0.140.1",
+    "typeface-montserrat": "^1.1.13"
   }
 }

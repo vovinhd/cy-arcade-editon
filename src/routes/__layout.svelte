@@ -1,16 +1,47 @@
 <script>
-    import "../app.css";
+    import BgCanvas from "$lib/components/bg-canvas.svelte";
+import "../app.css";
+
 </script>
 
-<div class="safearea">
-    <main>
-        <slot />
-    </main>
-</div>
+<div class="w-[100vw] h-[100vh] bg-container">
+    <div class="bg">
+        <div class="w-full h-full bg-slate-800 transition-colors">
+            <BgCanvas/>
+        </div>
+    </div>
 
+    <div class="safearea">
+        <main class="flex flex-col place-content-center">
+            <slot />
+        </main>
+        <span id="bg-attr" class="text-white text-opacity-20 text-center">Light Rays Over Green Hillside by videvo.net</span>
+    </div>
+</div>
 
 <style lang="scss">
     .safearea {
-        @apply pt-2
+        z-index: 1;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-rows: 1fr 2rem;
+        grid-auto-flow: row;
+        @apply pt-2 grid place-content-center;
+    }
+
+    .bg-container {
+        height: 100vh;
+        width: 100vw;
+        position: relative;
+    }
+
+    .bg {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        object-fit: fill;
+        z-index: 0;
     }
 </style>
