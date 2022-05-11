@@ -1,5 +1,7 @@
 <script lang="ts">
 import { goto } from "$app/navigation";
+import { page } from "$app/stores";
+import { appContext } from "$lib/context";
 
 import type { Answer } from "$lib/types";
 import { onMount } from "svelte";
@@ -10,7 +12,7 @@ import { onMount } from "svelte";
     export let graceTime = 2 * 1000; 
     export let maxTime = 40 * 1000;  
     let timer = graceTime + maxTime
-    export let result: string
+    export let id: string
 
     const selectAnswer = (answer:Answer) => {
         selectedanswer = answer;
@@ -21,7 +23,12 @@ import { onMount } from "svelte";
     }
     
     const showResult = () => {
-        goto(`/quiz/result/${result}`)
+        console.log($page.routeId)
+        if(!$page.routeId.startsWith("quiz/question")) {
+            console.error("runaway timer in question-layout!")
+            return
+        }
+        goto(`/quiz/result/${id}`)
     }
 
     const lockAnswer = (e: Event) => {
@@ -38,6 +45,8 @@ import { onMount } from "svelte";
             clearInterval(timerUpdate);
             showResult();
         }, graceTime + maxTime)
+
+        appContext.update(value => value = {...value, currentQuestionId: id})
     })
 </script>
 

@@ -33,6 +33,6 @@
 
 <style lang="scss">
     .selected {
-        @apply bg-slate-700;
+        @apply bg-slate-200;
     }
 </style>

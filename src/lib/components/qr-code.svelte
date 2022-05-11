@@ -4,22 +4,22 @@
 
     export let codeValue;
 
-    let qrcode;
-
     onMount(() => {
         let script = document.createElement("script");
         script.src =
-            "qrcode.min.js";
+            "/qrcode.min.js";
         document.head.append(script);
 
         script.onload = function () {
+            // @ts-ignore
             qrcode = new QRCode("qrcode", {
                 text: codeValue,
                 width: 500,
                 height: 500,
                 colorDark: "#000000",
                 colorLight: "#ffffff",
-                correctLevel: QRCode.CorrectLevel.H,
+                // @ts-ignore
+                correctLevel: QRCode.CorrectLevel.L,
             });
         };
     });

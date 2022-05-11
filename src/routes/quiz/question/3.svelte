@@ -12,8 +12,8 @@
 </script>
 
 <div>
-<QuestionLayout id="1" let:selectAnswer>
-    <span slot="question"> Frage 1 </span>
+<QuestionLayout id="3" let:selectAnswer>
+    <span slot="question"> Frage 3 </span>
     <div slot="answers">
         <button class="answer-button" on:click={(e) => selectAnswer(makeAnswer(e, false))}> Antwort 1 </button>
         <button class="answer-button" on:click={(e) => selectAnswer(makeAnswer(e, false))}> Antwort 2 </button>
