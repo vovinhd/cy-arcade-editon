@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer utilities {
+    .hero {
+        @apply absolute
+    }
+
+    .heading {
+        @apply text-center p-8 text-2xl
+    }
+}

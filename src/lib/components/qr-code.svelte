@@ -3,7 +3,6 @@
     import { onMount } from "svelte";
 
     export let codeValue;
-    export let squareSize;
 
     let qrcode;
 
@@ -15,9 +14,9 @@
 
         script.onload = function () {
             qrcode = new QRCode("qrcode", {
-                text: `https://climactivity.de/exhib-exit-survey/?challenges=${codeValue}`,
-                width: squareSize,
-                height: squareSize,
+                text: codeValue,
+                width: 500,
+                height: 500,
                 colorDark: "#000000",
                 colorLight: "#ffffff",
                 correctLevel: QRCode.CorrectLevel.H,
@@ -30,8 +29,8 @@
 
 <style>
     #qrcode {
-        width: 200px;
-        height: 200x;
+        width: 500px;
+        height: 500px;
         margin-top: 15px;
     }
 </style>

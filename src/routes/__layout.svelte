@@ -1,7 +1,9 @@
 <script>
-    import BgCanvas from "$lib/components/bg-canvas.svelte";
-import "../app.css";
+import { init } from "$lib/client";
 
+    import BgCanvas from "$lib/components/bg-canvas.svelte";
+import { onMount } from "svelte";
+import "../app.css";
 </script>
 
 <div class="w-[100vw] h-[100vh] bg-container">
@@ -13,9 +15,11 @@ import "../app.css";
 
     <div class="safearea">
         <main class="flex flex-col place-content-center">
-            <slot />
+            <div class="">
+                <slot/>
+            </div>
         </main>
-        <span id="bg-attr" class="text-white text-opacity-20 text-center">made with ❤️ @climactivity</span>
+        <!-- <span id="bg-attr" class="text-white text-opacity-20 text-center">made with ❤️ @climactivity</span> -->
     </div>
 </div>
 

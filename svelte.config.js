@@ -14,8 +14,14 @@ const config = {
 			assets: 'build',
 			fallback: 'index.html',
 			precompress: false
-		  }),
+		}),
+		vite: {
+			ssr: {
+				noExternal: ['@heroiclabs/nakama-js']
+			}
+
+		}
 	}
 };
 
-export default config;
+	export default config;
