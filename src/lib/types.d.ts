@@ -8,7 +8,8 @@ export type FollowupOption = {
 export type Challenge = {
     id: string, 
     text: string, 
-    options: FollowupOption[]
+    options: FollowupOption[],
+    explanation?: any
 }
 
 export type QuizNext = {

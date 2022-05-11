@@ -12,7 +12,10 @@ const selectOption = (option?: FollowupOption) => {
 
 {#if $appContext.selectedChallenge} 
 <div>dein Einsatz</div>
-<div>Challenge</div>
+<div>{$appContext.selectedChallenge.text}</div>
+{#if $appContext.selectedChallenge.explanation}
+<div>{$appContext.selectedChallenge.explanation}</div>
+{/if}
 {#each $appContext.selectedChallenge.options as option}
     <div on:click={() => selectOption(option)}>{option.option}</div>
 {/each}

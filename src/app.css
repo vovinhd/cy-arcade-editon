@@ -2,13 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-
+@layer base {
+    body {
+        font-size: 24px;
+    }
+}
 @layer utilities {
     .hero {
         @apply absolute
     }
 
     .heading {
-        @apply text-center p-8 text-2xl
+        @apply text-center p-8 text-4xl
     }
 }

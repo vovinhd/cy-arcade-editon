@@ -1,24 +1,37 @@
 <script lang="ts">
     import QuestionLayout from "$lib/components/question-layout.svelte";
-    const makeAnswer = (e: Event, correct) => {
-        const eventTarget = <HTMLButtonElement>(e.target);
-        const answerText  = eventTarget.innerText;
-        console.log(answerText, correct);
-        return {
-            answerText, correct
-        }
-    }
-
+    import MultipleChoiceButton from "$lib/components/multiple-choice-button.svelte";
+    let button1, button2, button3, button4;
 </script>
 
-<div>
 <QuestionLayout id="1" let:selectAnswer>
     <span slot="question"> Frage 1 </span>
-    <div slot="answers">
-        <button class="answer-button" on:click={(e) => selectAnswer(makeAnswer(e, false))}> Antwort 1 </button>
-        <button class="answer-button" on:click={(e) => selectAnswer(makeAnswer(e, false))}> Antwort 2 </button>
-        <button class="answer-button" on:click={(e) => selectAnswer(makeAnswer(e, false))}> Antwort 3 </button>
-        <button class="answer-button" on:click={(e) => selectAnswer(makeAnswer(e, false))}> Antwort 4 </button>
+    <div class="grid grid-cols-2" slot="answers">
+        <MultipleChoiceButton
+            class="transition-colors p-8 rounded-md shadow-md bg-zinc-100 active:bg-zinc-300  ml-8 mr-4 mb-8"
+            answer={{ answerText: "Antwort 1", correct: false }}
+            callback={selectAnswer}
+        />
+        <MultipleChoiceButton
+            class="transition-colors p-8 rounded-md shadow-md bg-zinc-100 active:bg-zinc-300  ml-4 mr-8 mb-8"
+            answer={{ answerText: "Antwort 2", correct: true }}
+            callback={selectAnswer}
+        />
+        <MultipleChoiceButton
+            class="transition-colors p-8 rounded-md shadow-md bg-zinc-100 active:bg-zinc-300  ml-8 mr-4"
+            answer={{ answerText: "Antwort 3", correct: false }}
+            callback={selectAnswer}
+        />
+        <MultipleChoiceButton
+            class="transition-colors p-8 rounded-md shadow-md bg-zinc-100 active:bg-zinc-300 ml-4 mr-8"
+            answer={{ answerText: "Antwort 4", correct: false }}
+            callback={selectAnswer}
+        />
     </div>
 </QuestionLayout>
-</div>
+
+<style lang="scss">
+    .answer-button:active {
+        @apply bg-zinc-300;
+    }
+</style>
