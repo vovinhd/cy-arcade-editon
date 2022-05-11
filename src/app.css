@@ -4,15 +4,28 @@
 
 @layer base {
     body {
-        font-size: 24px;
+        font-size: 20px;
     }
 }
-@layer utilities {
+@layer components {
     .hero {
         @apply absolute
     }
 
     .heading {
         @apply text-center p-8 text-4xl
+    }
+
+
+    .action-button {
+        @apply px-8 py-4 rounded-full shadow-lg mx-8 mt-8 mb-2;
+
+    } 
+
+    .action-button:active {
+            @apply bg-opacity-90 shadow-md
+        }
+    .action-button:disabled {
+        @apply bg-opacity-90 bg-zinc-300
     }
 }

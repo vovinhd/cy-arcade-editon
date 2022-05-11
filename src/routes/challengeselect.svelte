@@ -2,6 +2,7 @@
     import { goto } from "$app/navigation";
 
     import { init, nkReady, socket } from "$lib/client";
+import Actions from "$lib/components/actions.svelte";
     import ChallengeButton from "$lib/components/challenge-button.svelte";
     import OutA from "$lib/components/out-a.svelte";
     import { appContext } from "$lib/context";
@@ -56,28 +57,18 @@
         </ChallengeButton>
     </div>
 
-    <div class="grid grid-flow-col content-center place-content-around ">
-        <div>
-            <button
-                disabled={hasSelectedChallenge}
-                on:click={(_) => startSingle()}>Alleine Spielen</button
-            >
-        </div>
-        <div>
-            <button disabled={true}>Bereit</button>
-        </div>
-    </div>
+    <Actions>
+        <button class="action-button"
+            disabled={hasSelectedChallenge}
+            on:click={(_) => startSingle()}>Alleine Spielen</button
+        >
+        <button class="action-button" disabled={true}>Bereit</button>
+    </Actions>
 </div>
 
 <style lang="scss">
 
     .content {
-
-    }
-    button {
-        @apply rounded-full shadow-md px-8 py-4 transition-all
-    }
-    button:disabled {
-        @apply bg-storm-light shadow-none
+        grid-template-rows: 8rem 1fr 8rem;
     }
 </style>
