@@ -1,5 +1,5 @@
 import { writable } from "svelte/store";
-import type { ApplicationContext } from "./types";
+import type { ApplicationContext, OutlinkState } from "./types";
 
 export const appContext = writable<ApplicationContext>({
     opponentAnswers: [],
@@ -9,4 +9,10 @@ export const appContext = writable<ApplicationContext>({
         '2': '3',
     },
     singlePlayer: true
+})
+
+export const outlinkState = writable<OutlinkState>({
+    href: "",
+    show: false,
+    text: ""
 })

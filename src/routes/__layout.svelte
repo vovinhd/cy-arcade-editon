@@ -2,11 +2,13 @@
 import { init } from "$lib/client";
 
     import BgCanvas from "$lib/components/bg-canvas.svelte";
+import OutAOverlay from "$lib/components/out-a-overlay.svelte";
 import { onMount } from "svelte";
 import "../app.css";
 </script>
 
 <div class="w-[100vw] h-[100vh] bg-container">
+    <OutAOverlay/>
     <div class="bg">
         <div class="w-full h-full bg-slate-800 transition-colors">
             <BgCanvas/>

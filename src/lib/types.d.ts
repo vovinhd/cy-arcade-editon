@@ -26,3 +26,9 @@ export type ApplicationContext = {
     selectedFollowupOption?: FollowupOption
     singlePlayer: boolean
 }
+
+export type OutlinkState = {
+    href: string,
+    text: string,
+    show: boolean
+}
