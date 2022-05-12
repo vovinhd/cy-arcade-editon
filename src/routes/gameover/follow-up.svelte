@@ -9,7 +9,7 @@ const makeFollowupLink = () => {
     const {selectedChallenge, selectedFollowupOption} = $appContext
     let followUpParams = {
         ch: selectedChallenge?.id,
-        opt: selectedFollowupOption
+        opt: selectedFollowupOption.delay
     }
     let encodedParams = encodeURIComponent(JSON.stringify(followUpParams))
     console.log(followUpParams, encodedParams)
@@ -28,8 +28,17 @@ const restartGame = () => {
 </script>
 <div>
 
+    <div class="heading">
+        title
+    </div>
 
-    <QrCode codeValue={`https://climactivity.de/exhib-exit-survey/?challenge=${makeFollowupLink()}`}/>
+    <div class="text-center text-sm">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit molestias voluptates, magni delectus </div>
+
+
+    <div class="grid place-content-center p-8">
+        <QrCode codeValue={`https://climactivity.de/exhib-exit-survey/?challenge=${makeFollowupLink()}`}/>
+
+    </div>
 
 
     <Actions>

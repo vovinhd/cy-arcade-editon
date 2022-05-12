@@ -11,10 +11,10 @@ import { appContext } from "$lib/context";
     }
 </script>
 
-<div class="grid grid-flow-row">
+<div class="grid grid-flow-row" >
     <div class="heading">Du hast zwar nicht gewonnen, aber der Klimaschutz </div>
     <FollowupOptionSelect />
-    <div>Danke das du mitgespielt hast</div>
+    <div class="text-white bg-nature rounded-full px-24 mx-24 py-2 text-center">Danke das du mitgespielt hast</div>
     <Actions>
     <button class="action-button" on:click={(_) => selectFollowupOption()} disabled={!$appContext.selectedFollowupOption}>weiter</button>
     </Actions>
