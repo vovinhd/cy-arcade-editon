@@ -1,3 +1,85 @@
+<script>
+import OutA from "$lib/components/out-a.svelte";
+let delay = false
+
+setTimeout(() => delay = true, 1000)
+</script>
 <div>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima ducimus magni omnis dolore, cum ipsa numquam. Aliquid temporibus, incidunt quidem totam corrupti nemo omnis voluptates sed, vel eos, veniam at.
+    Soviel Treibhausgas wird pro 100g erzeugtem Protein ausgestoßen
+
+    <div class="grid grid-flow-row gap-4 chart py-8">
+        <div class="bar">
+            <span class="transition-all {delay ? "text-white" : "text-zinc-800"}">Rindfleisch 49.89 kg</span>
+            <div class="progress bg-heart-dark  percentage-100 "/>
+        </div>
+        <div class="bar ">
+            <span>Käse 10.82 kg</span>
+
+            <div class="progress bg-heart percentage-21"/>
+        </div>
+        <div class="bar">
+            <span>Eier 4.21kg</span>
+            <div class="progress bg-heart-light percentage-8"/>
+        </div>
+        <div class="bar">
+            <span>Tofu 1.98 kg</span>
+            <div class="progress bg-nature-light percentage-4"/>
+        </div>
+        <div class="bar">
+            <span>Erbsen 0.44 kg</span>
+            <div class="progress bg-nature percentage-1"/>
+        </div>
+    </div>
 </div>
+
+siehe <OutA href="https://ourworldindata.org/grapher/ghg-per-protein-poore">ourworldindata.org</OutA>
+<style lang="scss">
+
+.bar {
+    @apply 
+        bg-zinc-300
+        rounded-sm
+        shadow-sm
+        py-2
+        overflow-clip
+        relative
+        h-10;
+    span {
+        @apply ml-4 z-10
+    }
+    * {
+        @apply absolute
+    }
+}
+
+.progress {
+    opacity: 0;
+    animation: growIn 1s ease forwards;
+    transform-origin: top left;
+    @apply w-full h-full  top-0
+}
+
+@for $i from 1 through 100 {
+  .percentage-#{$i} {
+    $value: ($i * 1%);
+    width: $value;
+  }
+}
+
+@for $i from 0 through 5 {
+    .chart :nth-child(#{$i + 1}) {
+        animation-delay: 150ms * $i + 1s;
+    }
+}
+
+@keyframes growIn {
+    from {
+        opacity: 1;
+        transform: scaleX(0);
+    }
+    to {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+</style>

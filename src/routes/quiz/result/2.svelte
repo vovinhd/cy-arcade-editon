@@ -1,6 +1,11 @@
+<script>
+
+import OutA from "$lib/components/out-a.svelte";
+
+</script>
 <div>
     <p>
-        Eine Umfrage des Bundesverbandes der deutschen Luftfahrt ergab, dass in den letzten zwei Jahren nur 43 % der Befragten überhaupt geflogen waren.
+        2018 erbag eine Umfrage, dass in den letzten zwei Jahren nur 43 % der Befragten überhaupt geflogen waren.
         <br/>
         25 % der Befragten waren einmal oder zweimal geflogen und 15 % der Befragten drei
         bis neunmal. Vielflieger, also Menschen, die 10 oder mehr Mal geflogen
@@ -40,6 +45,7 @@
 
     </div>
 </div>
+siehe <OutA href="https://ourworldindata.org/grapher/ghg-per-protein-poore">ourworldindata.org</OutA>
 
 
 <style lang="scss">

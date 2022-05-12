@@ -2,57 +2,46 @@
     import MultipleChoiceButton from "$lib/components/multiple-choice-button.svelte";
 
     import QuestionLayout from "$lib/components/question-layout.svelte";
-    const makeAnswer = (e: Event, correct) => {
-        const eventTarget = <HTMLButtonElement>e.target;
-        const answerText = eventTarget.innerText;
-        console.log(answerText, correct);
-        return {
-            answerText,
-            correct,
-        };
-    };
 </script>
 
-<div>
-    <QuestionLayout id="2" let:selectAnswer>
-        <div slot="question">
-            Wieviel Prozent der Bevölkerung ist in den letzten 2 Jahren
-            geflogen?
+<QuestionLayout id="2" let:selectAnswer>
+    <div slot="question">
+        Wieviel Prozent der Bevölkerung ist in den letzten 2 Jahren
+        geflogen?
+    </div>
+    <div class="grid grid-cols-2 answers" slot="answers" id="ans1">
+        <div id="ans1" class="grid">
+            <MultipleChoiceButton
+                class="answer transition-colors p-8 rounded-md shadow-md bg-zinc-100 active:bg-zinc-300  ml-8 mr-4 mb-8 text-2xl"
+                answer={{ answerText: "23%", correct: false }}
+                callback={selectAnswer}
+            />
         </div>
-        <div class="grid grid-cols-2 answers" slot="answers" id="ans1">
-            <div id="ans1" class="grid">
-                <MultipleChoiceButton
-                    class="answer transition-colors p-8 rounded-md shadow-md bg-zinc-100 active:bg-zinc-300  ml-8 mr-4 mb-8 text-2xl"
-                    answer={{ answerText: "23%", correct: false }}
-                    callback={selectAnswer}
-                />
-            </div>
-            <div id="ans2" class="grid">
-                <MultipleChoiceButton
-                    class="answer transition-colors p-8 rounded-md shadow-md bg-zinc-100 active:bg-zinc-300  ml-4 mr-8 mb-8 text-2xl"
-                    answer={{ answerText: "43%", correct: true }}
-                    callback={selectAnswer}
-                />
-            </div>
-
-            <div id="ans3" class="grid">
-                <MultipleChoiceButton
-                    class="answer transition-colors p-8 rounded-md shadow-md bg-zinc-100 active:bg-zinc-300  ml-8 mr-4 text-2xl"
-                    answer={{ answerText: "69%", correct: true }}
-                    callback={selectAnswer}
-                />
-            </div>
-
-            <div id="ans4" class="grid">
-                <MultipleChoiceButton
-                    class="answer transition-colors p-8 rounded-md shadow-md bg-zinc-100 active:bg-zinc-300 ml-4 mr-8 text-2xl"
-                    answer={{ answerText: "87%", correct: false }}
-                    callback={selectAnswer}
-                />
-            </div>
+        <div id="ans2" class="grid">
+            <MultipleChoiceButton
+                class="answer transition-colors p-8 rounded-md shadow-md bg-zinc-100 active:bg-zinc-300  ml-4 mr-8 mb-8 text-2xl"
+                answer={{ answerText: "43%", correct: true }}
+                callback={selectAnswer}
+            />
         </div>
-    </QuestionLayout>
-</div>
+
+        <div id="ans3" class="grid">
+            <MultipleChoiceButton
+                class="answer transition-colors p-8 rounded-md shadow-md bg-zinc-100 active:bg-zinc-300  ml-8 mr-4 text-2xl"
+                answer={{ answerText: "69%", correct: true }}
+                callback={selectAnswer}
+            />
+        </div>
+
+        <div id="ans4" class="grid">
+            <MultipleChoiceButton
+                class="answer transition-colors p-8 rounded-md shadow-md bg-zinc-100 active:bg-zinc-300 ml-4 mr-8 text-2xl"
+                answer={{ answerText: "87%", correct: false }}
+                callback={selectAnswer}
+            />
+        </div>
+    </div>
+</QuestionLayout>
 
 <style lang="scss">
 
