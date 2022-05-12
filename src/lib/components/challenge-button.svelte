@@ -6,35 +6,55 @@
     export let challenge: Challenge;
 
     let selected = false;
-let explanation : HTMLDivElement
-    appContext.subscribe(
-        (value: ApplicationContext) => {
-            selected = challenge.id === value.selectedChallenge?.id
-        }
-    );
+    let explanation: HTMLDivElement;
+    appContext.subscribe((value: ApplicationContext) => {
+        selected = challenge.id === value.selectedChallenge?.id;
+    });
 
     const selectChallenge = (e: Event) => {
         appContext.update((value: ApplicationContext) => {
-                let isAlreadySelected = challenge.id === value.selectedChallenge?.id
-                if(isAlreadySelected) {
-                    return { ...value, selectedChallenge: null };
-
-                } else {
-                    return { ...value, selectedChallenge: {...challenge, explanation: explanation.innerHTML} };
-                }
-            });
-
+            let isAlreadySelected =
+                challenge.id === value.selectedChallenge?.id;
+            if (isAlreadySelected) {
+                return { ...value, selectedChallenge: null };
+            } else {
+                return {
+                    ...value,
+                    selectedChallenge: {
+                        ...challenge,
+                        explanation: explanation.innerHTML,
+                    },
+                };
+            }
+        });
     };
 </script>
 
-<div on:click={(e) => selectChallenge(e)} class:selected class="block rounded-md shadow-lg bg-white p-8">
-    <span>{challenge.text}</span>
-    <div class="{selected ? "scale-y-100" : "hidden scale-y-0"} transition-all" bind:this={explanation}><slot name="explanation" /></div>
+<div
+    on:click={(e) => selectChallenge(e)}
+    class="{selected
+        ? ' bg-water text-white p-8 shadow-lg'
+        : 'bg-white text-zinc-800 m-6 p-2 shadow-sm'} 
+        block rounded-md transition-all duration-500 "
+>
+    <div class="{selected
+        ? '  '
+        : ' '}font-semibold py-2  ">{challenge.text}</div>
+    <div
+        class="{selected
+            ? 'bg-white   '
+            : ' '}
+            transition-all duration-500 text-zinc-800 py-4 rounded-md -ml-2 pl-2"
+    >
+        <div
+            class="
+                transition-all duration-500"
+            bind:this={explanation}
+        >
+            <slot name="explanation" />
+        </div>
+    </div>
 </div>
 
 <style lang="scss">
-    .selected {
-        @apply bg-zinc-200;
-    }
-
 </style>

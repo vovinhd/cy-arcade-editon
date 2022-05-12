@@ -29,7 +29,7 @@ const restartGame = () => {
 <div>
 
 
-    <QrCode codeValue={`https://climactivity.de/exhib-exit-survey/?challenges=${makeFollowupLink()}`}/>
+    <QrCode codeValue={`https://climactivity.de/exhib-exit-survey/?challenge=${makeFollowupLink()}`}/>
 
 
     <Actions>

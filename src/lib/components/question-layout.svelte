@@ -45,7 +45,7 @@
     };
     onMount(() => {
         appContext.update(
-            (value) => (value = { ...value, currentQuestionId: id })
+            (value) => (value = { ...value, currentQuestionId: id, currentSelectedAnswer: null })
         );
 
         if (pauseTimer) return;

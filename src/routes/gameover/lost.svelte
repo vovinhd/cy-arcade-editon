@@ -1,5 +1,6 @@
 <script lang="ts">
 import { goto } from "$app/navigation";
+import Actions from "$lib/components/actions.svelte";
 import FollowupOptionSelect from "$lib/components/followup-option-select.svelte";
 
 import { appContext } from "$lib/context";
@@ -14,5 +15,7 @@ import { appContext } from "$lib/context";
     <div class="heading">Du hast zwar nicht gewonnen, aber der Klimaschutz </div>
     <FollowupOptionSelect />
     <div>Danke das du mitgespielt hast</div>
-    <button on:click={(_) => selectFollowupOption()} disabled={!$appContext.selectedFollowupOption}>weiter</button>
+    <Actions>
+    <button class="action-button" on:click={(_) => selectFollowupOption()} disabled={!$appContext.selectedFollowupOption}>weiter</button>
+    </Actions>
 </div>

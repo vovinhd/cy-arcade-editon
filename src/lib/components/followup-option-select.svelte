@@ -8,21 +8,41 @@ const selectOption = (option?: FollowupOption) => {
     })
 }
 
+const selected = (optionText) => $appContext.selectedFollowupOption.option === optionText
 </script>
 
 {#if $appContext.selectedChallenge} 
-<div>dein Einsatz</div>
-<div>{$appContext.selectedChallenge.text}</div>
+<div class="text-center text-sm">dein Einsatz</div>
+
+<div class="p-8 space-y-4">
+<div class="font-bold">{$appContext.selectedChallenge.text}</div>
 {#if $appContext.selectedChallenge.explanation}
-<div>{$appContext.selectedChallenge.explanation}</div>
+<div>{@html $appContext.selectedChallenge.explanation}</div>
 {/if}
+</div>
+<div class="pt-0 p-8 space-y-4">
+    <div class="text-center text-sm">&nbsp;</div>
 {#each $appContext.selectedChallenge.options as option}
-    <div on:click={() => selectOption(option)}>{option.option}</div>
+    <div class="{selected(option.option) ? "selected" : ""} followup-btn"on:click={() => selectOption(option)}>{option.option}</div>
 {/each}
 {#if showNoop} 
-<div on:click={() => selectOption()}>Nein danke</div>
+<div class="{selected("Nein danke") ? "selected" : ""} followup-btn"  on:click={() => selectOption()}>Nein danke</div>
+
 {/if}
-<div>ChallengeOptionen</div>
+</div>
 
 {/if}
 
+
+<style lang="scss">
+    .followup-btn {
+        @apply bg-slate-200 rounded-md shadow-sm px-4 py-2 transition-all;
+        &:active {
+            @apply bg-slate-300
+        }
+    }
+
+    .selected {
+        @apply bg-nature-light
+    }
+</style>

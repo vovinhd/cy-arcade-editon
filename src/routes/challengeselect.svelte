@@ -36,7 +36,7 @@ import Actions from "$lib/components/actions.svelte";
 >
     <h1 class="heading">Challenge Select screen</h1>
 
-    <div class="p-8">
+    <div class="p-8 grid grid-flow-row gap-4">
         <ChallengeButton
             challenge={{
                 id: "oekostrom",
@@ -55,6 +55,46 @@ import Actions from "$lib/components/actions.svelte";
                 >
             </div>
         </ChallengeButton>
+
+        <ChallengeButton
+        challenge={{
+            id: "oekostrom1",
+            text: "Zu zertifizertem Ökostrom wechseln",
+            options: [
+                { option: "Ich wechsel in 2 Wochen", delay: 14 },
+                { option: "Ich wechsel in 4 Wochen", delay: 28 },
+                { option: "Ich wechsel in 2 Monaten", delay: 60 },
+            ],
+        }}
+    >
+        <div slot="explanation">
+            Ich wechsle zu einem Stromanbieter mit Label aus der <OutA
+                href="https://utopia.de/bestenlisten/die-besten-oekostrom-anbieter/"
+                >Utopia-Bestenliste</OutA
+            >
+        </div>
+    </ChallengeButton>
+
+
+    <ChallengeButton
+    challenge={{
+        id: "oekostrom2",
+        text: "Zu zertifizertem Ökostrom wechseln",
+        options: [
+            { option: "Ich wechsel in 2 Wochen", delay: 14 },
+            { option: "Ich wechsel in 4 Wochen", delay: 28 },
+            { option: "Ich wechsel in 2 Monaten", delay: 60 },
+        ],
+    }}
+>
+    <div slot="explanation">
+        Ich wechsle zu einem Stromanbieter mit Label aus der <OutA
+            href="https://utopia.de/bestenlisten/die-besten-oekostrom-anbieter/"
+            >Utopia-Bestenliste</OutA
+        >
+    </div>
+</ChallengeButton>
+
     </div>
 
     <Actions>
