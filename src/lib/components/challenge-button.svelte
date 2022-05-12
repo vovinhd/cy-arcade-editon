@@ -42,7 +42,7 @@
         : ' '}font-semibold py-2  ">{challenge.text}</div>
     <div
         class="{selected
-            ? 'bg-white   '
+            ? 'bg-white  '
             : ' '}
             transition-all duration-500 text-zinc-800 py-4 rounded-md -ml-2 pl-2"
     >

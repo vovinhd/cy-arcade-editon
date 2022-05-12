@@ -78,20 +78,17 @@ import Actions from "$lib/components/actions.svelte";
 
     <ChallengeButton
     challenge={{
-        id: "oekostrom2",
-        text: "Zu zertifizertem Ökostrom wechseln",
+        id: "wlist",
+        text: "Wunschliste führen",
         options: [
-            { option: "Ich wechsel in 2 Wochen", delay: 14 },
-            { option: "Ich wechsel in 4 Wochen", delay: 28 },
-            { option: "Ich wechsel in 2 Monaten", delay: 60 },
+            { option: "Ich probiere es für eine Woche", delay: 7 },
+            { option: "Ich probiere es für zwei Woche", delay: 14 },
+            { option: "Ich probiere es für vier Woche", delay: 28 },
         ],
     }}
 >
     <div slot="explanation">
-        Ich wechsle zu einem Stromanbieter mit Label aus der <OutA
-            href="https://utopia.de/bestenlisten/die-besten-oekostrom-anbieter/"
-            >Utopia-Bestenliste</OutA
-        >
+        Ich führe die nächsten Wochen eine Wunschliste und kaufe nur Dinge, die mindestens einen Tag auf der Wunschliste gestanden haben
     </div>
 </ChallengeButton>
 
