@@ -8,7 +8,7 @@ const selectOption = (option?: FollowupOption) => {
     })
 }
 
-const selected = (optionText) => $appContext.selectedFollowupOption.option === optionText
+const selected = (optionText) => $appContext.selectedFollowupOption?.option === optionText
 </script>
 
 {#if $appContext.selectedChallenge} 

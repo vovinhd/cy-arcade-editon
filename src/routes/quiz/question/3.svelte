@@ -6,21 +6,20 @@
 
 <QuestionLayout id="3" let:selectAnswer>
     <div slot="question">
-        Wieviel Prozent der Bevölkerung ist in den letzten 2 Jahren
-        geflogen?
+        In welchem Jahr wrude in Deutschland die meiste neue Photovoltaic-Leistung installiert
     </div>
     <div class="grid grid-cols-2 answers" slot="answers" id="ans1">
         <div id="ans1" class="grid">
             <MultipleChoiceButton
                 class="answer transition-colors p-8 rounded-md shadow-md bg-zinc-100 active:bg-zinc-300  ml-8 mr-4 mb-8 text-2xl"
-                answer={{ answerText: "23%", correct: false }}
+                answer={{ answerText: "2021", correct: false }}
                 callback={selectAnswer}
             />
         </div>
         <div id="ans2" class="grid">
             <MultipleChoiceButton
                 class="answer transition-colors p-8 rounded-md shadow-md bg-zinc-100 active:bg-zinc-300  ml-4 mr-8 mb-8 text-2xl"
-                answer={{ answerText: "43%", correct: true }}
+                answer={{ answerText: "2019", correct: false }}
                 callback={selectAnswer}
             />
         </div>
@@ -28,7 +27,7 @@
         <div id="ans3" class="grid">
             <MultipleChoiceButton
                 class="answer transition-colors p-8 rounded-md shadow-md bg-zinc-100 active:bg-zinc-300  ml-8 mr-4 text-2xl"
-                answer={{ answerText: "69%", correct: true }}
+                answer={{ answerText: "2017", correct: false }}
                 callback={selectAnswer}
             />
         </div>
@@ -36,7 +35,7 @@
         <div id="ans4" class="grid">
             <MultipleChoiceButton
                 class="answer transition-colors p-8 rounded-md shadow-md bg-zinc-100 active:bg-zinc-300 ml-4 mr-8 text-2xl"
-                answer={{ answerText: "87%", correct: false }}
+                answer={{ answerText: "2012", correct: true }}
                 callback={selectAnswer}
             />
         </div>
