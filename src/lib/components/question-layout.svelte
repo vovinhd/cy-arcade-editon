@@ -78,7 +78,7 @@
         </div>
     </div>
 
-    <div class="p-8 ">
+    <div class="p-8 question">
         <div class="heading bg-water-light p-8 text-white rounded-md shadow-md">
             <slot name="question" />
         </div>
@@ -89,7 +89,7 @@
     </div>
 
     <div class="grid grid-flow-row place-items-end content-center">
-        <div class="px-8 py-4 bg-heart text-white rounded-full m-8">
+        <div class="px-8 py-4 bg-heart text-white rounded-full m-8 {selectedanswer ? "selected": "unselected"}">
             <button on:click={(e) => lockAnswer(e)}> Auswählen </button>
         </div>
     </div>
@@ -99,5 +99,20 @@
 <style lang="scss">
     .content {
         grid-template-rows: 5rem 1fr 2fr 7rem;
+    }
+
+    .question {
+        opacity: 0;
+        animation: fadeInDown 1s ease forwards;
+    }
+
+    .selected {
+        opacity: 0;
+        animation: fadeInUp 1s ease forwards;
+        animation-delay: 0s;
+
+    }
+    .unselected {
+        opacity: 0;
     }
 </style>

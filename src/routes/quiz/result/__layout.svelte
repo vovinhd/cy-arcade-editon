@@ -54,18 +54,16 @@ import { onMount } from 'svelte';
     }
 </script>
 
-<div class="bg-zinc-50 rounded-md shadow-lg hero inset-4 p-8 content-grid" out:fly={{ x: -200, duration: 500 }}>
+<div class="bg-zinc-50 rounded-md shadow-lg hero inset-4 p-8 content-grid" in:fly={{ x: 200, duration: 500 }} out:fly={{ x: -200, duration: 500 }}>
     <div>
-        {#if $appContext.currentSelectedAnswer}
-        <div class="{currentlySelectedAnswer?.correct ? "bg-nature-light": "bg-zinc-400"} text-white text-2xl rounded-md shadow-sm p-8 text-center" class:correct={$appContext.currentSelectedAnswer.correct}>
-            {$appContext.currentSelectedAnswer.answerText} {currentlySelectedAnswer?.correct ? "✔" : "❌"}
+        <div class="{currentlySelectedAnswer?.correct ? "bg-nature-light": "bg-zinc-400"} text-white text-2xl rounded-md shadow-sm p-8 text-center selected-answer" class:correct={!!$appContext.currentSelectedAnswer?.correct}>
+            {currentlySelectedAnswer ? currentlySelectedAnswer.answerText : "keine Antwort gewählt" } {currentlySelectedAnswer?.correct ? "✔" : "❌"}
         </div>
-        {/if}
 
     </div>
 
-    <div class="heading">Hättest du's gewusst?</div>
-    <div class="h-full overflow-y-scroll">
+    <div class="text-center pb-4 pt-8 px-8  text-2xl title">Hättest du's gewusst?</div>
+    <div class="h-full overflow-y-scroll main">
     <slot/>
     </div>
 
@@ -105,5 +103,24 @@ import { onMount } from 'svelte';
     }
     .btn-disabled {
         @apply text-opacity-40
+    }
+
+    .title {
+        opacity: 0;
+        animation: fadeInUp 1s ease forwards;
+        animation-delay: 200ms;
+    }
+
+    .selected-answer {
+        opacity: 0;
+        animation: fadeInUp 1s ease forwards;
+
+    }
+
+    .main {
+        opacity: 0;
+        animation: fadeInUp 1s ease forwards;
+
+
     }
 </style>

@@ -64,25 +64,4 @@
         @apply rounded-full shadow-sm px-2 text-white
     }
 
-    @keyframes fadeInDown {
-        from {
-            opacity: 0;
-            transform: translateY(-20%);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0%);
-        }
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20%);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0%);
-        }
-    }
 </style>
