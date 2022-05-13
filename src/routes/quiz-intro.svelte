@@ -22,7 +22,7 @@
 
 <div class="px-16">
     <div class="grid grid-flow-row gap-4 hints">
-        <div class="rounded-lg bg-gradient-to-bl from-blue-100 to-white h-56 grid place-content-center text-2xl p-8 quiz relative">
+        <div class="rounded-lg bg-gradient-to-bl from-blue-100 to-white h-56 grid place-content-center text-2xl p-8 quiz relative shadow-sm">
             <img src="/confusion.svg" alt="" class=" blur-sm w-56 h-56 -bottom-2 right-4 rotate-12 absolute"/>
 
             <div class="relative blur-0">
@@ -31,7 +31,7 @@
 
         </div>
 
-        <div class="rounded-lg bg-gradient-to-bl from-lime-100 to-white h-56 grid place-content-center text-2xl p-8 quiz relative">
+        <div class="rounded-lg bg-gradient-to-bl from-lime-100 to-white h-56 grid place-content-center text-2xl p-8 quiz relative shadow-sm">
             <img src="/players.svg" alt="" class=" blur-sm w-56 h-56 -bottom-2 right-4 rotate-12 absolute"/>
 
             <div class="relative blur-0">
@@ -39,11 +39,11 @@
             </div>
 
         </div>
-        <div class="rounded-lg bg-gradient-to-bl from-rose-100 to-white h-56 grid place-content-center text-2xl p-8 quiz relative">
+        <div class="rounded-lg bg-gradient-to-bl from-rose-100 to-white h-56 grid place-content-center text-2xl p-8 quiz relative shadow-sm">
             <img src="/heart.svg" alt="" class=" blur-sm w-56 h-56 -bottom-2 right-4 rotate-12 absolute"/>
 
             <div class="relative blur-0">
-                Wer verliert muss seine Challenge machen 😉
+                Wer verliert macht seine Challenge 😉
             </div>
 
         </div>
