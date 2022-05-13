@@ -23,8 +23,10 @@
     } 
 
     .action-button:active {
-            @apply bg-opacity-90 shadow-md
-        }
+        transition: all;
+        transform: translateY(3%);
+        @apply bg-opacity-90 shadow-md
+    }
     .action-button:disabled {
         @apply bg-opacity-90 bg-zinc-300
     }

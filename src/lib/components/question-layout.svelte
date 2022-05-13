@@ -99,7 +99,7 @@
     </div>
 
     <div class="grid grid-flow-row place-items-end content-center">
-        <div class="px-8 py-4 bg-heart text-white rounded-full m-8 {selectedanswer ? "selected": "unselected"}">
+        <div class="action-button bg-heart text-white {selectedanswer ? "selected": "unselected"}">
             <button on:click={(e) => lockAnswer(e)}> Auswählen </button>
         </div>
     </div>
