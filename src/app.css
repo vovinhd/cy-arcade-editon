@@ -9,7 +9,7 @@
 }
 @layer components {
     .hero {
-        @apply absolute max-w-[768px]
+        @apply absolute max-w-[768px] mx-auto
     }
 
     .heading {
