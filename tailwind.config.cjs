@@ -30,7 +30,8 @@ module.exports = {
         }
       },
       animation: {
-        blob: "blob 7s infinite"
+        blob: "blob 7s infinite",
+        cheer: "cheer 1.5s forwards ease"
       },
       keyframes: {
         blob: {
@@ -46,6 +47,18 @@ module.exports = {
           "100%": {
             transform: "translate(0px, 0px) scale(1)"
           },
+        },
+        cheer: {
+          "0%": {
+            opacity: "0",
+            transform: "translate(0px, 200px) scale(0.85) "
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translate(0px, 0px) scale(1)"
+          },
+
+
         }
       }
     },

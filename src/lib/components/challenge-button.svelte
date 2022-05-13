@@ -33,7 +33,7 @@
 <div
     on:click={(e) => selectChallenge(e)}
     class="{selected
-        ? ' bg-water text-white p-8 shadow-lg'
+        ? ' bg-nature text-white p-8 shadow-lg'
         : 'bg-white text-zinc-800 m-6 p-2 shadow-sm'} 
         block rounded-md transition-all duration-200 active:translate-y-1 "
 >

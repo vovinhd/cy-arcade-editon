@@ -11,9 +11,9 @@ const makeFollowupLink = () => {
         ch: selectedChallenge?.id,
         opt: selectedFollowupOption?.delay ?? 0
     }
-    let encodedParams = encodeURIComponent(JSON.stringify(followUpParams))
+    let encodedParams = btoa(JSON.stringify(followUpParams))
     console.log(followUpParams, encodedParams)
-
+    
     return encodedParams;
 }
 
@@ -29,10 +29,16 @@ const restartGame = () => {
 <div>
 
     <div class="heading">
-        title
+        Danke für's spielen
     </div>
 
-    <div class="text-center text-sm">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit molestias voluptates, magni delectus </div>
+    <div class="text-center text-sm">
+        {#if $appContext.selectedChallenge}
+            Falls wir dich an deine Challenge erinnern dürfen scanne einfach diesen Code 
+        {:else}
+            Falls du dich für unseren Newsletter interesierst geht's hier lang 👇
+        {/if}
+    </div>
 
 
     <div class="grid place-content-center p-8">

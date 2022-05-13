@@ -13,7 +13,14 @@ import ContinueButton from "$lib/components/continue-button.svelte";
     let minReadingTime = 5000;
     let continueLabel = "Bereit";
     const getSingleplayerQuizResult = () => {
-        return $appContext.selectedAnswers.find((answer) => !answer.correct);
+        let selectAnswers = $appContext.selectedAnswers; 
+        if (selectAnswers.length === 0 ) {
+            console.warn("no matchdata found!");
+            return false;
+        }
+        let results =  $appContext.selectedAnswers.map((answer) => answer.correct);
+        console.log(results)
+        return true;
     };
     const nextQuestionOrResult = () => {
         if (!minReadingTimeOver) {

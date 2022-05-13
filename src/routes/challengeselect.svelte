@@ -34,10 +34,10 @@
     class="bg-zinc-50 rounded-md shadow-lg hero inset-4 grid grid-flow-row content"
     in:fly={{ x: 200, duration: 500 }}
 >
-    <h1 class="heading">Challenge Select screen</h1>
+    <h1 class="heading">Challenges</h1>
 
-    <div class="explanation text-justify text-sm pt-8 px-16">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore natus praesentium reprehenderit ea, consectetur aperiam facilis voluptatum atque, explicabo a, incidunt fugiat alias reiciendis repellat fugit ipsa qui? Aliquid, reprehenderit.
+    <div class="explanation text-justify text-lg pt-8 px-16">
+        Such dir eine Challenge aus, zu der Du Lust hast
     </div>
 
     <div class="p-8 grid grid-flow-row gap-4 challenges">

@@ -25,8 +25,8 @@ onMount(() => {
         <img src="/kiko-slogan.webp" alt="logo" />
     </div>
 
-    <p class="   px-8">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, nemo, aut consequuntur saepe accusantium molestias obcaecati doloremque veniam fugit odit in ratione quae itaque dolorem possimus a reiciendis earum ducimus.
+    <p class="  text-lg px-16 py-8">
+        Wir entwickeln eine neue App, die dir beim Klimaschutz hilft. Sie ist noch nicht so weit, aber hier kannst Du sie ausprobieren.
     </p>
     </div>
 

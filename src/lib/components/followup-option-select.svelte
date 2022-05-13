@@ -3,11 +3,13 @@ import { appContext } from "$lib/context";
 import type { FollowupOption } from "$lib/types";
 export let showNoop = false
 const selectOption = (option?: FollowupOption) => {
+    let selectedFollowupOption =  option ? option : {option: "Nein danke", delay: 0};
+    selectedOptionText = selectedFollowupOption.option
     appContext.update(value => {
-        return {...value, selectedFollowupOption: option ? option : {option: "Nein danke", delay: 0}}
+        return {...value, selectedFollowupOption}
     })
 }
-
+let selectedOptionText
 const selected = (optionText) => $appContext.selectedFollowupOption?.option === optionText
 </script>
 
@@ -26,7 +28,7 @@ const selected = (optionText) => $appContext.selectedFollowupOption?.option === 
     <div class="{selected(option.option) ? "selected" : ""} followup-btn"on:click={() => selectOption(option)}>{option.option}</div>
 {/each}
 {#if showNoop} 
-<div class="{selected("Nein danke") ? "selected" : ""} followup-btn"  on:click={() => selectOption()}>Nein danke</div>
+<div class="{selectedOptionText === "Nein danke" ? "selected" : ""} followup-btn"  on:click={() => selectOption()}>Nein danke</div>
 
 {/if}
 </div>

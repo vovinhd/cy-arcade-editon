@@ -6,7 +6,7 @@
     import type { Answer } from "$lib/types";
     import { onMount } from "svelte";
 
-    let pauseTimer = true;
+    let pauseTimer = false;
     let lockedanswer = false;
     let selectedanswer: Answer;
     export let graceTime = 2 * 1000;
@@ -73,7 +73,7 @@
 <main class="grid h-full content">
     <div class="w-full mx-auto flex flex-row place-content-center z-1">
         <div
-            class=" w-full rounded-t-md shadow-sm bg-zinc-600 h-6 overflow-hidden"
+            class=" w-full rounded-t-md shadow-sm bg-zinc-600 h-6 overflow-hidden bg-opacity-20"
             id="timer"
             min="0"
         >

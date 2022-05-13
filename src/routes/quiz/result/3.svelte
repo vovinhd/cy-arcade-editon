@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
   import OutA from "$lib/components/out-a.svelte";
-  import { Chart, registerables } from "chart.js";
+  import { Chart, registerables} from "chart.js";
   import { onMount } from "svelte";
   const labels = [
     "2021",
@@ -62,16 +62,74 @@
         label: "Neu installiert [GW]",
         backgroundColor: "rgb(255, 99, 132)",
         borderColor: "rgb(255, 99, 132)",
+        tension: 0.3,
         data: newInstalls,
+        fill: true,
+        pointStyle: 'circle',
+        pointRadius: 1,
       },
-
     ],
+  };
+
+  
+
+  const totalDuration = 700;
+  const delayBetweenPoints = totalDuration / newInstalls.length;
+  const previousY = (ctx) =>
+    ctx.index === 0
+      ? ctx.chart.scales.y.getPixelForValue(100)
+      : ctx.chart
+          .getDatasetMeta(ctx.datasetIndex)
+          .data[ctx.index - 1].getProps(["y"], true).y;
+
+  const animation = {
+    x: {
+      type: "number",
+      easing: "linear",
+      duration: delayBetweenPoints,
+      from: NaN, // the point is initially skipped
+      delay(ctx) {
+        if (ctx.type !== "data" || ctx.xStarted) {
+          return 0;
+        }
+        ctx.xStarted = true;
+        return ctx.index * delayBetweenPoints;
+      },
+    },
+    y: {
+      type: "number",
+      easing: "linear",
+      duration: delayBetweenPoints,
+      from: previousY,
+      delay(ctx) {
+        if (ctx.type !== "data" || ctx.yStarted) {
+          return 0;
+        }
+        ctx.yStarted = true;
+        return ctx.index * delayBetweenPoints;
+      },
+    },
   };
 
   const config = {
     type: "line",
     data: data,
-    options: {},
+    options: {
+      animation,
+      plugins: {
+      legend: true,
+    },
+      scales: {
+        y: {
+          ticks: {
+            // Include a dollar sign in the ticks
+            callback: function (value, index, ticks) {
+              return value + " GW";
+            },
+          },
+        },
+      },
+    },
   };
 
   let chartElement;
@@ -86,13 +144,13 @@
 </script>
 
 <div class="grid grid-flow-row gap-4">
-
-<div>
-  Nach einer massiven Reduzierung der Einspeisevergütung brach die Anzahl neu installierter Photovoltaic-Anlagen 2013-2015 massiv ein. 
-</div>
-<div>
-  <canvas bind:this={chartElement} id="solar-chart" />
-</div>
+  <div>
+    Nach einer massiven Reduzierung der Einspeisevergütung brach die Anzahl neu
+    installierter Photovoltaic-Anlagen 2013-2015 massiv ein.
+  </div>
+  <div>
+    <canvas class="min-h-[352px] max-w-[600px] mx-auto" bind:this={chartElement} id="solar-chart" />
+  </div>
 </div>
 
 <!-- <pre>
