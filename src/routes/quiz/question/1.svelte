@@ -6,7 +6,7 @@
 
 <QuestionLayout id="1" let:selectAnswer>
     <div slot="question">
-        Welche Proteinquelle hat den höchsten Treibhausgasaustoß?
+        Welche dieser Proteinquellen hat den höchsten Treibhausgasaustoß?
     </div>
     <div class="grid grid-cols-2 answers stagger" slot="answers" id="ans1">
         <div id="ans1" class="grid">

@@ -6,7 +6,7 @@
     import type { Answer } from "$lib/types";
     import { onMount } from "svelte";
 
-    let pauseTimer = false;
+    let pauseTimer = true;
     let lockedanswer = false;
     let selectedanswer: Answer;
     export let graceTime = 2 * 1000;
@@ -27,7 +27,7 @@
 
     const showResult = () => {
         console.log($page.routeId,  `quiz/question/${id}` );
-        if (!($page.routeId === `quiz/question/${id}`)) {
+        if (!($page.routeId === `quiz/question/${id}` || pauseTimer)) {
             console.error("runaway timer in question-layout!");
             return;
         } else {

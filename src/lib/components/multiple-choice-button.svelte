@@ -13,6 +13,17 @@ import type { Answer } from "$lib/types";
 
 <style lang="scss">
     .selected {
-        @apply bg-nature-light
+        @apply bg-nature text-white
     }
+
+    button {
+        transition: all;
+        transition-duration: 30ms;
+        &:active {
+            transform: translateY(3%);
+            @apply shadow-none
+        }
+
+    }
+
 </style>
