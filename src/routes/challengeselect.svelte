@@ -12,9 +12,9 @@
 
     let hasSelectedChallenge = false;
 
-    const startSingle = () => {
-        goto("/quiz/question/1");
-    };
+    // const startSingle = () => {
+    //     goto("/quiz/question/1");
+    // };
     onMount(async () => {
         init()
             .then((session) => {
@@ -115,12 +115,12 @@
 
     <div class="actions px-8">
     <Actions>
-        <button
+        <!-- <button
             class="action-button"
             disabled={hasSelectedChallenge}
             on:click={(_) => startSingle()}>Alleine Spielen</button
-        >
-        <button class="action-button" disabled={true}>Bereit</button>
+        > -->
+        <button class="action-button" on:click={(_) => goto("/quiz-intro")} disabled={hasSelectedChallenge}>Auswählen</button>
     </Actions>
     </div>
 </div>

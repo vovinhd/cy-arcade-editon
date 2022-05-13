@@ -16,10 +16,8 @@ import "../app.css";
     </div>
 
     <div class="safearea">
-        <main class="flex flex-col place-content-center">
-            <div class="">
+        <main class="grid grid-flow-row place-content-center">
                 <slot/>
-            </div>
         </main>
         <!-- <span id="bg-attr" class="text-white text-opacity-20 text-center">made with ❤️ @climactivity</span> -->
     </div>

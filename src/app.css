@@ -9,7 +9,7 @@
 }
 @layer components {
     .hero {
-        @apply absolute
+        @apply absolute max-w-[768px]
     }
 
     .heading {
@@ -54,4 +54,14 @@
     }
 
 
+}
+
+@layer utilities {
+    .animation-delay-2000 {
+        animation-delay: 2s;
+    }
+
+    .animation-delay-4000 {
+        animation-delay: 2s;
+    }
 }
