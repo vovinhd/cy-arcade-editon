@@ -9,7 +9,8 @@
 }
 @layer components {
     .hero {
-        @apply absolute max-w-[768px] mx-auto
+        scrollbar-width: none;
+        @apply absolute max-w-[768px] mx-auto my-2 overflow-y-scroll 
     }
 
     .heading {

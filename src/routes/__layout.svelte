@@ -7,7 +7,7 @@ import { onMount } from "svelte";
 import "../app.css";
 </script>
 
-<div class="w-[100vw] h-[100vh] bg-container">
+<div class="w-[100vw] min-h-[100vh] bg-container ">
     <OutAOverlay/>
     <div class="bg">
         <div class="w-full h-full bg-slate-800 transition-colors">
@@ -16,7 +16,7 @@ import "../app.css";
     </div>
 
     <div class="safearea">
-        <main class="grid grid-flow-row place-content-center">
+        <main class="grid grid-flow-row place-content-center ">
                 <slot/>
         </main>
         <!-- <span id="bg-attr" class="text-white text-opacity-20 text-center">made with ❤️ @climactivity</span> -->
@@ -27,7 +27,7 @@ import "../app.css";
     .safearea {
         z-index: 1;
         position: relative;
-        height: 100%;
+        min-height: 100%;
         width: 100%;
         display: grid;
         grid-template-rows: 1fr 2rem;

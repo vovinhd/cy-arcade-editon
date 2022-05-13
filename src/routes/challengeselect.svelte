@@ -145,7 +145,7 @@
             animation: fadeInDown 1s ease forwards;
         }
     }
-    @for $i from 0 through 20 {
+    @for $i from 0 through 4 {
         .content :nth-child(#{$i + 1}) {
             animation-delay: 200ms * $i;
         }

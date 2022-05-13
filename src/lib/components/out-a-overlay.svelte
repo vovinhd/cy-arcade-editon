@@ -11,12 +11,17 @@ const close = () => {
 
 </script>
 {#if $outlinkState.show}
-<div class="fixed inset-0 w-full h-full bg-opacity-60 bg-black z-50" on:click|stopPropagation={(_) => close()} transition:fade>
-    <div class="shadow-md rounded-md bg-zinc-50  grid p-8 inset-24 absolute">
+<div class="fixed inset-0 w-full h-full  bg-opacity-60 bg-black z-50" on:click|stopPropagation={(_) => close()} transition:fade>
+    <div class="shadow-md rounded-md bg-zinc-50  grid p-8 inset-24 absolute max-w-xl mx-auto">
         <p class="heading">{@html $outlinkState.text}</p>
-        <div class="flex flex-col ">
-            <QrCode codeValue={$outlinkState.href}/>
+        <div>
+            <div class="flex flex-col ">
+                <QrCode codeValue={$outlinkState.href}/>
+            </div>
+            <p class="text-sm py-2">{$outlinkState.href}</p> 
+    
         </div>
+
     </div>
 </div>
 {/if}
