@@ -19,11 +19,11 @@
 
     .action-button {
         @apply px-8 py-4 rounded-full shadow-lg mx-8 mt-8 mb-2;
+        transition: all;
 
     } 
 
     .action-button:active {
-        transition: all;
         transform: translateY(3%);
         @apply bg-opacity-90 shadow-md
     }

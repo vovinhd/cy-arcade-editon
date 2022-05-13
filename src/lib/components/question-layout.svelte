@@ -71,7 +71,7 @@
 </script>
 
 <main class="grid h-full content">
-    <div class="w-full mx-auto flex flex-row place-content-center">
+    <div class="w-full mx-auto flex flex-row place-content-center z-1">
         <div
             class=" w-full rounded-t-md shadow-sm bg-zinc-600 h-6 overflow-hidden"
             id="timer"
@@ -89,7 +89,7 @@
     </div>
 
     <div class="p-8 question">
-        <div class="heading bg-water-light p-8 text-white rounded-md shadow-md">
+        <div class="heading bg-water-light bg-opacity-90  p-8 text-white rounded-md shadow-md">
             <slot name="question" />
         </div>
     </div>
