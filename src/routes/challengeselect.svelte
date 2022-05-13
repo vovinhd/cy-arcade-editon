@@ -25,7 +25,6 @@
     });
 
     appContext.subscribe((value) => {
-        console.log(value);
         hasSelectedChallenge = !value.selectedChallenge;
     });
 </script>

@@ -58,10 +58,12 @@ import ContinueButton from "$lib/components/continue-button.svelte";
             finish();
         }, minReadingTime);
     });
-    let currentlySelectedAnswer;
+    let currentlySelectedAnswer = $appContext.currentSelectedAnswer;
+    if (currentlySelectedAnswer) {
+        appContext.update(v => ({...v, selectedAnswers: [...v.selectedAnswers, v.currentSelectedAnswer]}))
+    }
     $: {
         continueLabel = opponentReady ? "Weiter" : "Bereit";
-        currentlySelectedAnswer = $appContext.currentSelectedAnswer;
     }
 </script>
 

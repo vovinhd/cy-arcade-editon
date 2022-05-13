@@ -3,7 +3,7 @@ import { goto } from "$app/navigation";
 import Actions from "$lib/components/actions.svelte";
 
 import QrCode from "$lib/components/qr-code.svelte";
-import { appContext } from "$lib/context";
+import { appContext, emptyApplicationContext } from "$lib/context";
 
 const makeFollowupLink = () => {
     const {selectedChallenge, selectedFollowupOption} = $appContext
@@ -18,12 +18,18 @@ const makeFollowupLink = () => {
 }
 
 const resetGame = () => {
+    clearAppContext()
     goto("/")
 }
 
 const restartGame = () => {
+    clearAppContext()
     goto("/challengeselect")
 
+}
+
+const clearAppContext = () => {
+    appContext.set(emptyApplicationContext);
 }
 </script>
 <div>
