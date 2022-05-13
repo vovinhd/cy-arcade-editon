@@ -9,7 +9,7 @@ const makeFollowupLink = () => {
     const {selectedChallenge, selectedFollowupOption} = $appContext
     let followUpParams = {
         ch: selectedChallenge?.id,
-        opt: selectedFollowupOption.delay
+        opt: selectedFollowupOption?.delay ?? 0
     }
     let encodedParams = encodeURIComponent(JSON.stringify(followUpParams))
     console.log(followUpParams, encodedParams)

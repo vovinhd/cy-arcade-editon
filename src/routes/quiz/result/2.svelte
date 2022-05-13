@@ -18,7 +18,7 @@ import OutA from "$lib/components/out-a.svelte";
         <b>75 % des Luftverkehrs</b>.
     </p> -->
 
-    <div class=" p-8 relative h-full grid grid-flow-col place-content-center">
+    <div class=" p-8 relative h-full w-[714px] grid grid-flow-col place-content-center">
 
         <legend class="absolute legend w-full h-full">
             <div id="l-0" class="pill absolute -top-2 left-64" style="background-color: #E40045; --order: 4">10 oder mehr</div>    

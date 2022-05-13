@@ -59,7 +59,7 @@ import ContinueButton from "$lib/components/continue-button.svelte";
 </script>
 
 <div
-    class="bg-zinc-50 rounded-md shadow-lg hero inset-4 p-8 content-grid"
+    class="bg-zinc-50 rounded-md shadow-lg hero inset-4 p-8 content-grid "
     in:fly={{ x: 200, duration: 500 }}
     out:fly={{ x: -200, duration: 500 }}
 >
@@ -80,7 +80,7 @@ import ContinueButton from "$lib/components/continue-button.svelte";
     <div class="text-center pb-4 pt-8 px-8  text-2xl title">
         Hättest du's gewusst?
     </div>
-    <div class="h-full overflow-y-scroll main">
+    <div class="h-full  main">
         <slot />
     </div>
 

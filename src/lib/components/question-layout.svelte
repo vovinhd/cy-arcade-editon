@@ -6,7 +6,7 @@
     import type { Answer } from "$lib/types";
     import { onMount } from "svelte";
 
-    let pauseTimer = true;
+    let pauseTimer = false;
     let lockedanswer = false;
     let selectedanswer: Answer;
     export let graceTime = 2 * 1000;
@@ -14,6 +14,7 @@
     let timer = graceTime + maxTime;
     export let id: string;
     let timerUpdate, timeOut;
+
     const selectAnswer = (answer: Answer) => {
         selectedanswer = answer;
         console.log(answer)
@@ -25,12 +26,13 @@
     };
 
     const showResult = () => {
-        console.log($page.routeId);
-        if (!$page.routeId.startsWith("quiz/question")) {
+        console.log($page.routeId,  `quiz/question/${id}` );
+        if (!($page.routeId === `quiz/question/${id}`)) {
             console.error("runaway timer in question-layout!");
             return;
+        } else {
+            goto(`/quiz/result/${id}`);
         }
-        goto(`/quiz/result/${id}`);
     };
 
     const lockAnswer = (e: Event) => {
@@ -39,10 +41,15 @@
     };
 
     const finish = () => {
-        clearInterval(timerUpdate);
-        clearTimeout(timeOut);
+        invalidateTimers();
         showResult();
     };
+
+    const invalidateTimers = () => {
+        clearInterval(timerUpdate);
+        clearTimeout(timeOut);
+
+    }
     onMount(() => {
         appContext.update(
             (value) => (value = { ...value, currentQuestionId: id, currentSelectedAnswer: null })
@@ -56,8 +63,11 @@
         timeOut = setTimeout(() => {
             finish();
         }, graceTime + maxTime);
-
     });
+
+    page.subscribe(v => {
+        invalidateTimers()
+    })
 </script>
 
 <main class="grid h-full content">
