@@ -4,6 +4,11 @@
     import QuestionLayout from "$lib/components/question-layout.svelte";
 </script>
 
+<div class="h-full relative pb-4 overflow-clip">
+    <div class="absolute w-full h-full bg-gradient-to-tl from-white via-white to-[#fef1c4] inset-0 rounded-md">
+        <div class="absolute -top-8 -left-8 w-80 h-80 rounded-full overflow-clip opacity-20 -rotate-12">
+            <img src="/Mobilitaet.jpeg" alt="Mobilitaet-logo" />
+        </div>
 <QuestionLayout id="2" let:selectAnswer>
     <div slot="question">
         Wieviel Prozent der Bevölkerung ist in den letzten 2 Jahren
@@ -42,7 +47,8 @@
         </div>
     </div>
 </QuestionLayout>
-
+</div>
+</div>
 <style lang="scss">
 
 
