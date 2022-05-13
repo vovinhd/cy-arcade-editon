@@ -11,7 +11,7 @@
 
 <QuestionLayout id="3" let:selectAnswer>
     <div slot="question">
-        In welchem Jahr wrude in Deutschland die meiste neue Photovoltaic-Leistung installiert
+        In welchem Jahr wurde in Deutschland die meiste neue Photovoltaik-Leistung installiert?
     </div>
     <div class="grid grid-cols-2 answers" slot="answers" id="ans1">
         <div id="ans1" class="grid">

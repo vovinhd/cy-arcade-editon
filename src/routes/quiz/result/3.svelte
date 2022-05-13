@@ -146,7 +146,7 @@
 <div class="grid grid-flow-row gap-4">
   <div>
     Nach einer massiven Reduzierung der Einspeisevergütung brach die Anzahl neu
-    installierter Photovoltaic-Anlagen 2013-2015 massiv ein.
+    installierter Photovoltaik-Anlagen 2013-2015 massiv ein.
   </div>
   <div>
     <canvas class="min-h-[352px] max-w-[600px] mx-auto" bind:this={chartElement} id="solar-chart" />
