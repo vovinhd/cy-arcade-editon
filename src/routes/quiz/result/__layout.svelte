@@ -52,6 +52,7 @@ import ContinueButton from "$lib/components/continue-button.svelte";
 
     onMount(() => {
         if (nextQuestionId) prefetch(`/quiz/question/${nextQuestionId}`)
+        console.log(nextQuestionId ? "next q " + nextQuestionId : "last question")
         timerUpdate = setInterval(() => {
             timer = timer + 16;
         }, 16);
@@ -70,7 +71,7 @@ import ContinueButton from "$lib/components/continue-button.svelte";
 </script>
 
 <div
-    class="bg-zinc-50 rounded-md shadow-lg hero inset-4 p-8 content-grid "
+    class="bg-zinc-50 rounded-md shadow-lg hero md:inset-4 inset-0 md:p-8 p-2 content-grid "
     in:fly={{ x: 200, duration: 500 }}
     out:fly={{ x: -200, duration: 500 }}
 >

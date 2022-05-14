@@ -35,11 +35,11 @@
 >
     <h1 class="heading">Challenges</h1>
 
-    <div class="explanation text-justify text-lg pt-8 px-16">
+    <div class="explanation text-justify text-lg md:pt-8 md:px-16 px-2">
         Such dir eine Challenge aus, zu der Du Lust hast
     </div>
 
-    <div class="p-8 grid grid-flow-row gap-4 challenges">
+    <div class="md:p-8 p-2 grid grid-flow-row gap-4 challenges">
         <div>
             <ChallengeButton
                 challenge={{
@@ -120,13 +120,22 @@
                     disabled={hasSelectedChallenge}
                     on:click={(_) => startSingle()}>Alleine Spielen</button
                 > -->
-                <a sveltekit:prefetch class="action-button text-center" href="quiz-intro" disabled={hasSelectedChallenge}>Auswählen</a>
+                <a sveltekit:prefetch class="action-button text-center bg-heart text-white" href="quiz-intro" disabled={hasSelectedChallenge}>Auswählen</a>
             </Actions>
         </div>
     {/if}
 </div>
 
 <style lang="scss">
+
+    .content {
+            grid-template-rows: 2rem 1rem 1fr 4rem;
+        }
+    @media (min-width: 760px) {
+        .content {
+            grid-template-rows: 4rem 4rem 1fr 8rem;
+        }
+    }
     .content {
         grid-template-rows: 4rem 4rem 1fr 8rem;
         .actions {

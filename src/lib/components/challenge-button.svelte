@@ -33,8 +33,8 @@
 <div
     on:click={(e) => selectChallenge(e)}
     class="{selected
-        ? ' bg-nature text-white p-8 shadow-lg'
-        : 'bg-white text-zinc-800 m-6 p-2 shadow-sm'} 
+        ? ' bg-nature text-white md:p-8 p-2 shadow-lg'
+        : 'bg-white text-zinc-800  md:m-6 md:p-2 shadow-sm'} 
         block rounded-md transition-all duration-200 active:translate-y-1 "
 >
     <div class="{selected
@@ -44,7 +44,7 @@
         class="{selected
             ? 'bg-white  '
             : ' '}
-            transition-all duration-500 text-zinc-800 py-4 rounded-md -ml-2 pl-2"
+            transition-all duration-500 text-zinc-800 py-4 rounded-md md:-ml-2 pl-2"
     >
         <div
             class="

@@ -17,7 +17,7 @@ onMount(() => {
 
 </script>
 
-<div class="bg-zinc-50 rounded-md shadow-lg hero inset-16 grid grid-flow-row" style="grid-template-rows: 1fr 1fr;" out:fly={{ x: -200, duration: 500 }}>
+<div class="bg-zinc-50 rounded-md shadow-lg hero md:inset-16 inset-4 grid grid-flow-row" style="grid-template-rows: 1fr 1fr;" out:fly={{ x: -200, duration: 500 }}>
     <!-- <h1 class="text-center p-8 text-2xl">Attract Screen</h1> -->
 
     <div>
@@ -26,7 +26,7 @@ onMount(() => {
         <img src="/kiko-slogan.webp" alt="logo" />
     </div>
 
-    <p class="  text-lg px-16 py-8">
+    <p class="  md:text-lg md:px-16 px-8 py-8">
         Wir entwickeln eine neue App, die dir beim Klimaschutz hilft. Sie ist noch nicht so weit, aber hier kannst Du sie ausprobieren.
     </p>
     </div>

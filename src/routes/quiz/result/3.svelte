@@ -149,7 +149,7 @@
     installierter Photovoltaik-Anlagen 2013-2015 massiv ein.
   </div>
   <div>
-    <canvas class="min-h-[352px] max-w-[600px] mx-auto" bind:this={chartElement} id="solar-chart" />
+    <canvas class="md:min-h-[352px] md:max-w-[600px] mx-auto" bind:this={chartElement} id="solar-chart" />
   </div>
 </div>
 

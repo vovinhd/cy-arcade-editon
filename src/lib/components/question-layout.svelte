@@ -90,7 +90,7 @@
     </div>
 
     <div class="p-8 question">
-        <div class="heading bg-water-light bg-opacity-90  p-8 text-white rounded-md shadow-md">
+        <div class="md:heading text-center text-lg bg-water-light bg-opacity-90  p-8 text-white rounded-md shadow-md">
             <slot name="question" />
         </div>
     </div>

@@ -23,10 +23,10 @@ import { onMount } from "svelte";
 
 <h1 class="heading">Anleitung</h1>
 
-<div class="px-16">
-    <div class="grid grid-flow-row gap-4 hints">
-        <div class="rounded-lg bg-gradient-to-bl from-blue-100 to-white h-56 grid place-content-center text-2xl p-8 quiz relative shadow-sm">
-            <img src="/confusion.svg" alt="" class=" blur-sm w-56 h-56 -bottom-2 right-4 rotate-12 absolute"/>
+<div class="md:px-16">
+    <div class="grid grid-flow-row gap-4 hints md:text-2xl">
+        <div class="rounded-lg bg-gradient-to-bl from-blue-100 to-white md:h-56 grid place-content-center  p-8 quiz relative shadow-sm">
+            <img src="/confusion.svg" alt="" class=" blur-sm md:w-56 md:h-56 w-4 h-4 -bottom-2 right-4 rotate-12 absolute"/>
 
             <div class="relative blur-0">
                 3 Fragen aus verschiedenen Bereichen des Klimaschutzes
@@ -34,19 +34,19 @@ import { onMount } from "svelte";
 
         </div>
 
-        <div class="rounded-lg bg-gradient-to-bl from-lime-100 to-white h-56 grid place-content-center text-2xl p-8 quiz relative shadow-sm">
-            <img src="/players.svg" alt="" class=" blur-sm w-56 h-56 -bottom-2 right-4 rotate-12 absolute"/>
+        <div class="rounded-lg bg-gradient-to-bl from-lime-100 to-white md:h-56 grid place-content-center  p-8 quiz relative shadow-sm">
+            <img src="/players.svg" alt="" class=" blur-sm md:w-56 md:h-56 w-4 h-4 -bottom-2 right-4 rotate-12 absolute"/>
 
             <div class="relative blur-0">
                 alleine oder gegen die Person gegenüber
             </div>
 
         </div>
-        <div class="rounded-lg bg-gradient-to-bl from-rose-100 to-white h-56 grid place-content-center text-2xl p-8 quiz relative shadow-sm">
-            <img src="/heart.svg" alt="" class=" blur-sm w-56 h-56 -bottom-2 right-4 rotate-12 absolute"/>
+        <div class="rounded-lg bg-gradient-to-bl from-rose-100 to-white md:h-56 grid place-content-center  p-8 quiz relative shadow-sm">
+            <img src="/heart.svg" alt="" class=" blur-sm md:w-56 md:h-56 w-4 h-4 -bottom-2 right-4 rotate-12 absolute"/>
 
             <div class="relative blur-0">
-                Wer verliert macht seine Challenge 😉
+                Wer verliert macht die Challenge 😉
             </div>
 
         </div>
