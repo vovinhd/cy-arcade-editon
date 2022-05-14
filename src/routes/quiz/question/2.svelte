@@ -11,7 +11,7 @@
         </div>
 <QuestionLayout id="2" let:selectAnswer>
     <div slot="question">
-        Wieviel Prozent der Bevölkerung ist in den letzten 2 Jahren
+        Wieviel Prozent der deutschen Bevölkerung ist in den letzten 2 Jahren
         geflogen?
     </div>
     <div class="grid grid-cols-2 answers" slot="answers" id="ans1">

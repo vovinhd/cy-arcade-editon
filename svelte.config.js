@@ -1,4 +1,5 @@
-import adapter from '@sveltejs/adapter-static';
+import AdapterStatic from '@sveltejs/adapter-static';
+import AdapterNetlify from '@sveltejs/adapter-netlify';
 import preprocess from 'svelte-preprocess';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -8,7 +9,7 @@ const config = {
 	preprocess: preprocess(),
 
 	kit: {
-		adapter: adapter({
+		adapter: process.env.IS_NETLIFY ? AdapterNetlify({}) : AdapterStatic({
 			// default options are shown
 			pages: 'build',
 			assets: 'build',
@@ -24,4 +25,4 @@ const config = {
 	}
 };
 
-	export default config;
+export default config;
