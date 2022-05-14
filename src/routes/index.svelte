@@ -6,6 +6,7 @@ import { fly } from 'svelte/transition';
 import QrCode from "$lib/components/qr-code.svelte";
 import { StatusBar } from '@capacitor/status-bar';
 import { onMount } from "svelte";
+import BlobAnim from "$lib/components/blob-anim.svelte";
 const hideStatusBar = async () => {
   await StatusBar.hide();
 };
@@ -36,12 +37,10 @@ onMount(() => {
 
     <div class="grid place-content-center  py-8 mb-16 relative">
         <!-- <a class=" absolute right-1/2 translate-x-1/2 action-button w-60 text-center bg-heart text-white shadow-2xl animate-ping" href="/challengeselect"> Let's a go </a> -->
-       <div class="relative">
-           <div class="z-1 animate-blob opacity-60 absolute mix-blend-multiply filter blur-2xl -top-24 -left-36 w-56 h-56 bg-heart-light rounded-full"/>
-           <div class="z-1 animate-blob  opacity-60 absolute mix-blend-multiply filter blur-2xl -top-24 left-36 w-56 h-56 bg-yellow-300 rounded-full"/>
-           <div class="z-1 animate-blob animation-delay-2000 opacity-60 absolute mix-blend-multiply filter blur-2xl -top-32 left-16 w-56 h-56 bg-indigo-300 rounded-full"/>
-           <div class="z-1 animate-blob animation-delay-4000 opacity-60 absolute mix-blend-multiply filter blur-2xl -top-16 -left-16 w-56 h-56 bg-green-300 rounded-full"/>
-           <a sveltekit:prefetch class="relative z-10 action-button max-w-full text-center ring-heart-dark ring-2 ring-offset-2 bg-heart text-white text-2xl shadow-2xl" href="/challengeselect"> Los geht's </a>  
+       <div class="relative ">
+    <BlobAnim/>
+
+        <a sveltekit:prefetch class="relative z-10 action-button max-w-full text-center ring-heart-dark ring-2 ring-offset-2 bg-heart text-white text-2xl shadow-2xl" href="/challengeselect"> Los geht's </a>  
 
        </div>
     </div>
