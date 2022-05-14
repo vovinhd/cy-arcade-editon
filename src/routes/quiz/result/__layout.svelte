@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { goto } from "$app/navigation";
+    import { goto, prefetch } from "$app/navigation";
 import ContinueButton from "$lib/components/continue-button.svelte";
 
     import { appContext } from "$lib/context";
@@ -22,12 +22,13 @@ import ContinueButton from "$lib/components/continue-button.svelte";
         console.log(results)
         return true;
     };
+
+    const nextQuestionId = $appContext.quiz[$appContext.currentQuestionId]
     const nextQuestionOrResult = () => {
         if (!minReadingTimeOver) {
             console.log("wait")
             return
         }
-        const nextQuestionId = $appContext.quiz[$appContext.currentQuestionId];
         console.log($appContext);
         if (nextQuestionId) {
             goto(`/quiz/question/${nextQuestionId}`);
@@ -50,6 +51,7 @@ import ContinueButton from "$lib/components/continue-button.svelte";
     };
 
     onMount(() => {
+        if (nextQuestionId) prefetch(`/quiz/question/${nextQuestionId}`)
         timerUpdate = setInterval(() => {
             timer = timer + 16;
         }, 16);

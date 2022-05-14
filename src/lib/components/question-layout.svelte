@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { goto } from "$app/navigation";
+    import { goto, prefetch } from "$app/navigation";
     import { page } from "$app/stores";
     import { appContext } from "$lib/context";
 
@@ -55,6 +55,7 @@
             (value) => (value = { ...value, currentQuestionId: id, currentSelectedAnswer: null })
         );
 
+        prefetch(`/quiz/result/${id}`)
         if (pauseTimer) return;
         timerUpdate = setInterval(() => {
             timer = timer - 16;

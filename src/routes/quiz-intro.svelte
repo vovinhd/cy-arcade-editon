@@ -1,13 +1,16 @@
 <script>
     import { fly } from "svelte/transition";
 
-    import { goto } from "$app/navigation";
+    import { goto, prefetch } from "$app/navigation";
     import Actions from "$lib/components/actions.svelte";
+import { onMount } from "svelte";
     let hasSelectedChallenge = false;
 
     const startSingle = () => {
         goto("/quiz/question/1");
     };
+
+    onMount(() => prefetch("/quiz/question/1"));
 </script>
 
 

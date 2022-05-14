@@ -112,16 +112,18 @@
         </div>
     </div>
 
-    <div class="actions px-8">
-    <Actions>
-        <!-- <button
-            class="action-button"
-            disabled={hasSelectedChallenge}
-            on:click={(_) => startSingle()}>Alleine Spielen</button
-        > -->
-        <button class="action-button" on:click={(_) => goto("/quiz-intro")} disabled={hasSelectedChallenge}>Auswählen</button>
-    </Actions>
-    </div>
+    {#if !hasSelectedChallenge}
+        <div class="actions px-8">
+            <Actions>
+                <!-- <button
+                    class="action-button"
+                    disabled={hasSelectedChallenge}
+                    on:click={(_) => startSingle()}>Alleine Spielen</button
+                > -->
+                <a sveltekit:prefetch class="action-button text-center" href="quiz-intro" disabled={hasSelectedChallenge}>Auswählen</a>
+            </Actions>
+        </div>
+    {/if}
 </div>
 
 <style lang="scss">
@@ -130,6 +132,8 @@
         .actions {
             opacity: 0;
             animation: fadeInUp 1s ease forwards;
+            animation-delay: 0s;
+
         } 
         h1, .explanation {
             opacity: 0;
@@ -144,7 +148,7 @@
             animation: fadeInDown 1s ease forwards;
         }
     }
-    @for $i from 0 through 4 {
+    @for $i from 0 through 3 {
         .content :nth-child(#{$i + 1}) {
             animation-delay: 200ms * $i;
         }
