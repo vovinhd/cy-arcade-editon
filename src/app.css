@@ -16,7 +16,7 @@
 @layer components {
     .hero {
         scrollbar-width: none;
-        @apply absolute max-w-[768px] mx-auto my-2 overflow-y-scroll 
+        @apply absolute max-w-[768px] mx-auto my-2 overflow-y-auto 
     }
 
     .heading {
@@ -33,6 +33,11 @@
     } 
 
     @media (min-width: 760px) {
+
+    .hero {
+        scrollbar-width: none;
+        @apply absolute max-w-[768px] mx-auto my-2 overflow-y-hidden 
+    }
 
         .heading {
             @apply text-center p-8 text-4xl

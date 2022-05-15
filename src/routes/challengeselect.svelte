@@ -40,8 +40,8 @@
 >
     <h1 class="heading">Challenges</h1>
 
-    <div class="explanation text-justify text-lg md:pt-8 md:px-16 px-2">
-        Such dir eine Challenge aus, zu der Du Lust hast
+    <div class="explanation text-center text-lg md:pt-8 md:px-16 px-2">
+        Such dir eine Challenge aus, auf die du Lust hast
     </div>
 
     <div class="md:p-8 p-2 grid grid-flow-row gap-4 challenges">

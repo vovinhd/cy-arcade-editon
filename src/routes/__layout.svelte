@@ -9,10 +9,13 @@ import "../app.css";
     <title>climactivity Wissensspeicher Demo</title>
     {#if import.meta.env.VITE_DISABLE_ZOOM}
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    {:else}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+
     {/if}
 </svelte:head>
 
-<div class="w-[100vw] min-h-[100vh] bg-container ">
+<div class="w-[100vw] min-h-[100vh] bg-container  overflow-hidden">
     <OutAOverlay/>
     <div class="bg">
         <div class="w-full h-full bg-slate-800 transition-colors">

@@ -35,7 +35,7 @@
     class="{selected
         ? ' bg-nature text-white md:p-8 p-2 shadow-lg'
         : 'bg-white text-zinc-800  md:m-6 md:p-2 shadow-sm'} 
-        block rounded-md transition-all duration-200 active:translate-y-1 "
+        block rounded-md transition-all duration-200 active:translate-y-1 cursor-pointer "
 >
     <div class="{selected
         ? '  '
