@@ -17,13 +17,19 @@ onMount(() => {
 
 </script>
 
+
+<svelte:head>
+    <meta name="description" content="Interaktives Exponant von Climactivity für die Dokumenta in Kassel"/>
+</svelte:head>
+
+
 <div class="bg-zinc-50 rounded-md shadow-lg hero md:inset-16 inset-4 grid grid-flow-row" style="grid-template-rows: 1fr 1fr;" out:fly={{ x: -200, duration: 500 }}>
     <!-- <h1 class="text-center p-8 text-2xl">Attract Screen</h1> -->
 
     <div>
 
     <div class="">
-        <img src="/kiko-slogan.webp" alt="logo" />
+        <img src="/kiko-slogan.webp" alt="logo"/>
     </div>
 
     <p class="  md:text-lg md:px-16 px-8 py-8">

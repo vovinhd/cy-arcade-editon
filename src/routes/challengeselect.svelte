@@ -29,6 +29,11 @@
     });
 </script>
 
+<svelte:head>
+    <meta name="description" content="Challenge-Auswahl"/>
+</svelte:head>
+
+
 <div
     class="bg-zinc-50 rounded-md shadow-lg hero inset-4 grid grid-flow-row content"
     in:fly={{ x: 200, duration: 500 }}

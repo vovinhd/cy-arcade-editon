@@ -1,11 +1,16 @@
 <script>
-import { init } from "$lib/client";
 
     import BgCanvas from "$lib/components/bg-canvas.svelte";
 import OutAOverlay from "$lib/components/out-a-overlay.svelte";
-import { onMount } from "svelte";
 import "../app.css";
 </script>
+
+<svelte:head>
+    <title>climactivity Wissensspeicher Demo</title>
+    {#if import.meta.env.VITE_DISABLE_ZOOM}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    {/if}
+</svelte:head>
 
 <div class="w-[100vw] min-h-[100vh] bg-container ">
     <OutAOverlay/>
