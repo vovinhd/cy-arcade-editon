@@ -35,8 +35,7 @@
     @media (min-width: 760px) {
 
     .hero {
-        scrollbar-width: none;
-        @apply absolute max-w-[768px] mx-auto my-2 overflow-y-hidden 
+        @apply absolute max-w-[768px] mx-auto my-2  
     }
 
         .heading {
@@ -53,6 +52,14 @@
             transition: all;
 
         } 
+    }
+
+    @media (max-height: 800px) {
+        .hero {
+            scrollbar-width: auto;
+
+            @apply: overflow-y-auto
+        }
     }
 
 
