@@ -51,7 +51,7 @@ export const handler: Handler = async (event, context) => {
     let challengeJson = Buffer.from(challengeBase64, "base64").toString(); 
     let challengeData = JSON.parse(challengeJson);
     let {challenge, delay} = challengeData; 
-    let remind_at = dateToStr(new Date(Date.now() + (delay * 24* 60 *60))); 
+    let remind_at = dateToStr(new Date(Date.now() + (delay * 24* 60 *60 *1000))); 
     let {data, error} = await supabase.from('follow_ups').insert({
       email, challenge, delay, remind_at
     }); 
