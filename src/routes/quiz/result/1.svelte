@@ -56,7 +56,7 @@ siehe <OutA href="https://ourworldindata.org/grapher/ghg-per-protein-poore">ourw
     opacity: 0;
     animation: growIn 1s ease forwards;
     transform-origin: top left;
-    @apply w-full h-full  top-0
+    @apply h-full  top-0
 }
 
 
