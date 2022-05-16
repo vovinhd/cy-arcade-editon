@@ -70,7 +70,8 @@ export const handler: Handler = async (event, context) => {
     }
     let challengeJson = Buffer.from(challengeBase64, "base64").toString(); 
     let challengeData = JSON.parse(challengeJson);
-    let {challenge, delay} = challengeData; 
+    console.log(challengeData)
+    let {ch: challenge,opt: delay} = challengeData; 
     console.log(challenge, delay)
     let remind_at = dateToTZStr(remindAfter(delay)); 
     console.log(remind_at)
