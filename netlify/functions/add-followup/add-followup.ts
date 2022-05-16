@@ -9,7 +9,13 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLIC_ANON_KEY)
 const dateToStr = (date: Date) => {
   const offset = date.getTimezoneOffset()
   date = new Date(date.getTime() - (offset*60*1000))
-  return date.toISOString().split('T')[0]
+  try {
+    let dateStr = date.toISOString().split('T')[0]
+    return dateStr
+  } catch (e) {
+    console.error(e, date)
+    throw e
+  }
 }
 
 export const handler: Handler = async (event, context) => {
