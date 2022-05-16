@@ -47,7 +47,7 @@ export const handler: Handler = async (event, context) => {
   }  
   try {
     if (challengeBase64 === undefined) {
-      let {_, error} = await supabase.from('follow_ups').insert({
+      let {error} = await supabase.from('follow_ups').insert({
         email, challenge: undefined, delay: 0, remind_at: dateToTZStr(new Date()) 
       }); 
   
