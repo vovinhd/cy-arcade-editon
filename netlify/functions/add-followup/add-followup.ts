@@ -6,7 +6,7 @@ let {SUPABASE_URL, SUPABASE_PUBLIC_ANON_KEY, API_SECRET} = process.env
 // Provide a custom schema. Defaults to "public".
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLIC_ANON_KEY)
 
-const dateToStr = (date: Date) => {
+const dateToTZStr = (date: Date) => {
   const offset = date.getTimezoneOffset()
   date = new Date(date.getTime() - (offset*60*1000))
   try {
@@ -16,6 +16,12 @@ const dateToStr = (date: Date) => {
     console.error(e, date)
     throw e
   }
+}
+
+const remindAfter = (delay) => {
+  let date = new Date(); 
+  date.setDate(date.getDate() + delay); 
+  return date
 }
 
 export const handler: Handler = async (event, context) => {
@@ -30,7 +36,6 @@ export const handler: Handler = async (event, context) => {
       statusCode: 400
     }
   }
-  console.log(apikey, email, challengeBase64)
 
   if (apikey !== API_SECRET) {
     return {
@@ -43,7 +48,7 @@ export const handler: Handler = async (event, context) => {
   try {
     if (challengeBase64 === undefined) {
       let {data, error} = await supabase.from('follow_ups').insert({
-        email, challenge: undefined, delay: 0, remind_at: dateToStr(new Date()) 
+        email, challenge: undefined, delay: 0, remind_at: dateToTZStr(new Date()) 
       }); 
   
       if (error) {
@@ -65,9 +70,9 @@ export const handler: Handler = async (event, context) => {
     }
     let challengeJson = Buffer.from(challengeBase64, "base64").toString(); 
     let challengeData = JSON.parse(challengeJson);
-    console.log(challengeData)
     let {challenge, delay} = challengeData; 
-    let remind_at = dateToStr(new Date(Date.now() + (delay * 24* 60 *60 *1000))); 
+
+    let remind_at = dateToTZStr(remindAfter(delay)); 
     let {data, error} = await supabase.from('follow_ups').insert({
       email, challenge, delay, remind_at
     }); 
