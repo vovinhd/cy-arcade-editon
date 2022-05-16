@@ -67,7 +67,7 @@ const handle = async (event) => {
                 }
             } else {
                 followup.reminder_sent = true
-                console.log("Mail send 🎆")
+                console.log("Mail send 📧")
                 const {data, error} = await supabase.from("follow_ups").upsert(followup, {returning: "minimal"} )
                 if (error) {
                     console.error(err)
