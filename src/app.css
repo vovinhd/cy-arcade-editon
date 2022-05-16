@@ -58,7 +58,7 @@
         .hero {
             scrollbar-width: auto;
 
-            @apply: overflow-y-auto
+            @apply overflow-y-auto
         }
     }
 
