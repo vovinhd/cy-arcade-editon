@@ -47,12 +47,11 @@ export const handler: Handler = async (event, context) => {
   }  
   try {
     if (challengeBase64 === undefined) {
-      let {data, error} = await supabase.from('follow_ups').insert({
+      let {_, error} = await supabase.from('follow_ups').insert({
         email, challenge: undefined, delay: 0, remind_at: dateToTZStr(new Date()) 
       }); 
   
       if (error) {
-        console.error(error);
         return {
           statusCode: 500,
           body:JSON.stringify({
@@ -60,7 +59,6 @@ export const handler: Handler = async (event, context) => {
           })
         }
       }
-      console.log("Success!", data); 
       return {
         statusCode: 200,
         body: JSON.stringify({
@@ -70,16 +68,12 @@ export const handler: Handler = async (event, context) => {
     }
     let challengeJson = Buffer.from(challengeBase64, "base64").toString(); 
     let challengeData = JSON.parse(challengeJson);
-    console.log(challengeData)
     let {ch: challenge,opt: delay} = challengeData; 
-    console.log(challenge, delay)
     let remind_at = dateToTZStr(remindAfter(delay)); 
-    console.log(remind_at)
     let {data, error} = await supabase.from('follow_ups').insert({
       email, challenge, delay, remind_at
     }); 
     if (error) {
-      console.error(error);
       return {
         statusCode: 500,
         body:JSON.stringify({
@@ -87,7 +81,6 @@ export const handler: Handler = async (event, context) => {
         })
       }
     }
-    console.log("Success!", data); 
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -95,7 +88,6 @@ export const handler: Handler = async (event, context) => {
       })
     }
   } catch (error) {
-    console.error(error, `${challengeBase64}, invalid base64 data`);
     return {
       statusCode: 400,
       body:JSON.stringify({
