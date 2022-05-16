@@ -6,7 +6,7 @@ let {SUPABASE_URL, SUPABASE_PUBLIC_ANON_KEY, API_SECRET} = process.env
 // Provide a custom schema. Defaults to "public".
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLIC_ANON_KEY)
 
-const dateToTZStr = (date: Date) => {
+const dateToTZStr = (date) => {
   const offset = date.getTimezoneOffset()
   date = new Date(date.getTime() - (offset*60*1000))
   try {
@@ -71,8 +71,9 @@ export const handler: Handler = async (event, context) => {
     let challengeJson = Buffer.from(challengeBase64, "base64").toString(); 
     let challengeData = JSON.parse(challengeJson);
     let {challenge, delay} = challengeData; 
-
+    console.log(challenge, delay)
     let remind_at = dateToTZStr(remindAfter(delay)); 
+    console.log(remind_at)
     let {data, error} = await supabase.from('follow_ups').insert({
       email, challenge, delay, remind_at
     }); 
