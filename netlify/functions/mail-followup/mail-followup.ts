@@ -47,6 +47,8 @@ const handle = async (event) => {
             htmlToSend = mailMainTemplate({
                 ...challengeData[followup.challenge]
             })
+
+            textToSend = `Erinnerung an: ${challengeData[followup.challenge].challengeTitle} ${challengeData[followup.challenge].challengeText} yeet`
         }
 
         const mailOptions = {
@@ -62,22 +64,15 @@ const handle = async (event) => {
                 console.error(err)
                 return {
                     statusCode: 500,
-                    body: JSON.stringify({
-                        message: `Mailtranport failed! ${err}` 
-                    })
                 }
             } else {
                 followup.reminder_sent = true
                 console.log("Mail send 🎆")
-                const {data, error} = await supabase.from("follow_ups").update(followup)
+                const {data, error} = await supabase.from("follow_ups").upsert(followup, {returning: "minimal"} )
                 if (error) {
                     console.error(err)
                     return {
                         statusCode: 500,
-                        body: JSON.stringify({
-                            message: `Mailtranport failed! ${error}` 
-                        })
-    
                     }    
                 } else {
                     updates += 1
@@ -90,10 +85,6 @@ const handle = async (event) => {
 
     return {
         statusCode: 200,
-        body: JSON.stringify({
-            message: `Sent ${updates} Challenge reminders!`
-        })
-
     }
 } 
 
