@@ -8,7 +8,8 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLIC_ANON_KEY)
 
 
 export const handler: Handler = async (event, context) => {
-  const { apikey, email, challengeBase64 } = event.queryStringParameters
+  const { apikey } = event.queryStringParameters
+  const {email, challengeBase64} = JSON.parse(event.body)
   console.log(apikey, email, challengeBase64)
 
   if (apikey !== API_SECRET) {
