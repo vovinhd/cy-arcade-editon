@@ -71,7 +71,7 @@
     })
 </script>
 
-<main class="grid h-full content">
+<main class="grid h-full content overflow-y-auto">
     <div class="w-full mx-auto flex flex-row place-content-center z-1">
         <div
             class=" w-full rounded-t-md shadow-sm bg-zinc-600 h-6 overflow-hidden bg-opacity-20"
