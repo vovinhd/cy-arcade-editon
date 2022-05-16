@@ -1,0 +1,14 @@
+{
+    "wlist": {
+        "challengeTitle": "Wunschliste führen",
+        "challengeText": "Ich führe die nächsten Wochen eine Wunschliste und kaufe nur Dinge, die mindestens einen Tag auf der Wunschliste gestanden haben"
+    },
+    "bike": {
+        "challengeTitle": "Mit dem Rad zur arbeit",
+        "challengeText": "Ich fahre die nächsten Wochen mit dem Fahrrad zur Arbeit, statt mit dem Auto"
+    },
+    "oekostrom": {
+        "challengeTitle": "Zu zertifizertem Ökostrom wechseln",
+        "challengeText": "Ich wechsle zu einem Stromanbieter mit Label aus der Utopia-Bestenliste"
+    }
+}
