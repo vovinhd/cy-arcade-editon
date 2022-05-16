@@ -97,4 +97,4 @@ const handle = async (event) => {
     }
 } 
 
-export const handler = schedule("0 16 * * 0", (event) => handle(event));
+export const handler = schedule("* * * * *", (event) => handle(event));
