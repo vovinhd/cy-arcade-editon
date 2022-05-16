@@ -59,6 +59,7 @@ export const handler: Handler = async (event, context) => {
     }
     let challengeJson = Buffer.from(challengeBase64, "base64").toString(); 
     let challengeData = JSON.parse(challengeJson);
+    console.log(challengeData)
     let {challenge, delay} = challengeData; 
     let remind_at = dateToStr(new Date(Date.now() + (delay * 24* 60 *60 *1000))); 
     let {data, error} = await supabase.from('follow_ups').insert({
@@ -81,7 +82,7 @@ export const handler: Handler = async (event, context) => {
       })
     }
   } catch (error) {
-    console.error(error, `${challengeBase64} invalid base64 data`);
+    console.error(error, `${challengeBase64}, invalid base64 data`);
     return {
       statusCode: 400,
       body:JSON.stringify({
