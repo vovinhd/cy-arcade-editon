@@ -14,7 +14,16 @@ const dateToStr = (date: Date) => {
 
 export const handler: Handler = async (event, context) => {
   const { apikey } = event.queryStringParameters
-  const {email, challengeBase64} = JSON.parse(event.body)
+  let email, challengeBase64
+  try {
+    let body = JSON.parse(event.body)
+    email = body?.email
+    challengeBase64 = body?.challengeBase64 
+  } catch (e) {
+    return {
+      statusCode: 400
+    }
+  }
   console.log(apikey, email, challengeBase64)
 
   if (apikey !== API_SECRET) {
