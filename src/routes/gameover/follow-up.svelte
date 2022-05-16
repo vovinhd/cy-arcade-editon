@@ -4,6 +4,7 @@ import Actions from "$lib/components/actions.svelte";
 
 import QrCode from "$lib/components/qr-code.svelte";
 import { appContext, emptyApplicationContext } from "$lib/context";
+import { onMount } from "svelte";
 
 const makeFollowupLink = () => {
     const {selectedChallenge, selectedFollowupOption} = $appContext
@@ -14,7 +15,7 @@ const makeFollowupLink = () => {
     let encodedParams = btoa(JSON.stringify(followUpParams))
     console.log(followUpParams, encodedParams)
     
-    return encodedParams;
+    return `https://climactivity.de/exhib-exit-survey/?challenge=${encodedParams}`
 }
 
 const resetGame = () => {
@@ -31,6 +32,9 @@ const restartGame = () => {
 const clearAppContext = () => {
     appContext.set(emptyApplicationContext);
 }
+
+let followupLink
+onMount(() => followupLink = makeFollowupLink())
 </script>
 <div>
 
@@ -48,8 +52,8 @@ const clearAppContext = () => {
 
 
     <div class="grid place-content-center p-8">
-        <QrCode codeValue={`https://climactivity.de/exhib-exit-survey/?challenge=${makeFollowupLink()}`}/>
-
+        <QrCode codeValue={followupLink}/>
+        <a class="text-sm" href={followupLink}>{followupLink}</a>
     </div>
 
 
