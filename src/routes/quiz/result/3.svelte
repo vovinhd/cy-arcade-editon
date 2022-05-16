@@ -194,12 +194,6 @@
 >
 
 <style lang="scss">
-  @for $i from 1 through 100 {
-    .percentage-#{$i} {
-      $value: ($i * 1%);
-      height: $value;
-    }
-  }
 
   @for $i from 0 through 5 {
     .chart :nth-child(#{$i + 1}) {

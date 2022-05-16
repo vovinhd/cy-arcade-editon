@@ -10,24 +10,24 @@ setTimeout(() => delay = true, 1000)
     <div class="grid grid-flow-row gap-4 chart py-8">
         <div class="bar">
             <span class="transition-all {delay ? "text-white" : "text-zinc-800"}">Rindfleisch 49.89 kg</span>
-            <div class="progress bg-heart-dark  percentage-100 "/>
+            <div class="progress bg-heart-dark w-[100%] "/>
         </div>
         <div class="bar ">
             <span>Käse 10.82 kg</span>
 
-            <div class="progress bg-heart percentage-21"/>
+            <div class="progress bg-heart  w-[21%] "/>
         </div>
         <div class="bar">
             <span>Eier 4.21kg</span>
-            <div class="progress bg-heart-light percentage-8"/>
+            <div class="progress bg-heart-light  w-[8%] "/>
         </div>
         <div class="bar">
             <span>Tofu 1.98 kg</span>
-            <div class="progress bg-nature-light percentage-4"/>
+            <div class="progress bg-nature-light  w-[4%] "/>
         </div>
         <div class="bar">
             <span>Erbsen 0.44 kg</span>
-            <div class="progress bg-nature percentage-1"/>
+            <div class="progress bg-nature w-[1%] 1"/>
         </div>
     </div>
 </div>
@@ -59,12 +59,7 @@ siehe <OutA href="https://ourworldindata.org/grapher/ghg-per-protein-poore">ourw
     @apply w-full h-full  top-0
 }
 
-@for $i from 1 through 100 {
-  .percentage-#{$i} {
-    $value: ($i * 1%);
-    width: $value;
-  }
-}
+
 
 @for $i from 0 through 5 {
     .chart :nth-child(#{$i + 1}) {
