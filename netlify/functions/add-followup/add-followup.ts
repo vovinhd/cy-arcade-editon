@@ -6,7 +6,6 @@ let {SUPABASE_URL, SUPABASE_PUBLIC_ANON_KEY, API_SECRET} = process.env
 // Provide a custom schema. Defaults to "public".
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLIC_ANON_KEY)
 
-
 export const handler: Handler = async (event, context) => {
   const { apikey } = event.queryStringParameters
   const {email, challengeBase64} = JSON.parse(event.body)
@@ -21,6 +20,28 @@ export const handler: Handler = async (event, context) => {
     }
   }  
   try {
+    if (challengeBase64 === undefined) {
+      let {data, error} = await supabase.from('follow_ups').insert({
+        email, challenge: undefined, delay: 0, remind_at: Date.now() 
+      }); 
+  
+      if (error) {
+        console.error(error);
+        return {
+          statusCode: 500,
+          body:JSON.stringify({
+            message: `DB error: ${error}`
+          })
+        }
+      }
+      console.log("Success!", data); 
+      return {
+        statusCode: 200,
+        body: JSON.stringify({
+          message: "Record added"
+        })
+      }
+    }
     let challengeJson = Buffer.from(challengeBase64, "base64").toString(); 
     let challengeData = JSON.parse(challengeJson);
     let {challenge, delay} = challengeData; 
