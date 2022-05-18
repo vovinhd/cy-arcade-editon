@@ -42,6 +42,9 @@ const handle = async (event) => {
 
     let updates = 0;
     data.map((followup: FollowUp) => {
+        if (followup.remind_at > new Date()) {
+            return
+        }
         let htmlToSend, textToSend = ""
         if (followup.challenge) {
             htmlToSend = mailMainTemplate({
