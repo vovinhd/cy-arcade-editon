@@ -51,7 +51,7 @@ const handle = async (event) => {
                 ...challengeData[followup.challenge]
             })
 
-            textToSend = `Erinnerung an: ${challengeData[followup.challenge].challengeTitle} ${challengeData[followup.challenge].challengeText} yeet`
+            textToSend = `Erinnerung an: ${challengeData[followup.challenge].challengeTitle} ${challengeData[followup.challenge].challengeText}`
         }
 
         const mailOptions = {
@@ -62,7 +62,7 @@ const handle = async (event) => {
             text: textToSend
         }
 
-        mailTransport.sendMail(mailOptions, async(err, res) => {
+        mailTransport.sendMail(mailOptions, async(err, _) => {
             if (err) {
                 console.error(err)
                 return {
@@ -71,7 +71,7 @@ const handle = async (event) => {
             } else {
                 followup.reminder_sent = true
                 console.log("Mail send 📧")
-                const {data, error} = await supabase.from("follow_ups").upsert(followup, {returning: "minimal"} )
+                const {error} = await supabase.from("follow_ups").upsert(followup, {returning: "minimal"} )
                 if (error) {
                     console.error(err)
                     return {

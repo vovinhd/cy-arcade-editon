@@ -53,7 +53,7 @@ onMount(() => followupLink = makeFollowupLink())
 
     <div class="grid place-content-center p-8">
         <QrCode codeValue={followupLink}/>
-        <a class="text-sm" href={followupLink}>{followupLink}</a>
+        <a class="text-sm" target="_blank" rel="noopener noreferrer" href={followupLink}>{followupLink}</a>
     </div>
 
 
