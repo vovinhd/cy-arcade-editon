@@ -12,7 +12,7 @@ const hideStatusBar = async () => {
 };
 
 onMount(() => {
-    hideStatusBar().catch((e) => console.log("not hiding status bar on web")); 
+    //hideStatusBar().catch((e) => console.log("not hiding status bar on web")); 
 })
 
 </script>
@@ -23,7 +23,7 @@ onMount(() => {
 </svelte:head>
 
 
-<div class="bg-zinc-50 rounded-md shadow-lg hero md:inset-16 inset-4 grid grid-flow-row " style="grid-template-rows: 1fr 1fr;" out:fly={{ x: -200, duration: 500 }}>
+<div class="bg-zinc-50 rounded-md shadow-lg hero md:inset-16 inset-0 inset-y-16 grid grid-flow-row " style="grid-template-rows: 1fr 1fr;" out:fly={{ x: -200, duration: 500 }}>
     <!-- <h1 class="text-center p-8 text-2xl">Attract Screen</h1> -->
 
     <div>

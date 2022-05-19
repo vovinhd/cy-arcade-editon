@@ -20,3 +20,10 @@ export const outlinkState = writable<OutlinkState>({
 })
 
 
+import { SafeArea } from "capacitor-plugin-safe-area";
+
+export const insets = writable({top: 0, bottom: 0, left: 0, right: 0})
+SafeArea.getSafeAreaInsets().then(({ insets: _insets }) => {
+    let {top, bottom, left, right} = _insets; 
+    insets.set({top, bottom, left, right})
+})

@@ -2,6 +2,7 @@
     import BgCanvas from '$lib/components/bg-canvas.svelte';
     import OutAOverlay from '$lib/components/out-a-overlay.svelte';
     import '../app.css';
+    import { insets } from '$lib/context'; 
 </script>
 
 <svelte:head>
@@ -27,24 +28,24 @@
         </div>
     </div>
 
-    <div class="safearea">
-        <main class="grid grid-flow-row place-content-center ">
+    <div class="safearea relative" style={`top: ${$insets.top}; left: ${$insets.left}; right: ${$insets.right}; bottom: ${$insets.bottom};`}>
+
+        <main class="grid grid-flow-row place-content-center absolute " style={`top: ${$insets.top}px; left: ${$insets.left}px; right: ${$insets.right}px; bottom: ${$insets.bottom}px;`}>
             <slot />
         </main>
-        <!-- <span id="bg-attr" class="text-white text-opacity-20 text-center">made with ❤️ @climactivity</span> -->
     </div>
 </div>
 
 <style lang="scss">
     .safearea {
         z-index: 1;
-        position: relative;
+        position: absolute;
         min-height: 100%;
         width: 100%;
         display: grid;
         grid-template-rows: 1fr 2rem;
         grid-auto-flow: row;
-        @apply pt-2 grid place-content-center;
+        @apply pt-0 grid place-content-center inset-0;
     }
 
     .bg-container {
