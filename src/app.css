@@ -3,106 +3,97 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    font-size: 14px;
+  }
+  @media (min-width: 760px) {
     body {
-        font-size: 14px;
+      font-size: 20px;
     }
-    @media (min-width: 760px) {
-        body {
-            font-size: 20px;
-        }
-    
-    }
+  }
 }
 @layer components {
+  .hero {
+    scrollbar-width: none;
+    @apply absolute max-w-[768px] mx-auto my-2 overflow-y-auto;
+  }
+
+  .heading {
+    @apply text-center py-4 px-2 text-2xl;
+  }
+  .multiple-choice-answer {
+    @apply transition-colors p-2 rounded-md shadow-md bg-zinc-100 active:bg-zinc-300 mx-8 mb-8 md:text-2xl;
+  }
+
+  .action-button {
+    @apply px-8 py-4 rounded-full shadow-lg mx-8 my-4;
+    transition: all;
+  }
+
+  @media (min-width: 760px) {
     .hero {
-        scrollbar-width: none;
-        @apply absolute max-w-[768px] mx-auto my-2 overflow-y-auto 
+      @apply absolute max-w-[768px] mx-auto my-2;
     }
 
     .heading {
-        @apply text-center py-4 px-2 text-2xl
+      @apply text-center p-8 text-4xl;
     }
+
     .multiple-choice-answer {
-        @apply transition-colors p-2 rounded-md shadow-md bg-zinc-100 active:bg-zinc-300 mx-8 mb-8 md:text-2xl
+      @apply transition-colors p-8  rounded-md shadow-md bg-zinc-100 active:bg-zinc-300 mx-8 mb-8 text-2xl;
     }
 
     .action-button {
-        @apply px-8 py-4 rounded-full shadow-lg mx-8 my-4;
-        transition: all;
+      @apply px-8 py-4 rounded-full shadow-lg mx-8 mt-8 mb-2;
+      transition: all;
+    }
+  }
 
-    } 
-
-    @media (min-width: 760px) {
-
+  @media (max-height: 800px) {
     .hero {
-        @apply absolute max-w-[768px] mx-auto my-2  
+      scrollbar-width: auto;
+
+      @apply overflow-y-auto;
     }
+  }
 
-        .heading {
-            @apply text-center p-8 text-4xl
-        }
+  .action-button:active {
+    transform: translateY(3%);
+    @apply bg-opacity-90 shadow-md;
+  }
+  .action-button:disabled {
+    @apply bg-opacity-90 bg-zinc-300;
+  }
 
-        .multiple-choice-answer {
-            @apply transition-colors p-8  rounded-md shadow-md bg-zinc-100 active:bg-zinc-300 mx-8 mb-8 text-2xl
-        }
-
-        
-        .action-button {
-            @apply px-8 py-4 rounded-full shadow-lg mx-8 mt-8 mb-2;
-            transition: all;
-
-        } 
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20%);
     }
-
-    @media (max-height: 800px) {
-        .hero {
-            scrollbar-width: auto;
-
-            @apply overflow-y-auto
-        }
+    to {
+      opacity: 1;
+      transform: translateY(0%);
     }
+  }
 
-
-
-    .action-button:active {
-        transform: translateY(3%);
-        @apply bg-opacity-90 shadow-md
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20%);
     }
-    .action-button:disabled {
-        @apply bg-opacity-90 bg-zinc-300
+    to {
+      opacity: 1;
+      transform: translateY(0%);
     }
-
-    @keyframes fadeInDown {
-        from {
-            opacity: 0;
-            transform: translateY(-20%);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0%);
-        }
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20%);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0%);
-        }
-    }
-
-
+  }
 }
 
 @layer utilities {
-    .animation-delay-2000 {
-        animation-delay: 2s;
-    }
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
 
-    .animation-delay-4000 {
-        animation-delay: 4s;
-    }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
 }

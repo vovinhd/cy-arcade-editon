@@ -1,31 +1,35 @@
 <script>
-
-    import BgCanvas from "$lib/components/bg-canvas.svelte";
-import OutAOverlay from "$lib/components/out-a-overlay.svelte";
-import "../app.css";
+    import BgCanvas from '$lib/components/bg-canvas.svelte';
+    import OutAOverlay from '$lib/components/out-a-overlay.svelte';
+    import '../app.css';
 </script>
 
 <svelte:head>
     <title>climactivity Wissensspeicher Demo</title>
     {#if import.meta.env.VITE_DISABLE_ZOOM}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
     {:else}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes"
+        />
     {/if}
 </svelte:head>
 
 <div class="w-[100vw] min-h-[100vh] bg-container  overflow-hidden">
-    <OutAOverlay/>
+    <OutAOverlay />
     <div class="bg">
         <div class="w-full h-full bg-slate-800 transition-colors">
-            <BgCanvas/>
+            <BgCanvas />
         </div>
     </div>
 
     <div class="safearea">
         <main class="grid grid-flow-row place-content-center ">
-                <slot/>
+            <slot />
         </main>
         <!-- <span id="bg-attr" class="text-white text-opacity-20 text-center">made with ❤️ @climactivity</span> -->
     </div>
