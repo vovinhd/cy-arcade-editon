@@ -13,6 +13,7 @@
     "ionic:serve": "svelte-kit dev",
     "preview:ios": "npx cap run ios",
     "cap:sync": "svelte-kit build && npx cap sync",
+    "cap:run": "svelte-kit build && npx cap run ios",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
