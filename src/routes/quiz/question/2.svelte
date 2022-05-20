@@ -49,7 +49,7 @@
         <div id="ans3" class="grid">
           <MultipleChoiceButton
             class="multiple-choice-answer"
-            answer={{ answerText: '69%', correct: true }}
+            answer={{ answerText: '69%', correct: false }}
             callback={selectAnswer} />
         </div>
 

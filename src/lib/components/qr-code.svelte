@@ -3,7 +3,7 @@
     import { onMount } from "svelte";
 
     export let codeValue;
-
+    export let size = 300;
     onMount(() => {
         let script = document.createElement("script");
         script.src =
@@ -14,8 +14,8 @@
             // @ts-ignore
             qrcode = new QRCode("qrcode", {
                 text: codeValue,
-                width: 500,
-                height: 500,
+                width: size,
+                height: size,
                 colorDark: "#000000",
                 colorLight: "#ffffff",
                 // @ts-ignore
@@ -25,12 +25,15 @@
     });
 </script>
 
-<div id="qrcode" />
+
+<div id="qrcode" style="width: {size}px; height: {size}px; margin: auto"/>
+
+
 
 <style>
     #qrcode {
-        width: 500px;
-        height: 500px;
+        /* width: 500px;
+        height: 500px; */
         margin-top: 15px;
     }
 </style>

@@ -26,7 +26,7 @@
   }
 
   .action-button {
-    @apply px-8 py-4 rounded-full shadow-lg mx-8 my-4;
+    @apply px-8 py-4 rounded-full shadow-lg md:mx-8 mx-4 mb-4 md:my-4;
     transition: all;
   }
 

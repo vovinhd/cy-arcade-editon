@@ -51,14 +51,14 @@
   <h1 class="heading">Anleitung</h1>
 
   <div class="md:px-16 ">
-    <div class="grid grid-flow-row gap-4 hints md:text-2xl">
+    <div class="grid grid-flow-row gap-4 hints md:text-2xl ">
       <div
         class="rounded-lg bg-gradient-to-bl from-blue-100 to-white md:h-56 grid
-        place-content-center p-8 quiz relative shadow-sm">
+        place-content-center p-8 quiz relative ">
         <img
           src="/confusion.svg"
           alt=""
-          class=" blur-sm md:w-56 md:h-56 w-4 h-4 -bottom-2 right-4 rotate-12
+          class="blur-[2px] md:blur-sm  md:w-56 md:h-56 w-16 h-16 top-2 right-4 rotate-12
           absolute" />
 
         <div class="relative blur-0">
@@ -68,11 +68,11 @@
 
       <div
         class="rounded-lg bg-gradient-to-bl from-lime-100 to-white md:h-56 grid
-        place-content-center p-8 quiz relative shadow-sm">
+        place-content-center p-8 quiz relative ">
         <img
           src="/players.svg"
           alt=""
-          class=" blur-sm md:w-56 md:h-56 w-4 h-4 -bottom-2 right-4 rotate-12
+          class="blur-[2px] md:blur-sm  md:w-56 md:h-56 w-16 h-16 top-2 right-4 rotate-12
           absolute" />
 
         <div class="relative blur-0">
@@ -81,11 +81,11 @@
       </div>
       <div
         class="rounded-lg bg-gradient-to-bl from-rose-100 to-white md:h-56 grid
-        place-content-center p-8 quiz relative shadow-sm">
+        place-content-center p-8 quiz relative ">
         <img
           src="/heart.svg"
           alt=""
-          class=" blur-sm md:w-56 md:h-56 w-4 h-4 -bottom-2 right-4 rotate-12
+          class="blur-[2px] md:blur-sm  md:w-56 md:h-56 w-16 h-16 top-2 right-4 rotate-12
           absolute" />
 
         <div class="relative blur-0">Wer verliert macht die Challenge 😉</div>

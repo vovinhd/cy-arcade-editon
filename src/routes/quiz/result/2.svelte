@@ -24,12 +24,12 @@
   }
 
   .pill {
-    @apply rounded-full shadow-sm px-2 text-white;
+    @apply rounded-full shadow-sm px-2 text-white ;
   }
 </style>
 
 <div>
-  <p>
+  <p class="pb-4">
     2018 ergab eine Umfrage, dass in den letzten zwei Jahren nur 43 % der
     Befragten überhaupt geflogen waren.
     <br />
@@ -47,42 +47,43 @@
 
   <div class=" md:p-8 relative h-full grid grid-flow-col place-content-center">
 
-    <legend class="absolute legend w-full h-full hidden md:block">
-      <div
-        id="l-0"
-        class="pill absolute -top-2 left-64"
-        style="background-color: #E40045; --order: 4">
-        10 oder mehr
-      </div>
-      <div
-        id="l-1"
-        class="pill absolute top-8 left-48"
-        style="background-color: #EC3A70; --order: 3">
-        3-9
-      </div>
-      <div
-        id="l-2"
-        class="pill absolute top-40 left-32"
-        style="background-color: #DB8CA4; --order: 2">
-        1-2
-      </div>
-      <div
-        id="l-3"
-        class="pill absolute top-4 right-40"
-        style="background-color: #95C11E; --order: 0">
-        noch nie
-      </div>
-      <div
-        id="l-4"
-        class="pill absolute top-40 right-24"
-        style="background-color: #AED14F; --order: 1">
-        keine
-      </div>
-    </legend>
 
-    <div class=" grid grid-flow-col place-content-center">
+    <div class="">
+      <legend class="absolute legend w-full h-full">
+        <div
+          id="l-0"
+          class="pill absolute -top-6 left-20"
+          style="background-color: #E40045; --order: 4">
+          10 oder mehr
+        </div>
+        <div
+          id="l-1"
+          class="pill absolute top-0 left-4"
+          style="background-color: #EC3A70; --order: 3">
+          3-9
+        </div>
+        <div
+          id="l-2"
+          class="pill absolute top-36 -left-10"
+          style="background-color: #DB8CA4; --order: 2">
+          1-2
+        </div>
+        <div
+          id="l-3"
+          class="pill absolute top-0 left-56"
+          style="background-color: #95C11E; --order: 0">
+          noch nie
+        </div>
+        <div
+          id="l-4"
+          class="pill absolute top-36 left-[19rem]"
+          style="background-color: #AED14F; --order: 1">
+          keine
+        </div>
+      </legend>
+  
       <svg
-        class="md:w-[300px] md:h-[300px] w-auto h-auto"
+        class="w-[300px] h-[300px]"
         viewBox="0 0 100 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg">

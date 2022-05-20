@@ -16,4 +16,4 @@ const show = () => {
 
 </script>
 
-<a class="underline"href={disableOutboundLinks ? '#': href} target="_blank" rel="noopener noreferrer" on:click|stopPropagation={(_) => show()} bind:this={data}><slot/></a>
+<a class="underline"href={disableOutboundLinks ? '#': href} target={disableOutboundLinks ? '': "_blank"} rel="noopener noreferrer" on:click|stopPropagation={(_) => show()} bind:this={data}><slot/></a>
