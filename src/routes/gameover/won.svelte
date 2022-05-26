@@ -1,10 +1,10 @@
-<script lang="ts">
-    import { goto } from "$app/navigation";
-    import Actions from "$lib/components/actions.svelte";
-    import { fade } from "svelte/transition";
-    import FollowupOptionSelect from "$lib/components/followup-option-select.svelte";
-    import { appContext } from "$lib/context";
-    import BlobAnim from "$lib/components/blob-anim.svelte";
+<script lang='ts'>
+    import { goto } from '$app/navigation';
+    import Actions from '$lib/components/actions.svelte';
+    import { fade } from 'svelte/transition';
+    import FollowupOptionSelect from '$lib/components/followup-option-select.svelte';
+    import { appContext } from '$lib/context';
+    import BlobAnim from '$lib/components/blob-anim.svelte';
 
     const selectFollowupOption = () => {
         if (interacted) {
@@ -17,7 +17,7 @@
     let interacted = false;
 </script>
 
-<div class="grid grid-flow-row place-content-between h-full">
+<div class='grid grid-flow-row place-content-between h-full'>
     <div out:fade>
         <div
             class="text-4xl text-center bg-nature text-white font-bold grid place-content-center {interacted
@@ -29,18 +29,18 @@
     </div>
 
     {#if interacted}
-        <div in:fade class="grid grid-flow-row p-8 h-full">
+        <div in:fade class='grid grid-flow-row p-8 h-full'>
             <div>
                 Möchest du deine Challenge dem Klimaschutz spenden? *todo
                 formulierung
             </div>
-            <div class="grid grid-flow-row">
+            <div class='grid grid-flow-row'>
                 <FollowupOptionSelect showNoop />
             </div>
             <div>
                 <Actions>
                     <button
-                        class="relative z-10 action-button max-w-full text-center  ring-offset-2 bg-heart text-white text-2xl shadow-2xl"
+                        class='relative z-10 action-button max-w-full text-center  ring-offset-2 bg-heart text-white text-2xl shadow-2xl'
                         on:click={(_) => selectFollowupOption()}
                     >
                         Weiter
@@ -50,19 +50,19 @@
         </div>
     {:else}
         <div
-            class="text-white bg-nature rounded-full px-24 mx-24 py-2 text-center animate-cheer animation-delay-2000 opacity-0"
+            class='text-white bg-nature rounded-full px-24 mx-24 py-2 text-center animate-cheer animation-delay-2000 opacity-0'
         >
             Danke das du mitgespielt hast
         </div>
 
         <div
-            class="grid place-content-center  py-8 mb-16 relative animation-delay-4000 animate-cheer opacity-0"
+            class='grid place-content-center  py-8 mb-16 relative animation-delay-4000 animate-cheer opacity-0'
         >
             <!-- <a class=" absolute right-1/2 translate-x-1/2 action-button w-60 text-center bg-heart text-white shadow-2xl animate-ping" href="/challengeselect"> Let's a go </a> -->
-            <div class="relative">
+            <div class='relative'>
                 <BlobAnim />
                 <button
-                    class="relative z-10 action-button max-w-full text-center ring-heart-dark ring-2 ring-offset-2 bg-heart text-white text-2xl shadow-2xl"
+                    class='relative z-10 action-button max-w-full text-center ring-heart-dark ring-2 ring-offset-2 bg-heart text-white text-2xl shadow-2xl'
                     on:click={(_) => selectFollowupOption()}
                 >
                     Weiter
