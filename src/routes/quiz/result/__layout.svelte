@@ -1,33 +1,35 @@
 <script lang="ts">
-    import { goto, prefetch } from "$app/navigation";
-import ContinueButton from "$lib/components/continue-button.svelte";
+    import { goto, prefetch } from '$app/navigation';
+    import ContinueButton from '$lib/components/continue-button.svelte';
 
-    import { appContext } from "$lib/context";
-    import { onMount } from "svelte";
+    import { appContext } from '$lib/context';
+    import { onMount } from 'svelte';
 
-    import { fly, fade } from "svelte/transition";
+    import { fly, fade } from 'svelte/transition';
 
     let opponentReady = false;
     let minReadingTimeOver = false;
     let timer = 0;
-    let minReadingTime = 5000;
-    let continueLabel = "Bereit";
+    let minReadingTime = 100;
+    let continueLabel = 'Bereit';
     const getSingleplayerQuizResult = () => {
-        let selectAnswers = $appContext.selectedAnswers; 
-        if (selectAnswers.length === 0 ) {
-            console.warn("no matchdata found!");
+        let selectAnswers = $appContext.selectedAnswers;
+        if (selectAnswers.length === 0) {
+            console.warn('no matchdata found!');
             return false;
         }
-        let results =  $appContext.selectedAnswers.map((answer) => answer.correct);
-        console.log(results)
+        let results = $appContext.selectedAnswers.map(
+            (answer) => answer.correct
+        );
+        console.log(results);
         return true;
     };
 
-    const nextQuestionId = $appContext.quiz[$appContext.currentQuestionId]
+    const nextQuestionId = $appContext.quiz[$appContext.currentQuestionId];
     const nextQuestionOrResult = () => {
         if (!minReadingTimeOver) {
-            console.log("wait")
-            return
+            console.log('wait');
+            return;
         }
         console.log($appContext);
         if (nextQuestionId) {
@@ -35,7 +37,7 @@ import ContinueButton from "$lib/components/continue-button.svelte";
         } else {
             if ($appContext.singlePlayer) {
                 goto(
-                    `/gameover/${getSingleplayerQuizResult() ? "won" : "lost"}`
+                    `/gameover/${getSingleplayerQuizResult() ? 'won' : 'lost'}`
                 );
             }
         }
@@ -51,8 +53,10 @@ import ContinueButton from "$lib/components/continue-button.svelte";
     };
 
     onMount(() => {
-        if (nextQuestionId) prefetch(`/quiz/question/${nextQuestionId}`)
-        console.log(nextQuestionId ? "next q " + nextQuestionId : "last question")
+        if (nextQuestionId) prefetch(`/quiz/question/${nextQuestionId}`);
+        console.log(
+            nextQuestionId ? 'next q ' + nextQuestionId : 'last question'
+        );
         timerUpdate = setInterval(() => {
             timer = timer + 16;
         }, 16);
@@ -63,10 +67,13 @@ import ContinueButton from "$lib/components/continue-button.svelte";
     });
     let currentlySelectedAnswer = $appContext.currentSelectedAnswer;
     if (currentlySelectedAnswer) {
-        appContext.update(v => ({...v, selectedAnswers: [...v.selectedAnswers, v.currentSelectedAnswer]}))
+        appContext.update((v) => ({
+            ...v,
+            selectedAnswers: [...v.selectedAnswers, v.currentSelectedAnswer],
+        }));
     }
     $: {
-        continueLabel = opponentReady ? "Weiter" : "Bereit";
+        continueLabel = opponentReady ? 'Weiter' : 'Bereit';
     }
 </script>
 
@@ -84,8 +91,8 @@ import ContinueButton from "$lib/components/continue-button.svelte";
         >
             {currentlySelectedAnswer
                 ? currentlySelectedAnswer.answerText
-                : "keine Antwort gewählt"}
-            {currentlySelectedAnswer?.correct ? "✔" : "❌"}
+                : 'keine Antwort gewählt'}
+            {currentlySelectedAnswer?.correct ? '✔' : '❌'}
         </div>
     </div>
 
@@ -120,7 +127,6 @@ import ContinueButton from "$lib/components/continue-button.svelte";
         </div> -->
         <div class="cursor-pointer" on:click={(e) => nextQuestionOrResult()}>
             <ContinueButton ready={minReadingTimeOver} />
-
         </div>
     </div>
 </div>
@@ -162,6 +168,5 @@ import ContinueButton from "$lib/components/continue-button.svelte";
         opacity: 0;
         animation: fadeInUp 1s ease forwards;
         animation-delay: 1800ms;
-
     }
 </style>
