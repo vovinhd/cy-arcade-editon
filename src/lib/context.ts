@@ -1,5 +1,5 @@
-import { writable } from "svelte/store";
-import type { ApplicationContext, OutlinkState } from "./types";
+import { writable } from 'svelte/store';
+import type { ApplicationContext, OutlinkState } from './types';
 
 export const emptyApplicationContext = {
     opponentAnswers: [],
@@ -8,22 +8,23 @@ export const emptyApplicationContext = {
         '1': '2',
         '2': '3',
     },
-    singlePlayer: true
-}
+    singlePlayer: true,
+};
 
-export const appContext = writable<ApplicationContext>(emptyApplicationContext)
+export const appContext = writable<ApplicationContext>(emptyApplicationContext);
 
 export const outlinkState = writable<OutlinkState>({
-    href: "",
+    href: '',
     show: false,
-    text: ""
-})
+    text: '',
+});
 
+import { SafeArea } from 'capacitor-plugin-safe-area';
 
-import { SafeArea } from "capacitor-plugin-safe-area";
-
-export const insets = writable({top: 0, bottom: 0, left: 0, right: 0})
+export const insets = writable({ top: 0, bottom: 0, left: 0, right: 0 });
 SafeArea.getSafeAreaInsets().then(({ insets: _insets }) => {
-    let {top, bottom, left, right} = _insets; 
-    insets.set({top, bottom, left, right})
-})
+    let { top, bottom, left, right } = _insets;
+    insets.set({ top, bottom, left, right });
+});
+
+export const matchstatus = writable({});
