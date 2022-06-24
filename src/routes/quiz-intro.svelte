@@ -5,10 +5,12 @@
     import Actions from '$lib/components/actions.svelte';
     import { onMount } from 'svelte';
     import { nkReady, socket } from '$lib/client';
-    import { matchstatus } from '$lib/context';
+    import { matchstatus, singlePlayer } from '$lib/context';
     let hasSelectedChallenge = false;
 
     const startSingle = () => {
+        singlePlayer.set(true);
+
         goto('/quiz/question/1');
     };
 
@@ -25,10 +27,11 @@
     const startMatchmaker = async () => {
         console.log('hi');
 
+        singlePlayer.set(false);
         const minPlayers = 2;
         const maxPlayers = 2;
         const query = '*';
-        const stringProperties = { region: 'europe', mode: 'vsquiz' };
+        const stringProperties = { region: 'europe', mode: 'wissensspeicher' };
         const numericProperties = { skill: 125 };
         matchmakerTicket = await socket.addMatchmaker(
             query,

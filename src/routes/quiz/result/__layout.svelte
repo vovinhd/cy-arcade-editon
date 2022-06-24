@@ -1,13 +1,21 @@
 <script lang="ts">
     import { goto, prefetch } from '$app/navigation';
+    import { OpCode, sendMatchData, socket } from '$lib/client';
     import ContinueButton from '$lib/components/continue-button.svelte';
 
-    import { appContext } from '$lib/context';
+    import {
+        appContext,
+        matchdata,
+        matchstatus,
+        singlePlayer,
+    } from '$lib/context';
+    import type { MatchData } from '@heroiclabs/nakama-js';
     import { onMount } from 'svelte';
 
     import { fly, fade } from 'svelte/transition';
 
     let opponentReady = false;
+    let selfReady = false;
     let minReadingTimeOver = false;
     let timer = 0;
     let minReadingTime = 100;
@@ -27,10 +35,6 @@
 
     const nextQuestionId = $appContext.quiz[$appContext.currentQuestionId];
     const nextQuestionOrResult = () => {
-        if (!minReadingTimeOver) {
-            console.log('wait');
-            return;
-        }
         console.log($appContext);
         if (nextQuestionId) {
             goto(`/quiz/question/${nextQuestionId}`);
@@ -41,6 +45,42 @@
                 );
             }
         }
+    };
+
+    const setReady = () => {
+        selfReady = true;
+        sendMatchData(OpCode.client_set_ready, { readFor: timer, ready: true });
+    };
+
+    matchdata.subscribe((matchdata: MatchData) => {
+        if (!matchdata) {
+            return;
+        }
+
+        if (matchdata.op_code == OpCode.server_show_next_question) {
+            nextQuestionOrResult();
+        } else if (matchdata.op_code == OpCode.client_set_ready) {
+            console.log('test');
+
+            const readyCounter = matchdata.data.ready_next_question ?? 0;
+            if (selfReady) {
+                if (readyCounter === 2) {
+                    opponentReady = true;
+                }
+            } else if (readyCounter === 1) {
+                opponentReady = true;
+            }
+        }
+    });
+
+    const readyOrNextQuestion = () => {
+        if (!minReadingTimeOver) {
+            return;
+        }
+        if ($singlePlayer) {
+            nextQuestionOrResult();
+        }
+        setReady();
     };
 
     let timerUpdate, timeOut;
@@ -125,7 +165,7 @@
                 {continueLabel}
             </button>
         </div> -->
-        <div class="cursor-pointer" on:click={(e) => nextQuestionOrResult()}>
+        <div class="cursor-pointer" on:click={(e) => readyOrNextQuestion()}>
             <ContinueButton ready={minReadingTimeOver} />
         </div>
     </div>

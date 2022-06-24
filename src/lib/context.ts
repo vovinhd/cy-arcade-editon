@@ -20,6 +20,7 @@ export const outlinkState = writable<OutlinkState>({
 });
 
 import { SafeArea } from 'capacitor-plugin-safe-area';
+import type { Match, MatchData } from '@heroiclabs/nakama-js';
 
 export const insets = writable({ top: 0, bottom: 0, left: 0, right: 0 });
 SafeArea.getSafeAreaInsets().then(({ insets: _insets }) => {
@@ -27,4 +28,6 @@ SafeArea.getSafeAreaInsets().then(({ insets: _insets }) => {
     insets.set({ top, bottom, left, right });
 });
 
-export const matchstatus = writable({});
+export const matchstatus = writable<Match>(null);
+export const matchdata = writable<MatchData>(null);
+export const singlePlayer = writable<Boolean>(false);
