@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { fly } from 'svelte/transition';
+    import { fly, fade } from 'svelte/transition';
 
     import { goto, prefetch } from '$app/navigation';
     import Actions from '$lib/components/actions.svelte';
@@ -18,14 +18,35 @@
 
     let useMatchmaker = import.meta.env.VITE_NAKAMA_USE_MATCHMAKER;
     let canStartMatchmaker;
-    let matchmakerTicket: import('@heroiclabs/nakama-js').MatchmakerTicket;
+    let matchmakerTicket;
     $: {
         canStartMatchmaker = !$nkReady && !!matchmakerTicket;
-        console.log(!$nkReady, !!matchmakerTicket, canStartMatchmaker);
+        console.log(
+            !$nkReady,
+            matchmakerTicket,
+            !!matchmakerTicket,
+            canStartMatchmaker
+        );
     }
 
+    const stopMatchmaker = () => {
+        if (typeof matchmakerTicket === 'boolean') {
+            matchmakerTicket = null;
+            return;
+        }
+        if (matchmakerTicket) {
+            console.log('matchmaker stopped');
+
+            socket.removeMatchmaker(matchmakerTicket);
+            matchmakerTicket = null;
+        }
+    };
     const startMatchmaker = async () => {
-        console.log('hi');
+        if (matchmakerTicket) {
+            stopMatchmaker();
+            return;
+        }
+        console.log('matchmaker started');
 
         singlePlayer.set(false);
         const minPlayers = 2;
@@ -47,11 +68,19 @@
 
 <div
     class="bg-zinc-50 rounded-md shadow-lg hero inset-0 md:inset-4 grid
-  grid-flow-row content max-w-3xl"
+  grid-flow-row content max-w-3xl z-0"
     in:fly={{ x: 200, duration: 500 }}
     out:fly={{ x: -200, duration: 500 }}
     style="grid-template-rows:8rem 1fr 8rem;"
 >
+    {#if matchmakerTicket}
+        <div
+            in:fade={{ delay: 250, duration: 200 }}
+            class="absolute w-full h-full grid place-content-center z-50 pointer-events-none"
+        >
+            Suche nach Mitspielern...
+        </div>
+    {/if}
     <h1 class="heading">Anleitung</h1>
 
     <div class="md:px-16 ">
@@ -113,21 +142,39 @@
             >
                 Alleine Spielen
             </button>
-            <button
-                class="action-button"
-                disabled={canStartMatchmaker}
-                on:click={(e) => startMatchmaker()}
-                >{nkReady
-                    ? matchmakerTicket
-                        ? 'Suche...'
-                        : 'Bereit'
-                    : 'Keine Verbindung 🤨'}</button
-            >
+            <div class=" z-20 mr-8 ">
+                <div
+                    class="bg-green-500 w-[1000px] h-[4000px] bottom-0 right-[0px] absolute {!!matchmakerTicket
+                        ? 'searching'
+                        : 'not-searching'} z-60 transition-all matchmaker"
+                />
+                <button
+                    class="action-button  w-full z-50 relative bg-white"
+                    disabled={false}
+                    on:click={(e) => startMatchmaker()}
+                    >{nkReady
+                        ? matchmakerTicket
+                            ? 'Abbrechen'
+                            : 'Bereit'
+                        : 'Keine Verbindung 🤨'}</button
+                >
+            </div>
         </Actions>
     </div>
 </div>
 
 <style lang="scss">
+    .matchmaker {
+        transition: all;
+        transition-duration: 1000ms;
+    }
+    .searching {
+        clip-path: circle(4000px at 82% 98.5%);
+    }
+
+    .not-searching {
+        clip-path: circle(1px at 82% 98.5%);
+    }
     .content {
         grid-template-rows: 4rem 4rem 1fr 8rem;
         .actions {
