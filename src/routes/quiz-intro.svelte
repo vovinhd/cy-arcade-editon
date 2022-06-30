@@ -86,13 +86,13 @@
             Suche nach Mitspielern...
         </div>
     {/if}
-    <h1 class="heading">Anleitung</h1>
+    <h1 class="heading md:mt-0 mt-8">Anleitung</h1>
 
     <div class="md:px-16 ">
         <div class="grid grid-flow-row gap-4 hints md:text-2xl ">
             <div
                 class="rounded-lg bg-gradient-to-bl from-blue-100 to-white md:h-56 grid
-        place-content-center p-8 quiz relative "
+        md:place-content-center place-content-start p-8 quiz relative "
             >
                 <img
                     src="/confusion.svg"
@@ -101,14 +101,14 @@
           absolute"
                 />
 
-                <div class="relative blur-0">
+                <div class="relative blur-0 text-left">
                     3 Fragen aus verschiedenen Bereichen des Klimaschutzes
                 </div>
             </div>
 
             <div
                 class="rounded-lg bg-gradient-to-bl from-lime-100 to-white md:h-56 grid
-        place-content-center p-8 quiz relative "
+                md:place-content-center place-content-start p-8 quiz relative "
             >
                 <img
                     src="/players.svg"
@@ -117,13 +117,13 @@
           absolute"
                 />
 
-                <div class="relative blur-0">
+                <div class="relative blur-0 text-left">
                     alleine oder gegen die Person gegenüber
                 </div>
             </div>
             <div
                 class="rounded-lg bg-gradient-to-bl from-rose-100 to-white md:h-56 grid
-        place-content-center p-8 quiz relative "
+                md:place-content-center place-content-start p-8 quiz relative "
             >
                 <img
                     src="/heart.svg"
