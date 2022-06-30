@@ -15,7 +15,7 @@ var client = new Client(
     true
 );
 let deviceId: string;
-let session: Session;
+// let session: Session;
 let reconnectHandle
 export let socket = client.createSocket(
     import.meta.env.VITE_NAKAMA_USE_SSL === 'true',
@@ -32,8 +32,8 @@ export const init = async () => {
         let deviceId = v4();
         await localStorage.setItem('NK_DEVICE_ID', deviceId);
     }
-    session = await createSession();
-    socket = await connectSocket();
+    let session = await createSession();
+    await connectSocket(session);
 
     nkReady.set(true);
     console.log(session.token);
@@ -42,12 +42,12 @@ export const init = async () => {
 
 export const createSession = async () => {
     var create = true;
-    session = await client.authenticateDevice(deviceId, create, deviceId);
+    let session = await client.authenticateDevice(deviceId, create, deviceId);
     console.info('Successfully authenticated:', session);
     return session;
 };
 
-export const connectSocket = async () => {
+export const connectSocket = async (session) => {
     var appearOnline = true;
 
     let deviceId = await localStorage.getItem('NK_DEVICE_ID');

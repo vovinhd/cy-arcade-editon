@@ -29,40 +29,45 @@
         );
     }
 
-    const stopMatchmaker = () => {
-        if (typeof matchmakerTicket === 'boolean') {
+    const stopMatchmaker = async () => {
+        if (matchmakerTicket !== null && !matchmakerTicket.ticket) {
             matchmakerTicket = null;
             return;
         }
-        if (matchmakerTicket) {
+        if (matchmakerTicket !== null) {
             console.log('matchmaker stopped');
 
-            socket.removeMatchmaker(matchmakerTicket);
+            // remoove the matckmaking ticket from the server by passing the
+            // **TICKET**, not the matchmakerTicket object
+            socket.removeMatchmaker(matchmakerTicket.ticket);
             matchmakerTicket = null;
         }
     };
     const startMatchmaker = async () => {
         if (matchmakerTicket) {
-            stopMatchmaker();
+            await stopMatchmaker();
             return;
         }
         console.log('matchmaker started');
-
         singlePlayer.set(false);
         const minPlayers = 2;
         const maxPlayers = 2;
         const query = '*';
         const stringProperties = { region: 'europe', mode: 'wissensspeicher' };
         const numericProperties = { skill: 125 };
-        matchmakerTicket = await socket.addMatchmaker(
-            query,
-            minPlayers,
-            maxPlayers,
-            stringProperties,
-            numericProperties
-        );
+        try {
+            matchmakerTicket = await socket.addMatchmaker(
+                query,
+                minPlayers,
+                maxPlayers,
+                stringProperties,
+                numericProperties
+            );
 
-        console.log(matchmakerTicket);
+            console.log(matchmakerTicket);
+        } catch (error) {
+            console.error(error);
+        }
     };
 </script>
 
@@ -149,7 +154,7 @@
                         : 'not-searching'} z-60 transition-all matchmaker"
                 />
                 <button
-                    class="action-button  w-full z-50 relative bg-white"
+                    class="action-button  w-full z-50 relative bg-white shadow-none border"
                     disabled={false}
                     on:click={(e) => startMatchmaker()}
                     >{nkReady
@@ -167,13 +172,14 @@
     .matchmaker {
         transition: all;
         transition-duration: 1000ms;
+        transition-timing-function: ease-in-out;
     }
     .searching {
-        clip-path: circle(4000px at 82% 98.5%);
+        clip-path: circle(4000px at 50% 50%);
     }
 
     .not-searching {
-        clip-path: circle(1px at 82% 98.5%);
+        clip-path: circle(0px at 100% 100%);
     }
     .content {
         grid-template-rows: 4rem 4rem 1fr 8rem;
