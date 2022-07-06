@@ -1,34 +1,36 @@
 export type Answer = {
-    correct: boolean, 
-    answerText: string
-}
+    correct: boolean;
+    answerText: string;
+};
 export type FollowupOption = {
-    option: string, delay: number
-}
+    option: string;
+    delay: number;
+};
 export type Challenge = {
-    id: string, 
-    text: string, 
-    options: FollowupOption[],
-    explanation?: any
-}
+    id: string;
+    text: string;
+    options: FollowupOption[];
+    explanation?: any;
+};
 
 export type QuizNext = {
-    [questionId: string]: string,
-}
+    [questionId: string]: string;
+};
 
 export type ApplicationContext = {
-    selectedAnswers: Answer[],
-    opponentAnswers: Answer[],
-    quiz?: QuizNext,
-    currentQuestionId?: string,
-    currentSelectedAnswer?: Answer,
-    selectedChallenge?: Challenge,
-    selectedFollowupOption?: FollowupOption
-    singlePlayer: boolean
-}
+    selectedAnswers: Answer[];
+    opponentAnswers: Answer[];
+    quiz?: QuizNext;
+    currentQuestionId?: string;
+    currentSelectedAnswer?: Answer;
+    selectedChallenge?: Challenge;
+    selectedFollowupOption?: FollowupOption;
+    singlePlayer: boolean;
+    quizStart: string;
+};
 
 export type OutlinkState = {
-    href: string,
-    text: string,
-    show: boolean
-}
+    href: string;
+    text: string;
+    show: boolean;
+};

@@ -7,7 +7,7 @@
     import type { Answer } from '$lib/types';
     import { onMount } from 'svelte';
 
-    let pauseTimer = false;
+    let pauseTimer = true;
     let lockedanswer = false;
     let selectedanswer: Answer;
     export let graceTime = 2 * 1000;

@@ -7,7 +7,10 @@ export const emptyApplicationContext = {
     quiz: {
         '1': '2',
         '2': '3',
+        '5': '6',
+        '6': '7',
     },
+    quizStart: '1',
     singlePlayer: true,
 };
 
@@ -30,4 +33,4 @@ SafeArea.getSafeAreaInsets().then(({ insets: _insets }) => {
 
 export const matchstatus = writable<Match>(null);
 export const matchdata = writable<MatchData>(null);
-export const singlePlayer = writable<Boolean>(false);
+export const singlePlayer = writable<Boolean>(true);

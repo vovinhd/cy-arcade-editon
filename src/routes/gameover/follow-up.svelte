@@ -1,69 +1,74 @@
 <script>
-import { goto } from "$app/navigation";
-import Actions from "$lib/components/actions.svelte";
+    import { goto } from '$app/navigation';
+    import Actions from '$lib/components/actions.svelte';
 
-import QrCode from "$lib/components/qr-code.svelte";
-import { appContext, emptyApplicationContext } from "$lib/context";
-import { onMount } from "svelte";
+    import QrCode from '$lib/components/qr-code.svelte';
+    import { appContext, emptyApplicationContext } from '$lib/context';
+    import { onMount } from 'svelte';
 
-const makeFollowupLink = () => {
-    const {selectedChallenge, selectedFollowupOption} = $appContext
-    let followUpParams = {
-        ch: selectedChallenge?.id,
-        opt: selectedFollowupOption?.delay ?? 0
-    }
-    let encodedParams = btoa(JSON.stringify(followUpParams))
-    console.log(followUpParams, encodedParams)
-    
-    return `https://climactivity.de/exhib-exit-survey/?challenge=${encodedParams}`
-}
+    const makeFollowupLink = () => {
+        const { selectedChallenge, selectedFollowupOption } = $appContext;
+        let followUpParams = {
+            ch: selectedChallenge?.id,
+            opt: selectedFollowupOption?.delay ?? 0,
+        };
+        let encodedParams = btoa(JSON.stringify(followUpParams));
+        console.log(followUpParams, encodedParams);
 
-const resetGame = () => {
-    clearAppContext()
-    goto("/")
-}
+        return `https://climactivity.de/exhib-exit-survey/?challenge=${encodedParams}`;
+    };
 
-const restartGame = () => {
-    clearAppContext()
-    goto("/challengeselect")
+    const resetGame = () => {
+        clearAppContext();
+        goto('/');
+    };
 
-}
+    const restartGame = () => {
+        clearAppContext();
+        goto('/challengeselect');
+    };
 
-const clearAppContext = () => {
-    appContext.set(emptyApplicationContext);
-}
+    const clearAppContext = () => {
+        appContext.set(emptyApplicationContext);
+        appContext.set({ ...$appContext, quizStart: '5' });
+    };
 
-let followupLink
-onMount(() => followupLink = makeFollowupLink())
+    let followupLink;
+    onMount(() => (followupLink = makeFollowupLink()));
 </script>
-<div>
 
-    <div class="heading">
-        Danke für's spielen
-    </div>
+<div>
+    <div class="heading">Danke für's spielen</div>
 
     <div class="text-center text-sm">
         {#if $appContext.selectedChallenge}
-            Falls wir dich an deine Challenge erinnern dürfen scanne einfach diesen Code 
+            Falls wir dich an deine Challenge erinnern dürfen scanne einfach
+            diesen Code
         {:else}
-            Falls du dich für unseren Newsletter interesierst geht's hier lang 👇
+            Falls du dich für unseren Newsletter interesierst geht's hier lang
+            👇
         {/if}
     </div>
 
-
     <div class="grid place-content-center p-8">
-        <QrCode codeValue={followupLink}/>
-        <a class="text-sm" target="_blank" rel="noopener noreferrer" href={followupLink}>{followupLink}</a>
+        <QrCode codeValue={followupLink} />
+        <a
+            class="text-sm"
+            target="_blank"
+            rel="noopener noreferrer"
+            href={followupLink}>{followupLink}</a
+        >
     </div>
 
-
     <Actions>
-        <button class="action-button" on:click={(_) => resetGame()}>Beenden</button>
-        <button class="action-button" on:click={(_) => restartGame()}>neues Spiel</button>
+        <button class="action-button" on:click={(_) => resetGame()}
+            >Beenden</button
+        >
+        <button class="action-button" on:click={(_) => restartGame()}
+            >neues Spiel</button
+        >
     </Actions>
-
 </div>
 
 <style lang="scss">
-
 </style>

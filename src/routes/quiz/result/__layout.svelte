@@ -77,7 +77,9 @@
         if (!minReadingTimeOver) {
             return;
         }
+        console.log($singlePlayer);
         if ($singlePlayer) {
+            console.log('single player');
             nextQuestionOrResult();
         }
         setReady();
