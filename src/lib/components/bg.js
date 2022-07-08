@@ -52,10 +52,9 @@ scene.add(particles)
 
 const animate = () => {
     camera.lookAt(scene.position)
-    scene.rotation.x -= 0.0002
-    scene.rotation.y += 0.0000
-    requestAnimationFrame(animate);
+    scene.rotation.x = Math.max(scene.rotation.x + 0.0005, 0.004)
     renderer.render(scene, camera);
+    setTimeout( () =>  requestAnimationFrame(animate), 33);
 };
 
 const resize = () => {
@@ -65,7 +64,7 @@ const resize = () => {
 };
 
 export const createScene = (el) => {
-    console.log("starting three")
+    // console.log("starting three")
     renderer = new THREE.WebGLRenderer({ antialias: true, canvas: el });
     renderer.setClearColor(0xffffff, 0);
     resize();

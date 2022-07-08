@@ -1,7 +1,7 @@
-import { Client, WebSocketAdapterText, Session, type Match } from '@heroiclabs/nakama-js';
+import { Client, WebSocketAdapterText, Session, type Match, type MatchData } from '@heroiclabs/nakama-js';
 import { v4 } from 'uuid';
 import { writable } from 'svelte/store';
-import { matchdata, matchstatus } from './context';
+import { matchdata, matchstatus, ownPresenceId, singlePlayer } from './context';
 import { goto } from '$app/navigation';
 
 export const ssr = false;
@@ -15,7 +15,7 @@ var client = new Client(
     true
 );
 let deviceId: string;
-// let session: Session;
+let session: Session;
 let reconnectHandle
 export let socket = client.createSocket(
     import.meta.env.VITE_NAKAMA_USE_SSL === 'true',
@@ -32,7 +32,7 @@ export const init = async () => {
         let deviceId = v4();
         await localStorage.setItem('NK_DEVICE_ID', deviceId);
     }
-    let session = await createSession();
+    session = await createSession();
     await connectSocket(session);
 
     nkReady.set(true);
@@ -56,24 +56,37 @@ export const connectSocket = async (session) => {
         await localStorage.setItem('NK_DEVICE_ID', deviceId);
     }
     session = await socket.connect(session, appearOnline);
+    console.log('Connected to Nakama gameserver:', session);
     return socket;
 };
 
 socket.ondisconnect = (e) => {
     console.log('connection to gameserver lost!');
     nkReady.set(false);
+    setTimeout(() => {
+        reconnectHandle = setInterval(() => {
+        try {
+            console.log('attempting to reconnect');
+            init();
+        } catch (e) {
+            console.error("Reconnect failed:", e); 
+        }
 
-    reconnectHandle = setInterval(() => {
-        console.log('attempting to reconnect');
-        init();
     }, 3000);
+    }, 2000); 
+
+
+    // downgrade to single player if connection to server is lost during match
+    singlePlayer.set(true)
 };
 
-let matchId 
+let matchId, _ownPresenceId; 
 socket.onmatchmakermatched = async (matched) => {
     matchId = matched.match_id
     const match : Match = await socket.joinMatch(matched.match_id, matched.token);
     matchstatus.set(match);
+    ownPresenceId.set(match.self.session_id); 
+    _ownPresenceId = match.self.session_id;
     console.log(match);
     goto('/quiz/question/1');
 };
@@ -94,8 +107,28 @@ export enum OpCode {
     client_set_ready = 200,
 }
 
+
+const getMpQuizResult = (matchData: MatchData, $ownPresenceId: string): boolean =>  {
+    return false;
+
+    // count correct answers in match data for each presence id
+    let correctAnswers = Object.keys(matchData.presences).map(presenceId => {
+        return {presenceId,
+             correct: Object.values(matchData.answers).reduce((numCorrect, answer) => {
+            if (answer[presenceId].correct) 
+                return numCorrect + 1;
+            return numCorrect;
+        }, 0)}
+    })
+
+    console.log(correctAnswers)
+
+    
+
+}
+
 socket.onmatchdata = (matchData) => {
-    console.log('received match data', matchData);
+    // console.log('received match data', matchData);
 
     matchdata.set(matchData);
 
@@ -103,10 +136,18 @@ socket.onmatchdata = (matchData) => {
         case OpCode.server_match_end:
             console.log('Match ended');
             break;
-        case OpCode.server_show_next_question: {
+        case OpCode.server_show_next_question: 
             console.log('Goto next question');
             break;
-        }
+        
+        case OpCode.server_match_result:
+            console.log("Match ended, match result:", matchData.data);
+
+            goto(
+                `/gameover/${getMpQuizResult(matchData, _ownPresenceId) ? 'won' : 'lost'}`
+            );
+
+        break;
         default:
             // console.log('Unsupported op code');
             break;
@@ -116,3 +157,4 @@ socket.onmatchdata = (matchData) => {
 export const sendMatchData = (opcode, data = null, presence = null) => {
     socket.sendMatchState(matchId, opcode, data, presence )
 }
+

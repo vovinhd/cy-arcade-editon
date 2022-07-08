@@ -1,5 +1,6 @@
 <script lang="ts">
     import { goto, prefetch } from '$app/navigation';
+    import { session } from '$app/stores';
     import { OpCode, sendMatchData, socket } from '$lib/client';
     import ContinueButton from '$lib/components/continue-button.svelte';
 
@@ -7,6 +8,7 @@
         appContext,
         matchdata,
         matchstatus,
+        ownPresenceId,
         singlePlayer,
     } from '$lib/context';
     import type { MatchData } from '@heroiclabs/nakama-js';
@@ -15,6 +17,7 @@
     import { fly, fade } from 'svelte/transition';
 
     let opponentReady = false;
+    let opponentCorrect = false;
     let selfReady = false;
     let minReadingTimeOver = false;
     let timer = 0;
@@ -33,6 +36,7 @@
         return true;
     };
 
+    let opponentResult = null;
     const nextQuestionId = $appContext.quiz[$appContext.currentQuestionId];
     const nextQuestionOrResult = () => {
         console.log($appContext);
@@ -49,20 +53,45 @@
 
     const setReady = () => {
         selfReady = true;
+        readyCounter += 1;
         sendMatchData(OpCode.client_set_ready, { readFor: timer, ready: true });
     };
+
+    let readyCounter = 0;
 
     matchdata.subscribe((matchdata: MatchData) => {
         if (!matchdata) {
             return;
         }
 
+        if (matchdata.data.answers) {
+            let answers =
+                matchdata.data.answers[matchdata.data.current_question];
+            if (answers) {
+                Object.keys(answers).forEach((key) => {
+                    if (key !== $ownPresenceId) {
+                        opponentResult = answers[key];
+                        if (opponentResult.correct) {
+                            opponentCorrect = true;
+                        }
+                    }
+                });
+
+                console.log(
+                    $ownPresenceId,
+                    matchdata.data,
+                    answers,
+                    opponentResult,
+                    opponentCorrect
+                );
+            }
+        }
+
         if (matchdata.op_code == OpCode.server_show_next_question) {
             nextQuestionOrResult();
-        } else if (matchdata.op_code == OpCode.client_set_ready) {
-            console.log('test');
-
-            const readyCounter = matchdata.data.ready_next_question ?? 0;
+        } else if (matchdata.op_code == OpCode.server_presence_ready) {
+            console.log('presence ready');
+            opponentReady = true;
             if (selfReady) {
                 if (readyCounter === 2) {
                     opponentReady = true;
@@ -120,7 +149,7 @@
 </script>
 
 <div
-    class="bg-zinc-50 rounded-md shadow-lg hero md:inset-4 inset-0 md:p-8 p-2 content-grid "
+    class="bg-zinc-50 rounded-md shadow-lg hero md:inset-4 inset-0 md:p-8 p-2 content-grid overflow-x-hidden "
     in:fly={{ x: 200, duration: 500 }}
     out:fly={{ x: -200, duration: 500 }}
 >
@@ -138,18 +167,31 @@
         </div>
     </div>
 
-    <div class="text-center pb-4 pt-8 px-8  text-2xl title">
-        Hättest du's gewusst?
+    <div class=" pb-4 pt-8 px-8 ">
+        {#if opponentResult}
+            <div class="text-center pb-2  text-2xl title">
+                Dein/e Mitspieler/in lag {opponentCorrect
+                    ? 'richtig'
+                    : 'falsch'}
+            </div>
+        {/if}
+        <div class="text-center  text-2xl title">Hättest du's gewusst?</div>
     </div>
     <div class="h-full  main">
         <slot />
     </div>
 
-    <div class="grid grid-flow-col place-content-end actions">
+    <div
+        class="grid grid-flow-col  {opponentReady
+            ? 'place-content-between'
+            : 'place-content-end'} actions"
+    >
         {#if opponentReady}
             <div class="grid content-center" in:fade>
-                <span class="p-4 rounded-full bg-zinc-200 w-96 text-center">
-                    dein/e Mitspieler/in ist bereit
+                <span class="p-4 rounded-full bg-zinc-200  text-center">
+                    {selfReady
+                        ? 'Du bist bereit'
+                        : 'dein/e Mitspieler/in ist bereit'}
                 </span>
             </div>
         {/if}
