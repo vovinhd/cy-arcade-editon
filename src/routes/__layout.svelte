@@ -5,6 +5,7 @@
     import { insets } from '$lib/context';
     import { init, nkReady } from '$lib/client';
     import { onMount } from 'svelte';
+    import TimeoutGuard from '$lib/components/timeout-guard.svelte';
 
     onMount(() => {
         if (!$nkReady) {
@@ -29,6 +30,9 @@
 </svelte:head>
 
 <div class="w-[100vw] min-h-[100vh] bg-container  overflow-hidden">
+    {#if import.meta.env.VITE_USE_TIMER === 'true'}
+        <TimeoutGuard limit={60 * 5 * 1000} />
+    {/if}
     <OutAOverlay />
     <div class="bg">
         <div class="w-full h-full bg-slate-800 transition-colors">

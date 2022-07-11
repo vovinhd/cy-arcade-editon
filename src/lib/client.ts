@@ -80,6 +80,13 @@ socket.ondisconnect = (e) => {
     singlePlayer.set(true)
 };
 
+export const leaveMatch = async () => {
+    if(matchId) {
+        await socket.leaveMatch(matchId);
+        console.log('left match');
+    }
+}
+
 let matchId, _ownPresenceId; 
 socket.onmatchmakermatched = async (matched) => {
     matchId = matched.match_id

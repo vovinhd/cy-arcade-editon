@@ -37,27 +37,36 @@
     onMount(() => (followupLink = makeFollowupLink()));
 </script>
 
-<div>
+<div
+    class="grid grid-flow-row h-full"
+    style="grid-template-rows: 8rem, 1fr, auto;"
+>
     <div class="heading">Danke für's spielen</div>
 
-    <div class="text-center text-sm">
-        {#if $appContext.selectedChallenge}
-            Falls wir dich an deine Challenge erinnern dürfen scanne einfach
-            diesen Code
-        {:else}
-            Falls du dich für unseren Newsletter interesierst geht's hier lang
-            👇
-        {/if}
-    </div>
+    <div>
+        <div class="text-center text-md">
+            {#if $appContext.selectedChallenge}
+                Falls wir dich an deine Challenge erinnern dürfen scanne einfach
+                diesen Code
+            {:else}
+                Falls du dich für unseren Newsletter interesierst geht's hier
+                lang 👇
+            {/if}
+        </div>
 
-    <div class="grid place-content-center p-8">
-        <QrCode codeValue={followupLink} />
-        <a
-            class="text-sm"
-            target="_blank"
-            rel="noopener noreferrer"
-            href={followupLink}>{followupLink}</a
-        >
+        <div class="grid place-content-center p-8">
+            <QrCode codeValue={followupLink} />
+            <a
+                class="text-sm"
+                target="_blank"
+                rel="noopener noreferrer"
+                href={followupLink}>{followupLink}</a
+            >
+        </div>
+    </div>
+    <div class="text-center text-sm">
+        <span class="text-nature-dark">Tipp:</span> bei einer zweiten Runde gibt
+        es neue Fragen 😉
     </div>
 
     <Actions>
