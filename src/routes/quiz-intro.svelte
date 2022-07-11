@@ -1,6 +1,6 @@
 <script lang="ts">
     import { fly, fade } from 'svelte/transition';
-
+    import { Capacitor } from '@capacitor/core';
     import { goto, prefetch } from '$app/navigation';
     import Actions from '$lib/components/actions.svelte';
     import { onMount } from 'svelte';
@@ -53,7 +53,10 @@
         const minPlayers = 2;
         const maxPlayers = 2;
         let query, stringProperties;
-        if (import.meta.env.VITE_IS_EXHIB === 'true') {
+        if (
+            import.meta.env.VITE_IS_EXHIB === 'true' ||
+            Capacitor.getPlatform() === 'ios'
+        ) {
             query = '+properties.region:wissensspeicher';
             stringProperties = {
                 region: 'wissensspeicher',
