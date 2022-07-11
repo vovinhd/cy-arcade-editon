@@ -2,7 +2,15 @@
     import BgCanvas from '$lib/components/bg-canvas.svelte';
     import OutAOverlay from '$lib/components/out-a-overlay.svelte';
     import '../app.css';
-    import { insets } from '$lib/context'; 
+    import { insets } from '$lib/context';
+    import { init, nkReady } from '$lib/client';
+    import { onMount } from 'svelte';
+
+    onMount(() => {
+        if (!$nkReady) {
+            init();
+        }
+    });
 </script>
 
 <svelte:head>
@@ -28,9 +36,14 @@
         </div>
     </div>
 
-    <div class="safearea relative" style={`top: ${$insets.top}; left: ${$insets.left}; right: ${$insets.right}; bottom: ${$insets.bottom};`}>
-
-        <main class="grid grid-flow-row place-content-center absolute " style={`top: ${$insets.top}px; left: ${$insets.left}px; right: ${$insets.right}px; bottom: ${$insets.bottom}px;`}>
+    <div
+        class="safearea relative"
+        style={`top: ${$insets.top}; left: ${$insets.left}; right: ${$insets.right}; bottom: ${$insets.bottom};`}
+    >
+        <main
+            class="grid grid-flow-row place-content-center absolute "
+            style={`top: ${$insets.top}px; left: ${$insets.left}px; right: ${$insets.right}px; bottom: ${$insets.bottom}px;`}
+        >
             <slot />
         </main>
     </div>

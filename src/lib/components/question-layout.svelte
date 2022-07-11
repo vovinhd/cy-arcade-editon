@@ -1,12 +1,13 @@
 <script lang="ts">
-    import { goto, prefetch } from "$app/navigation";
-    import { page } from "$app/stores";
-    import { appContext } from "$lib/context";
+    import { goto, prefetch } from '$app/navigation';
+    import { page } from '$app/stores';
+    import { OpCode, sendMatchData, socket } from '$lib/client';
+    import { appContext, matchstatus, singlePlayer } from '$lib/context';
 
-    import type { Answer } from "$lib/types";
-    import { onMount } from "svelte";
+    import type { Answer } from '$lib/types';
+    import { onMount } from 'svelte';
 
-    let pauseTimer = false;
+    let pauseTimer = true;
     let lockedanswer = false;
     let selectedanswer: Answer;
     export let graceTime = 2 * 1000;
@@ -17,8 +18,8 @@
 
     const selectAnswer = (answer: Answer) => {
         selectedanswer = answer;
-        console.log(answer)
-        appContext.update(v => ({...v, currentSelectedAnswer: answer}))
+        console.log(answer);
+        appContext.update((v) => ({ ...v, currentSelectedAnswer: answer }));
     };
 
     const opponentAnswered = () => {
@@ -26,9 +27,9 @@
     };
 
     const showResult = () => {
-        console.log($page.routeId,  `quiz/question/${id}` );
+        console.log($page.routeId, `quiz/question/${id}`);
         if (!($page.routeId === `quiz/question/${id}` || pauseTimer)) {
-            console.error("runaway timer in question-layout!");
+            console.error('runaway timer in question-layout!');
             return;
         } else {
             goto(`/quiz/result/${id}`);
@@ -42,20 +43,26 @@
 
     const finish = () => {
         invalidateTimers();
+        if (!$singlePlayer)
+            sendMatchData(OpCode.client_set_answer, selectedanswer);
         showResult();
     };
 
     const invalidateTimers = () => {
         clearInterval(timerUpdate);
         clearTimeout(timeOut);
-
-    }
+    };
     onMount(() => {
         appContext.update(
-            (value) => (value = { ...value, currentQuestionId: id, currentSelectedAnswer: null })
+            (value) =>
+                (value = {
+                    ...value,
+                    currentQuestionId: id,
+                    currentSelectedAnswer: null,
+                })
         );
 
-        prefetch(`/quiz/result/${id}`)
+        prefetch(`/quiz/result/${id}`);
         if (pauseTimer) return;
         timerUpdate = setInterval(() => {
             timer = timer - 16;
@@ -66,9 +73,9 @@
         }, graceTime + maxTime);
     });
 
-    page.subscribe(v => {
-        invalidateTimers()
-    })
+    page.subscribe((v) => {
+        invalidateTimers();
+    });
 </script>
 
 <main class="grid h-full content overflow-y-auto">
@@ -90,7 +97,9 @@
     </div>
 
     <div class="p-8 question">
-        <div class="md:heading text-center text-lg bg-water-light bg-opacity-90  p-8 text-white rounded-md shadow-md">
+        <div
+            class="md:heading text-center text-lg bg-water-light bg-opacity-90  p-8 text-white rounded-md shadow-md"
+        >
             <slot name="question" />
         </div>
     </div>
@@ -100,12 +109,15 @@
     </div>
 
     <div class="grid grid-flow-row place-items-end content-center">
-        <div class="action-button bg-heart text-white {selectedanswer ? "selected": "unselected"}">
+        <div
+            class="action-button bg-heart text-white {selectedanswer
+                ? 'selected'
+                : 'unselected'}"
+        >
             <button on:click={(e) => lockAnswer(e)}> Auswählen </button>
         </div>
     </div>
 </main>
-
 
 <style lang="scss">
     .content {
@@ -121,7 +133,6 @@
         opacity: 0;
         animation: fadeInUp 1s ease forwards;
         animation-delay: 0s;
-
     }
     .unselected {
         opacity: 0;

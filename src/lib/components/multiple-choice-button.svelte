@@ -1,19 +1,24 @@
 <script lang="ts">
-import { appContext } from "$lib/context";
+    import { appContext } from '$lib/context';
 
-import type { Answer } from "$lib/types";
+    import type { Answer } from '$lib/types';
 
-    export let answer: Answer; 
-    export let callback
-    let selected = false
+    export let answer: Answer;
+    export let callback;
+    let selected = false;
 
-    appContext.subscribe(v => selected = v.currentSelectedAnswer === answer)
+    appContext.subscribe(
+        (v) => (selected = v.currentSelectedAnswer === answer)
+    );
 </script>
-<button class:selected={selected} {...$$props} on:click={(e) => callback(answer)}>{answer.answerText}</button>
+
+<button class:selected {...$$props} on:click={(e) => callback(answer)}
+    >{answer.answerText}</button
+>
 
 <style lang="scss">
     .selected {
-        @apply bg-nature text-white
+        @apply bg-nature text-white;
     }
 
     button {
@@ -21,9 +26,7 @@ import type { Answer } from "$lib/types";
         transition-duration: 30ms;
         &:active {
             transform: translateY(3%);
-            @apply shadow-none
+            @apply shadow-none;
         }
-
     }
-
 </style>
