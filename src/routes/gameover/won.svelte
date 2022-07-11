@@ -58,7 +58,7 @@
             <div
                 class="text-white bg-nature rounded-full mx-4 md:px-24 md:mx-24 py-2 text-center animate-cheer animation-delay-2000 opacity-0"
             >
-                Danke das du mitgespielt hast
+                Danke, dass du mitgespielt hast
             </div>
         </div>
 
