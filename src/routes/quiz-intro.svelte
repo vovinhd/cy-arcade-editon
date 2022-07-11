@@ -53,7 +53,7 @@
         const minPlayers = 2;
         const maxPlayers = 2;
         let query, stringProperties;
-        if (import.meta.env.VITE_IS_EXHIB) {
+        if (import.meta.env.VITE_IS_EXHIB === 'true') {
             query = '+properties.region:wissensspeicher';
             stringProperties = {
                 region: 'wissensspeicher',
@@ -92,7 +92,7 @@
             in:fade={{ delay: 250, duration: 200 }}
             class="absolute w-full h-full grid place-content-center z-50 pointer-events-none"
         >
-            {#if import.meta.env.VITE_IS_EXHIB}
+            {#if import.meta.env.VITE_IS_EXHIB === 'true'}
                 Warte auf Mitspieler...
             {:else}
                 Suche nach Mitspielern...
