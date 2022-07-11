@@ -1,8 +1,9 @@
 import { Client, WebSocketAdapterText, Session, type Match, type MatchData } from '@heroiclabs/nakama-js';
 import { v4 } from 'uuid';
 import { writable } from 'svelte/store';
-import { matchdata, matchstatus, ownPresenceId, singlePlayer } from './context';
+import { appContext, matchdata, matchstatus, ownPresenceId, singlePlayer } from './context';
 import { goto } from '$app/navigation';
+import type { MatchState } from './types';
 
 export const ssr = false;
 console.log('nk use ssl', import.meta.env.VITE_NAKAMA_USE_SSL);
@@ -115,11 +116,12 @@ export enum OpCode {
 }
 
 
-const getMpQuizResult = (matchData: MatchData, $ownPresenceId: string): boolean =>  {
-    return false;
+const getMpQuizResult = (matchData: MatchState, $ownPresenceId: string): number =>  {
+
+    console.log(matchData)
 
     // count correct answers in match data for each presence id
-    let correctAnswers = Object.keys(matchData.presences).map(presenceId => {
+    let correctAnswers: {presenceId: string, correct: number}[] = Object.keys(matchData.presences).map(presenceId => {
         return {presenceId,
              correct: Object.values(matchData.answers).reduce((numCorrect, answer) => {
             if (answer[presenceId].correct) 
@@ -130,6 +132,10 @@ const getMpQuizResult = (matchData: MatchData, $ownPresenceId: string): boolean 
 
     console.log(correctAnswers)
 
+    let ownResult = correctAnswers.find(ans => ans.presenceId === $ownPresenceId); 
+    let opponentResult = correctAnswers.find(ans => ans.presenceId !== $ownPresenceId);
+
+    return ownResult.correct - opponentResult.correct;
     
 
 }
@@ -148,12 +154,16 @@ socket.onmatchdata = (matchData) => {
             break;
         
         case OpCode.server_match_result:
-            console.log("Match ended, match result:", matchData.data);
-
-            goto(
-                `/gameover/${getMpQuizResult(matchData, _ownPresenceId) ? 'won' : 'lost'}`
-            );
-
+            let result = getMpQuizResult(matchData.data, _ownPresenceId);
+            console.log("Match ended, match result:", matchData.data, result);
+            appContext.update(ctx => ({...ctx, result}));
+            if (result === 0) {
+                goto('/gameover/draw');
+            } else if (result > 0) {
+                goto('/gameover/won');
+            } else {
+                goto('/gameover/lost');
+            }
         break;
         default:
             // console.log('Unsupported op code');

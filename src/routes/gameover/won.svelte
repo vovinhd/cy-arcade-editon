@@ -17,7 +17,7 @@
     let interacted = false;
 </script>
 
-<div class="grid grid-flow-row place-content-between h-full">
+<div class="grid grid-flow-row place-content-stretch h-full">
     <div out:fade>
         <div
             class="text-4xl text-center bg-nature text-white font-bold grid place-content-center {interacted
@@ -30,10 +30,7 @@
 
     {#if interacted}
         <div in:fade class="grid grid-flow-row p-8 h-full">
-            <div>
-                Möchest du deine Challenge dem Klimaschutz spenden? *todo
-                formulierung
-            </div>
+            <div>Möchest du deine Challenge dem Klimaschutz spenden?</div>
             <div class="grid grid-flow-row">
                 <FollowupOptionSelect showNoop />
             </div>
@@ -49,10 +46,18 @@
             </div>
         </div>
     {:else}
-        <div
-            class="text-white bg-nature rounded-full mx-4 md:px-24 md:mx-24 py-2 text-center animate-cheer animation-delay-2000 opacity-0"
-        >
-            Danke das du mitgespielt hast
+        <div>
+            <div
+                class="text-center animate-cheer animation-delay-2000 opacity-0"
+            >
+                Du hattest {Math.abs($appContext.result)} Frage(n) mehr richtig
+            </div>
+
+            <div
+                class="text-white bg-nature rounded-full mx-4 md:px-24 md:mx-24 py-2 text-center animate-cheer animation-delay-2000 opacity-0"
+            >
+                Danke das du mitgespielt hast
+            </div>
         </div>
 
         <div

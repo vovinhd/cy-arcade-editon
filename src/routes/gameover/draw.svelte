@@ -12,9 +12,7 @@
 
 <div class="grid grid-flow-row place-content-stretch h-full">
     <div class="heading">Du hast zwar nicht gewonnen, aber der Klimaschutz</div>
-    <div class="text-center">
-        Dein/e Mitspielerin hatte {Math.abs($appContext.result)} Frage(n) mehr richtig
-    </div>
+    <div class="text-center">Ihr hattet Gleichstand</div>
 
     <div>
         <div
