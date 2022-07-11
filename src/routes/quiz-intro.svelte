@@ -5,7 +5,7 @@
     import Actions from '$lib/components/actions.svelte';
     import { onMount } from 'svelte';
     import { nkReady, socket } from '$lib/client';
-    import { matchstatus, singlePlayer } from '$lib/context';
+    import { appContext, matchstatus, singlePlayer } from '$lib/context';
     let hasSelectedChallenge = false;
 
     const startSingle = () => {
@@ -58,6 +58,7 @@
             stringProperties = {
                 region: 'wissensspeicher',
                 mode: 'wissensspeicher',
+                q_set: $appContext.quizStart === '1' ? '1' : '2',
             };
         } else {
             query = '+properties.region:europe';

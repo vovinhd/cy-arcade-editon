@@ -47,11 +47,13 @@
         </div>
     {:else}
         <div>
-            <div
-                class="text-center animate-cheer animation-delay-2000 opacity-0"
-            >
-                Du hattest {Math.abs($appContext.result)} Frage(n) mehr richtig
-            </div>
+            {#if !$appContext.singlePlayer}
+                <div
+                    class="text-center animate-cheer animation-delay-2000 opacity-0"
+                >
+                    Du hattest {Math.abs($appContext.result)} Frage(n) mehr richtig
+                </div>
+            {/if}
 
             <div
                 class="text-white bg-nature rounded-full mx-4 md:px-24 md:mx-24 py-2 text-center animate-cheer animation-delay-2000 opacity-0"

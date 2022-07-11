@@ -3,7 +3,7 @@
     import Actions from '$lib/components/actions.svelte';
     import FollowupOptionSelect from '$lib/components/followup-option-select.svelte';
 
-    import { appContext } from '$lib/context';
+    import { appContext, singlePlayer } from '$lib/context';
 
     const selectFollowupOption = () => {
         goto(`/gameover/follow-up`);
@@ -12,9 +12,13 @@
 
 <div class="grid grid-flow-row place-content-stretch h-full">
     <div class="heading">Du hast zwar nicht gewonnen, aber der Klimaschutz</div>
-    <div class="text-center">
-        Dein/e Mitspielerin hatte {Math.abs($appContext.result)} Frage(n) mehr richtig
-    </div>
+
+    {#if !$appContext.singlePlayer}
+        <div class="text-center">
+            Dein/e Mitspielerin hatte {Math.abs($appContext.result)} Frage(n) mehr
+            richtig
+        </div>
+    {/if}
 
     <div>
         <div
