@@ -33,7 +33,7 @@
             (answer) => answer.correct
         );
         console.log(results);
-        return true;
+        return results.every((result) => result === true); // i know that === true is redundant, but (result) => result also looks questionionable
     };
 
     let opponentResult = null;

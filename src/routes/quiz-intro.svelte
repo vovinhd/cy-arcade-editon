@@ -4,13 +4,18 @@
     import { goto, prefetch } from '$app/navigation';
     import Actions from '$lib/components/actions.svelte';
     import { onMount } from 'svelte';
-    import { nkReady, socket } from '$lib/client';
+    import { init, nkReady, socket } from '$lib/client';
     import { appContext, matchstatus, singlePlayer } from '$lib/context';
     let hasSelectedChallenge = false;
 
     const startSingle = () => {
         singlePlayer.set(true);
-
+        appContext.update((ctx) => {
+            return {
+                ...ctx,
+                selectedAnswers: [],
+            };
+        });
         goto('/quiz/question/1');
     };
 
@@ -82,6 +87,13 @@
             console.error(error);
         }
     };
+
+    onMount(() => {
+        if (!$nkReady) {
+            console.warn('Not connected to Nakama!');
+            init();
+        }
+    });
 </script>
 
 <div
