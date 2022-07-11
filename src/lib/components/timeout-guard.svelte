@@ -4,7 +4,7 @@
     import { page } from '$app/stores';
     import { leaveMatch } from '$lib/client';
     import { appContext, emptyApplicationContext } from '$lib/context';
-    import { onMount } from 'svelte';
+    import { onDestroy, onMount } from 'svelte';
 
     export let limit = 60 * 5 * 1000;
     let timeout = limit;
@@ -43,6 +43,9 @@
                 restartGame();
             }
         }, 1000);
+    });
+    onDestroy(() => {
+        invalidateTimers();
     });
 </script>
 
