@@ -3,11 +3,17 @@
 </script>
 
 <div class="grid grid-flow-row gap-4">
-    <div>: ca. 5 %.</div>
-    <div>Chart or something</div>
+    <div>
+        Ca. 5 %. der historischen CO₂-Emissionen wurden von Deutschland
+        verursacht
+    </div>
+    <div class="mx-auto">
+        <img src="/historic-emissions-diagram.png" />
+    </div>
 </div>
 
+siehe
 <OutA
     href="https://ourworldindata.org/grapher/cumulative-co-emissions?tab=chart&country=OWID_WRL~DEU"
-    >Quelle</OutA
+    >carbonmap.org</OutA
 >

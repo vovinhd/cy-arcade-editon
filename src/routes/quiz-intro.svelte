@@ -52,9 +52,18 @@
         singlePlayer.set(false);
         const minPlayers = 2;
         const maxPlayers = 2;
-        const query = '*';
-        const stringProperties = { region: 'europe', mode: 'wissensspeicher' };
-        const numericProperties = { skill: 125 };
+        let query, stringProperties;
+        if (import.meta.env.VITE_IS_EXHIB) {
+            query = '+properties.region:wissensspeicher';
+            stringProperties = {
+                region: 'wissensspeicher',
+                mode: 'wissensspeicher',
+            };
+        } else {
+            query = '+properties.region:europe';
+            stringProperties = { region: 'europe', mode: 'wissensspeicher' };
+        }
+        const numericProperties = {};
         try {
             matchmakerTicket = await socket.addMatchmaker(
                 query,
@@ -83,7 +92,11 @@
             in:fade={{ delay: 250, duration: 200 }}
             class="absolute w-full h-full grid place-content-center z-50 pointer-events-none"
         >
-            Suche nach Mitspielern...
+            {#if import.meta.env.VITE_IS_EXHIB}
+                Warte auf Mitspieler...
+            {:else}
+                Suche nach Mitspielern...
+            {/if}
         </div>
     {/if}
     <h1 class="heading md:mt-0 mt-8">Anleitung</h1>
