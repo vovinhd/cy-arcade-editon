@@ -7,13 +7,13 @@
 <div class="h-full relative pb-4 overflow-clip">
     <div
         class="absolute w-full h-full bg-gradient-to-tl from-white via-white
-      to-[#fec4d1] inset-0 rounded-md"
+      to-[#e6c4fe] inset-0 rounded-md"
     >
         <div
             class="absolute -top-8 -left-8 w-80 h-80 rounded-full overflow-clip
         opacity-20 -rotate-12"
         >
-            <img src="/Energie.jpeg" alt="Energie-logo" class="rounded-full" />
+            <img src="/Konsum.jpeg" alt="Konsum-logo" class="rounded-full" />
         </div>
 
         <QuestionLayout id="6" let:selectAnswer>

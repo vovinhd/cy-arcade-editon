@@ -25,7 +25,7 @@
 
     const restartGame = () => {
         clearAppContext();
-        goto('/challengeselect');
+        goto('/quiz-intro');
     };
 
     const clearAppContext = () => {

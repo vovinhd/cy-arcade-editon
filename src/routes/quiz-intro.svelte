@@ -17,7 +17,7 @@
                 selectedAnswers: [],
             };
         });
-        goto('/quiz/question/1');
+        goto(`/quiz/question/${$appContext.quizStart}`);
     };
 
     onMount(() => prefetch('/quiz/question/1'));
