@@ -17,7 +17,7 @@
 </script>
 
 {#if $appContext.selectedChallenge}
-    <div class="text-center text-sm">dein Einsatz</div>
+    <!-- <div class="text-center text-sm">dein Einsatz</div> -->
 
     <div class="p-8 space-y-4">
         <div class="font-bold">{$appContext.selectedChallenge.text}</div>

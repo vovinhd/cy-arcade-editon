@@ -6,6 +6,7 @@
     import { onMount } from 'svelte';
     import { init, nkReady, socket } from '$lib/client';
     import { appContext, matchstatus, singlePlayer } from '$lib/context';
+    import BackButton from '$lib/components/back-button.svelte';
     let hasSelectedChallenge = false;
 
     const startSingle = () => {
@@ -98,11 +99,13 @@
 
 <div
     class="bg-zinc-50 rounded-md shadow-lg hero inset-0 md:inset-4 grid
-  grid-flow-row content max-w-3xl z-0"
+  grid-flow-row content max-w-3xl z-0 relative"
     in:fly={{ x: 200, duration: 500 }}
     out:fly={{ x: -200, duration: 500 }}
-    style="grid-template-rows:8rem 1fr 8rem;"
+    style="grid-template-rows:8rem 1fr 16rem;"
 >
+    <BackButton />
+
     {#if matchmakerTicket}
         <div
             in:fade={{ delay: 250, duration: 200 }}
@@ -115,85 +118,69 @@
             {/if}
         </div>
     {/if}
-    <h1 class="heading md:mt-0 mt-8">Anleitung</h1>
+    <h1 class="heading md:mt-0 mt-8">Spielmodus</h1>
 
-    <!-- <div class="md:px-16 ">
+    <div class="md:px-16 ">
         <div class="grid grid-flow-row gap-4 hints md:text-2xl ">
             <div
-                class="rounded-lg bg-gradient-to-bl from-blue-100 to-white md:h-56 grid
-        md:place-content-center place-content-start p-8 quiz relative "
-            >
-                <img
-                    src="/confusion.svg"
-                    alt=""
-                    class="blur-[2px] md:blur-sm  md:w-56 md:h-56 w-16 h-16 top-2 right-4 rotate-12
-          absolute"
-                />
-
-                <div class="relative blur-0 text-left">
-                    3 Fragen aus verschiedenen Bereichen des Klimaschutzes
-                </div>
-            </div>
-
-            <div
-                class="rounded-lg bg-gradient-to-bl from-lime-100 to-white md:h-56 grid
+                class="rounded-lg bg-gradient-to-bl  md:h-56 grid
                 md:place-content-center place-content-start p-8 quiz relative "
             >
-                <img
-                    src="/players.svg"
-                    alt=""
-                    class="blur-[2px] md:blur-sm  md:w-56 md:h-56 w-16 h-16 top-2 right-4 rotate-12
-          absolute"
-                />
-
-                <div class="relative blur-0 text-left">
-                    alleine oder gegen die Person gegenüber
-                </div>
-            </div>
-            <div
-                class="rounded-lg bg-gradient-to-bl from-rose-100 to-white md:h-56 grid
-                md:place-content-center place-content-start p-8 quiz relative "
-            >
-                <img
+                <!-- <img
                     src="/heart.svg"
                     alt=""
                     class="blur-[2px] md:blur-sm  md:w-56 md:h-56 w-16 h-16 top-2 right-4 rotate-12
           absolute"
-                />
+                /> -->
 
                 <div class="relative blur-0">
-                    Wer verliert macht die Challenge 😉
+                    Du spielst um diese Challenge:
+                </div>
+            </div>
+
+            <div class="">
+                <div class="inline-block -rotate-3 w-full">
+                    {#if $appContext.selectedChallenge}
+                        <div
+                            class="bg-lime-200 rounded-sm shadow-md  md:h-56 grid 
+            md:place-content-center place-content-start p-8 quiz relative text-xl font-semibold"
+                        >
+                            {$appContext.selectedChallenge.text}
+                        </div>
+                    {/if}
                 </div>
             </div>
         </div>
-    </div> -->
-    <div class="actions px-8">
-        <Actions>
+    </div>
+    <div class="actions px-8 grid grid-flow-row ">
+        <div class="grid grid-flow-row h-20">
             <button
-                class="action-button bg-heart text-white"
+                class="action-button bg-white "
                 disabled={hasSelectedChallenge}
                 on:click={(_) => startSingle()}
             >
                 Alleine Spielen
             </button>
-            <div class=" z-20 mr-8 ">
+            <div class=" z-20 w-full pr-16 ">
                 <div
                     class="bg-green-500 w-[1000px] h-[4000px] bottom-0 right-[0px] absolute {!!matchmakerTicket
                         ? 'searching'
                         : 'not-searching'} z-60 transition-all matchmaker"
                 />
                 <button
-                    class="action-button  w-full z-50 relative bg-white shadow-none border"
+                    class="action-button z-50 relative bg-heart text-white border w-full"
                     disabled={false}
                     on:click={(e) => startMatchmaker()}
                     >{nkReady
                         ? matchmakerTicket
                             ? 'Abbrechen'
+                            : Capacitor.getPlatform() === 'ios'
+                            ? 'Match mit der Person gegenüber'
                             : 'Bereit für ein Match'
                         : 'Keine Verbindung 🤨'}</button
                 >
             </div>
-        </Actions>
+        </div>
     </div>
 </div>
 

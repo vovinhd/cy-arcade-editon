@@ -3,6 +3,7 @@
     import { prefetch } from '$app/navigation';
     import Actions from '$lib/components/actions.svelte';
     import { onMount } from 'svelte';
+    import BackButton from '$lib/components/back-button.svelte';
 
     onMount(() => prefetch('/challengeselect'));
 </script>
@@ -14,6 +15,7 @@
     out:fly={{ x: -200, duration: 500 }}
     style="grid-template-rows:8rem 1fr 8rem;"
 >
+    <BackButton />
     <h1 class="heading md:mt-0 mt-8">Anleitung</h1>
 
     <a href="/challengeselect" class="md:px-16 ">

@@ -4,18 +4,19 @@
 
 <div>
     <p class="pb-4">
-        2018 ergab eine Umfrage, dass in den letzten zwei Jahren nur 43 % der
-        Befragten überhaupt geflogen waren.
+        2018 ergab eine Umfrage, dass in den letzten zwei Jahren 43 % der
+        Befragten geflogen waren.
         <br />
-        25 % der Befragten waren einmal oder zweimal geflogen und 15 % der Befragten
+        <!-- 25 % der Befragten waren einmal oder zweimal geflogen und 15 % der Befragten
         drei bis neunmal. Vielflieger, also Menschen, die 10 oder mehr Mal geflogen
-        waren, gab es „nur“ 3 %.
+        waren, gab es „nur“ 3 %. -->
         <!-- wieso ist das nur in scare-quotes-->
     </p>
     <br />
     <p>
-        Übrigens: weltweit sind überhaupt nur 18 % der Bevölkerung schon mal
-        geflogen
+        Übrigens: Während in Deutschland nur 13 % der Menschen noch nie geflogen
+        sind, sieht das weltweit ganz anders aus: Die allermeisten Menschen (82
+        %) haben noch nie in einem Flugzeug gesessen!
     </p>
 
     <div

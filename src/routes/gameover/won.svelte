@@ -24,13 +24,13 @@
                 ? 'h-40'
                 : 'h-80'} transition-all animate-cheer"
         >
-            Herzlichen Glückwunsch, du hast gewonnen
+            Herzlichen Glückwunsch, du hast gewonnen <br /> 🎉😀
         </div>
     </div>
 
     {#if interacted}
         <div in:fade class="grid grid-flow-row p-8 h-full">
-            <div>Möchest du deine Challenge dem Klimaschutz spenden?</div>
+            <div>Mach deine Challenge doch trotzdem und schütze das Klima</div>
             <div class="grid grid-flow-row">
                 <FollowupOptionSelect showNoop />
             </div>
@@ -47,7 +47,7 @@
         </div>
     {:else}
         <div>
-            {#if !$appContext.singlePlayer}
+            {#if $appContext.result}
                 <div
                     class="text-center animate-cheer animation-delay-2000 opacity-0"
                 >

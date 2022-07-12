@@ -81,12 +81,12 @@
 <main class="grid h-full content overflow-y-auto">
     <div class="w-full mx-auto flex flex-row place-content-center z-1">
         <div
-            class=" w-full rounded-t-md shadow-sm bg-zinc-600 h-6 overflow-hidden bg-opacity-20"
+            class=" w-full rounded-t-md shadow-sm bg-zinc-600 h-8 overflow-hidden bg-opacity-20"
             id="timer"
             min="0"
         >
             <div
-                class=" w-full shadow-sm bg-green-400 bg-gradient-to-r from-green-600 to-green-700< h-6"
+                class=" w-full shadow-sm bg-red-400 bg-gradient-to-r from-red-600 to-red-400 h-8"
                 id="timer"
                 min="0"
                 max={maxTime}
@@ -108,11 +108,15 @@
         <slot name="answers" {selectAnswer} />
     </div>
 
-    <div class="grid grid-flow-row place-items-end content-center">
+    <div
+        class="grid grid-flow-row place-items-end content-center {selectedanswer
+            ? 'selected'
+            : 'unselected'}"
+    >
         <div
-            class="action-button bg-heart text-white {selectedanswer
-                ? 'selected'
-                : 'unselected'}"
+            class="action-button bg-heart text-white {selectAnswer
+                ? 'chBounce'
+                : ''}"
         >
             <button on:click={(e) => lockAnswer(e)}> Auswählen </button>
         </div>
@@ -120,6 +124,21 @@
 </main>
 
 <style lang="scss">
+    @keyframes bounce {
+        0%,
+        100% {
+            transform: translateY(-10%);
+            animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+        }
+        50% {
+            transform: none;
+            animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+        }
+    }
+    .chBounce {
+        animation-delay: 1000ms;
+        animation: bounce 1s infinite;
+    }
     .content {
         grid-template-rows: 5rem 1fr 2fr 7rem;
     }

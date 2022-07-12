@@ -45,9 +45,9 @@
 
     <div>
         <div class="text-center text-md">
-            {#if $appContext.selectedChallenge}
-                Falls wir dich an deine Challenge erinnern dürfen scanne einfach
-                diesen Code
+            {#if $appContext.selectedChallenge && $appContext.selectedFollowupOption && $appContext.selectedFollowupOption.delay}
+                Manchmal gehen gute Vorsätze im Alltag unter. Wir erinnern dich
+                gern noch mal an deine Challenge. Scanne einfach diesen Code
             {:else}
                 Falls du dich für unseren Newsletter interesierst geht's hier
                 lang 👇
@@ -64,7 +64,7 @@
             >
         </div>
     </div>
-    <div class="text-center text-sm">
+    <div class="text-center text-md">
         <span class="text-nature-dark">Tipp:</span> bei einer zweiten Runde gibt
         es neue Fragen 😉
     </div>
@@ -73,8 +73,9 @@
         <button class="action-button" on:click={(_) => resetGame()}
             >Beenden</button
         >
-        <button class="action-button" on:click={(_) => restartGame()}
-            >neues Spiel</button
+        <button
+            class="action-button bg-heart text-white"
+            on:click={(_) => restartGame()}>neues Spiel</button
         >
     </Actions>
 </div>

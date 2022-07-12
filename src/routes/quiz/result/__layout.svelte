@@ -6,6 +6,7 @@
 
     import {
         appContext,
+        clearAppContext,
         matchdata,
         matchstatus,
         ownPresenceId,
@@ -49,6 +50,12 @@
                 );
             }
         }
+    };
+
+    const cancel = () => {
+        console.log('cancel');
+        clearAppContext(true);
+        goto('/');
     };
 
     const setReady = () => {
@@ -153,6 +160,9 @@
     in:fly={{ x: 200, duration: 500 }}
     out:fly={{ x: -200, duration: 500 }}
 >
+    <div class="absolute top-0 right-0 text-sm p-1 bg-white border rounded-md">
+        <button class="" on:click={(e) => cancel()}>Spiel beenden</button>
+    </div>
     <div>
         <div
             class="{currentlySelectedAnswer?.correct
@@ -195,6 +205,7 @@
                 </span>
             </div>
         {/if}
+
         <!-- <div class=" btn-cta relative ">
             <div
                 class="absolute grid grid-flow-col h-full  shadow-sm bg-heart "
@@ -209,6 +220,7 @@
                 {continueLabel}
             </button>
         </div> -->
+
         <div class="cursor-pointer" on:click={(e) => readyOrNextQuestion()}>
             <ContinueButton ready={minReadingTimeOver} />
         </div>
