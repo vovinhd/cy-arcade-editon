@@ -1,4 +1,7 @@
 <script lang="ts">
+    import { goto } from '$app/navigation';
+
+    export let target: string = '';
 </script>
 
 <div
@@ -8,7 +11,11 @@
         class=""
         on:click={(e) => {
             console.log('Header back');
-            history.back();
+            if (target !== '') {
+                goto(target);
+            } else {
+                history.back();
+            }
         }}
         ><svg
             xmlns="http://www.w3.org/2000/svg"

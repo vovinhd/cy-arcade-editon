@@ -39,7 +39,7 @@
   grid-flow-row content"
     in:fly={{ x: 200, duration: 500 }}
 >
-    <BackButton />
+    <BackButton target="/tutorial" />
 
     <h1 class="heading">Challenge-Auswahl</h1>
 

@@ -59,15 +59,15 @@
 
 <style lang="scss">
     .chPulse {
-        animation: 1s ease-in 0s infinite alternate both running chPulse;
+        animation: 1s ease-in 4s infinite alternate both running chPulse;
     }
 
     @keyframes chPulse {
         from {
-            box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.098);
+            box-shadow: 0px 0px 0px 2px rgb(212, 212, 212);
         }
         to {
-            box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.098);
+            box-shadow: 0px 0px 0px 2px rgb(187, 255, 166);
         }
     }
 </style>

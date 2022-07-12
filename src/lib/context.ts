@@ -4,15 +4,15 @@ import type { ApplicationContext, OutlinkState } from './types';
 export const emptyApplicationContext = {
     opponentAnswers: [],
     selectedAnswers: [],
-    selectedChallenge: {
-        id: 'wlist',
-        text: 'Wunschliste führen',
-        options: [
-            { option: 'Ich probiere es für eine Woche', delay: 7 },
-            { option: 'Ich probiere es für zwei Wochen', delay: 14 },
-            { option: 'Ich probiere es für vier Wochen', delay: 28 },
-        ],
-    },
+    // selectedChallenge: {
+    //     id: 'wlist',
+    //     text: 'Wunschliste führen',
+    //     options: [
+    //         { option: 'Ich probiere es für eine Woche', delay: 7 },
+    //         { option: 'Ich probiere es für zwei Wochen', delay: 14 },
+    //         { option: 'Ich probiere es für vier Wochen', delay: 28 },
+    //     ],
+    // },
     quiz: {
         '1': '2',
         '2': '3',

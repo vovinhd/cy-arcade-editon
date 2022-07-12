@@ -104,7 +104,7 @@
     out:fly={{ x: -200, duration: 500 }}
     style="grid-template-rows:8rem 1fr 16rem;"
 >
-    <BackButton />
+    <BackButton target="/challengeselect" />
 
     {#if matchmakerTicket}
         <div
