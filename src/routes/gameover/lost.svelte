@@ -13,7 +13,7 @@
 <div class="grid grid-flow-row place-content-stretch h-full">
     <div class="heading">Du hast zwar nicht gewonnen, aber der Klimaschutz</div>
 
-    {#if !$appContext.singlePlayer}
+    {#if $appContext.result}
         <div class="text-center">
             Dein/e Mitspielerin hatte {Math.abs($appContext.result)} Frage(n) mehr
             richtig
@@ -24,7 +24,7 @@
         <div
             class="text-white bg-nature rounded-full px-24 mx-24 py-2 text-center"
         >
-            Danke das du mitgespielt hast
+            Danke, dass du mitgespielt hast
         </div>
     </div>
 
@@ -34,7 +34,9 @@
 
     <Actions>
         <button
-            class="action-button"
+            class="action-button transition-colors duration-500 {$appContext.selectedFollowupOption
+                ? 'bg-heart text-white'
+                : 'bg-white'}"
             on:click={(_) => selectFollowupOption()}
             disabled={$appContext.selectedChallenge &&
                 !$appContext.selectedFollowupOption}>weiter</button
