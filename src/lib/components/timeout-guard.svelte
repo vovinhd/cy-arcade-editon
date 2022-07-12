@@ -22,7 +22,7 @@
 
     const clearAppContext = () => {
         appContext.set(emptyApplicationContext);
-        appContext.set({ ...$appContext, quizStart: '5' });
+        // appContext.set({ ...$appContext, quizStart: '1' });
     };
 
     const resetTimer = () => {

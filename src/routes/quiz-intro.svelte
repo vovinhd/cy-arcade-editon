@@ -117,7 +117,7 @@
     {/if}
     <h1 class="heading md:mt-0 mt-8">Anleitung</h1>
 
-    <div class="md:px-16 ">
+    <!-- <div class="md:px-16 ">
         <div class="grid grid-flow-row gap-4 hints md:text-2xl ">
             <div
                 class="rounded-lg bg-gradient-to-bl from-blue-100 to-white md:h-56 grid
@@ -166,7 +166,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="actions px-8">
         <Actions>
             <button
