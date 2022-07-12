@@ -18,7 +18,7 @@ let configRemote: CapacitorConfig = {
     ios: {},
 };
 
-if (process.env.CAP_USE_SERVER) {
+if (process.env.CAP_USE_SERVER === 'true') {
     let server = {
         url: process.env.CAP_SERVER_ADDR,
         cleartext: process.env.CAP_USE_CLEARTEXT === 'true',

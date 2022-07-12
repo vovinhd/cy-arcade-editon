@@ -189,7 +189,7 @@
                     >{nkReady
                         ? matchmakerTicket
                             ? 'Abbrechen'
-                            : 'Bereit'
+                            : 'Bereit für ein Match'
                         : 'Keine Verbindung 🤨'}</button
                 >
             </div>
