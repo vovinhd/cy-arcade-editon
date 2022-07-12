@@ -20,7 +20,10 @@
         goto(`/quiz/question/${$appContext.quizStart}`);
     };
 
-    onMount(() => prefetch('/quiz/question/1'));
+    onMount(() => {
+        prefetch(`/quiz/question/${$appContext.quizStart}`);
+        console.log($appContext);
+    });
 
     let useMatchmaker = import.meta.env.VITE_NAKAMA_USE_MATCHMAKER;
     let canStartMatchmaker;
@@ -143,9 +146,16 @@
                     {#if $appContext.selectedChallenge}
                         <div
                             class="bg-lime-200 rounded-sm shadow-md  md:h-56 grid 
-            md:place-content-center place-content-start p-8 quiz relative text-xl font-semibold"
+            md:place-content-center place-content-start p-8 quiz relative "
                         >
-                            {$appContext.selectedChallenge.text}
+                            <div class="text-center text-xl font-semibold">
+                                {$appContext.selectedChallenge.text}
+                            </div>
+                            <br />
+                            <div class="text-md">
+                                {@html $appContext.selectedChallenge
+                                    .explanation}
+                            </div>
                         </div>
                     {/if}
                 </div>
