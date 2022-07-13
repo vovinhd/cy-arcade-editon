@@ -74,7 +74,7 @@
     </div>
     <div>
         <canvas
-            class="md:min-h-[352px] md:max-w-[600px] mx-auto"
+            class="md:max-h-[500px] md:max-w-[600px] mx-auto"
             bind:this={chartElement}
             id="solar-chart"
         />

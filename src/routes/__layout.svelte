@@ -6,6 +6,7 @@
     import { init, nkReady } from '$lib/client';
     import { onMount } from 'svelte';
     import TimeoutGuard from '$lib/components/timeout-guard.svelte';
+import { page } from '$app/stores';
 
     onMount(() => {
         if (!$nkReady) {
@@ -31,7 +32,9 @@
 
 <div class="w-[100vw] min-h-[100vh] bg-container  overflow-hidden">
     {#if import.meta.env.VITE_USE_TIMER === 'true'}
-        <TimeoutGuard limit={60 * 5 * 1000} />
+        {#key $page.url.href}
+            <TimeoutGuard limit={60 * 5 * 1000} />
+        {/key}
     {/if}
     <OutAOverlay />
     <div class="bg">

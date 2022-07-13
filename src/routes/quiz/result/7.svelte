@@ -15,8 +15,8 @@
             Transport, der Produktion oder aufgrund von Verlusten entsteht.
         </p>
     </div>
-    <div class="mx-auto">
-        <img src="/oekostrom-diagram.png" />
+    <div class="mx-auto ">
+        <img class="object-cover max-h-[300px]" src="/oekostrom-diagram.png" alt="Größenvergleich von Ökostrom zu Standardstrom-Fußabruck" />
     </div>
     <span class="text-storm-light text-sm">Angaben in kgCO₂eq</span>
 </div>

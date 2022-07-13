@@ -18,14 +18,16 @@
         return `https://climactivity.de/exhib-exit-survey/?challenge=${encodedParams}`;
     };
 
-    const resetGame = () => {
+    const resetGame = async () => {
         clearAppContext();
-        goto('/');
+        await goto('/');
+        location.reload(true);
+
     };
 
     const restartGame = () => {
         clearAppContext();
-        goto('/quiz-intro');
+        goto('/challengeselect');
     };
 
     const clearAppContext = () => {

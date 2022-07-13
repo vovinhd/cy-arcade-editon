@@ -68,7 +68,7 @@
 
 <style lang="scss">
     .attract {
-        animation: 2s ease-in-out 0ms infinite alternate both running attr;
+        // animation: 2s ease-in-out 0ms infinite alternate both running attr;
     }
 
     @keyframes attr {
