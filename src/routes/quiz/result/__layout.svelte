@@ -22,7 +22,7 @@
     let selfReady = false;
     let minReadingTimeOver = false;
     let timer = 0;
-    let minReadingTime = 100;
+    let minReadingTime = 1000;
     let continueLabel = 'Bereit';
     const getSingleplayerQuizResult = () => {
         let selectAnswers = $appContext.selectedAnswers;
