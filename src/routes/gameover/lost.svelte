@@ -15,7 +15,7 @@
 
     {#if $appContext.result}
         <div class="text-center">
-            Dein/e Mitspielerin hatte {Math.abs($appContext.result)} Frage(n) mehr
+            Dein/e Mitspieler/in hatte {Math.abs($appContext.result)} Frage(n) mehr
             richtig
         </div>
     {/if}
