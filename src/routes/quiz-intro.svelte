@@ -182,7 +182,9 @@
                         : 'not-searching'} z-60 transition-all matchmaker"
                 />
                 <button
-                    class="action-button z-50 relative bg-heart text-white border w-full"
+                    class="action-button z-50 relative {matchmakerTicket
+                        ? 'bg-white text-strom'
+                        : 'bg-heart text-white'} border w-full"
                     disabled={!$nkReady}
                     on:click={(e) => startMatchmaker()}
                     >{$nkReady
