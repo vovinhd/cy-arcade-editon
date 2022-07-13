@@ -26,7 +26,7 @@
                     <MultipleChoiceButton
                         class="multiple-choice-answer"
                         answer={{
-                            answerText: 'von 160 auf 60 kgCO2eq',
+                            answerText: 'von 160 auf 60 kgCO₂eq',
                             correct: false,
                         }}
                         callback={selectAnswer}
@@ -36,7 +36,7 @@
                     <MultipleChoiceButton
                         class="multiple-choice-answer"
                         answer={{
-                            answerText: 'von 400 auf 200 kgCO2eq',
+                            answerText: 'von 400 auf 200 kgCO₂eq',
                             correct: false,
                         }}
                         callback={selectAnswer}
@@ -47,7 +47,7 @@
                     <MultipleChoiceButton
                         class="multiple-choice-answer"
                         answer={{
-                            answerText: 'von 620 auf 30 kgCO2eq',
+                            answerText: 'von 620 auf 30 kgCO₂eq',
                             correct: false,
                         }}
                         callback={selectAnswer}
@@ -58,7 +58,7 @@
                     <MultipleChoiceButton
                         class="multiple-choice-answer"
                         answer={{
-                            answerText: 'von 540 auf 40 kgCO2eq',
+                            answerText: 'von 540 auf 40 kgCO₂eq',
                             correct: true,
                         }}
                         callback={selectAnswer}

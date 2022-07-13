@@ -70,7 +70,7 @@
 <div class="grid grid-flow-row gap-4">
     <div>
         Von durchschnittlichen 10,78 Tonnen emittierten CO₂ entfallen 3,39
-        Tonnen auf den sonstigen Konsum.
+        Tonnen (also ~30%) auf den sonstigen Konsum.
     </div>
     <div>
         <canvas

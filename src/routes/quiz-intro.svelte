@@ -179,9 +179,9 @@
                 />
                 <button
                     class="action-button z-50 relative bg-heart text-white border w-full"
-                    disabled={false}
+                    disabled={!$nkReady}
                     on:click={(e) => startMatchmaker()}
-                    >{nkReady
+                    >{$nkReady
                         ? matchmakerTicket
                             ? 'Abbrechen'
                             : Capacitor.getPlatform() === 'ios'

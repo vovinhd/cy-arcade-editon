@@ -28,6 +28,7 @@ export type ApplicationContext = {
     singlePlayer: boolean;
     quizStart: string;
     result: number;
+    reason?: string;
 };
 
 export type OutlinkState = {

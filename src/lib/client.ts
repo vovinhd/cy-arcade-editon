@@ -78,7 +78,11 @@ socket.ondisconnect = (e) => {
 
 
     // downgrade to single player if connection to server is lost during match
+    console.warn('match disbanded! switching to single player');
     singlePlayer.set(true)
+    appContext.update(ctx => ({...ctx, reason: 'connection lost'}));
+    goto('/gameover/draw');
+
 };
 
 export const leaveMatch = async () => {
@@ -113,6 +117,8 @@ export enum OpCode {
     server_ack_answer = 101,
     client_set_answer = 100,
     client_set_ready = 200,
+    server_presence_left = 300,
+
 }
 
 
@@ -148,6 +154,13 @@ socket.onmatchdata = (matchData) => {
     switch (matchData.op_code) {
         case OpCode.server_match_end:
             console.log('Match ended');
+            break;
+        case OpCode.server_presence_left:
+            console.log('Presence left');
+            console.warn('opponent left, ending match');
+            leaveMatch();
+            appContext.update(ctx => ({...ctx, reason: 'opponent left'}));
+            goto('/gameover/draw');
             break;
         case OpCode.server_show_next_question: 
             console.log('Goto next question');

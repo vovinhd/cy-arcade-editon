@@ -42,7 +42,7 @@
                 <div id="ans3" class="grid">
                     <MultipleChoiceButton
                         class="multiple-choice-answer"
-                        answer={{ answerText: 'ca. 30 %', correct: false }}
+                        answer={{ answerText: 'ca. 30 %', correct: true }}
                         callback={selectAnswer}
                     />
                 </div>
@@ -50,7 +50,7 @@
                 <div id="ans4" class="grid">
                     <MultipleChoiceButton
                         class="multiple-choice-answer"
-                        answer={{ answerText: 'ca. 50 %', correct: true }}
+                        answer={{ answerText: 'ca. 50 %', correct: false }}
                         callback={selectAnswer}
                     />
                 </div>

@@ -1,7 +1,7 @@
 <script lang="ts">
     import { goto, prefetch } from '$app/navigation';
     import { session } from '$app/stores';
-    import { OpCode, sendMatchData, socket } from '$lib/client';
+    import { leaveMatch, OpCode, sendMatchData, socket } from '$lib/client';
     import ContinueButton from '$lib/components/continue-button.svelte';
 
     import {
@@ -54,6 +54,7 @@
 
     const cancel = () => {
         console.log('cancel');
+        leaveMatch();
         clearAppContext(true);
         goto('/');
     };
@@ -178,7 +179,7 @@
     </div>
 
     <div class=" pb-4 pt-8 px-8 ">
-        {#if opponentResult}
+        {#if !$singlePlayer && opponentResult}
             <div class="text-center pb-2  text-2xl title">
                 Dein/e Mitspieler/in lag {opponentCorrect
                     ? 'richtig'

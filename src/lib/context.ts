@@ -13,6 +13,7 @@ export const emptyApplicationContext = {
     //         { option: 'Ich probiere es für vier Wochen', delay: 28 },
     //     ],
     // },
+    // reason: 'opponent left',
     quiz: {
         '1': '2',
         '2': '3',
