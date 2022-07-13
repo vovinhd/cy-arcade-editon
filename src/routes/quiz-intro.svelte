@@ -74,9 +74,8 @@
             };
         } else {
             query = '+properties.region:europe';
-            stringProperties = { region: 'europe', mode: 'wissensspeicher' };
             stringProperties = {
-                region: 'wissensspeicher',
+                region: 'europe',
                 mode: 'wissensspeicher',
                 q_set: $appContext.quizStart === '1' ? '1' : '2',
             };
