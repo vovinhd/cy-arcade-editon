@@ -10,7 +10,7 @@
         </h2> -->
         <p>
             Beim Wechsel zu Ökostrom reduziert sich dein Fußabdruck des
-            Stromverbrauchs von 540 auf 40 kgCO₂eq Berücksichtigt ist hierbei
+            Stromverbrauchs von 540 auf 40 kgCO₂eq. Berücksichtigt ist hierbei
             auch die Vorkette, also der CO₂-Ausstoß, der bei der Gewinnung, dem
             Transport, der Produktion oder aufgrund von Verlusten entsteht.
         </p>
