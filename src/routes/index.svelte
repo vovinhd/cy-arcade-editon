@@ -40,7 +40,7 @@
         </div>
 
         <p class="  md:text-2xl md:px-16 px-8 py-8">
-            Wir entwickeln eine neue Version userer App, die dir beim
+            Wir entwickeln eine neue Version unserer App, die dir beim
             Klimaschutz hilft. Sie wird im Herbst veröffentlicht, aber hier
             kannst du sie jetzt schon ausprobieren.
         </p>
