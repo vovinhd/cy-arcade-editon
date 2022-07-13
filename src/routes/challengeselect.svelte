@@ -47,7 +47,7 @@
         Such dir eine Challenge aus, auf die du Lust hast
     </div>
 
-    <div class="md:p-8 p-2 grid grid-flow-row gap-4 challenges">
+    <div class="md:px-8 md:py-6 p-2 grid grid-flow-row gap-4 challenges">
         <div>
             <ChallengeButton
                 challenge={{
@@ -123,7 +123,7 @@
     </div>
 
     {#if !hasSelectedChallenge}
-        <div class="actions px-8">
+        <div class="actions px-8 mb-12">
             <Actions>
                 <!-- <button
                     class="action-button"
