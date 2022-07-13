@@ -19,6 +19,18 @@
                     : 'Etwas ist schief gelaufen 🤦‍♀️'}
             </div>
         </div>
+
+        <Actions>
+            <button
+                class="action-button"
+                on:click={async (e) => {
+                    await goto('/');
+                    location.reload(true);
+                }}
+            >
+                Neu laden
+            </button>
+        </Actions>
     {:else}
         <div class="heading">
             Du hast zwar nicht gewonnen, aber der Klimaschutz
@@ -47,9 +59,4 @@
             >
         </Actions>
     {/if}
-    <Actions>
-        <button class="action-button" on:click={(_) => selectFollowupOption()}
-            >weiter</button
-        >
-    </Actions>
 </div>

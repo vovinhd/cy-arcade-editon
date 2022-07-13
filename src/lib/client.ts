@@ -100,7 +100,7 @@ socket.onmatchmakermatched = async (matched) => {
     ownPresenceId.set(match.self.session_id); 
     _ownPresenceId = match.self.session_id;
     console.log(match);
-    goto('/quiz/question/1');
+    // goto(`/quiz/question/${match.data.current_question}`);
 };
 
 export enum OpCode {
@@ -152,6 +152,9 @@ socket.onmatchdata = (matchData) => {
     matchdata.set(matchData);
 
     switch (matchData.op_code) {
+        case OpCode.server_match_started:
+            console.log('match started');
+            goto(`/quiz/question/${matchData.data.current_question}`);
         case OpCode.server_match_end:
             console.log('Match ended');
             break;

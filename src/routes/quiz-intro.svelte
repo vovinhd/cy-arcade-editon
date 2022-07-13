@@ -189,6 +189,17 @@
                             : 'Bereit für ein Match'
                         : 'Keine Verbindung 🤨'}</button
                 >
+                {#if !$nkReady}
+                    <button
+                        class="action-button"
+                        on:click={async (e) => {
+                            await goto('/');
+                            location.reload(true);
+                        }}
+                    >
+                        Neu laden
+                    </button>
+                {/if}
             </div>
         </div>
     </div>
