@@ -53,6 +53,8 @@
         clearTimeout(timeOut);
     };
     onMount(() => {
+        invalidateTimers();
+
         appContext.update(
             (value) =>
                 (value = {
@@ -64,13 +66,19 @@
 
         prefetch(`/quiz/result/${id}`);
         if (pauseTimer) return;
-        timerUpdate = setInterval(() => {
-            timer = timer - 16;
-        }, 16);
+        // let timer = graceTime + maxTime;
 
-        timeOut = setTimeout(() => {
-            finish();
-        }, graceTime + maxTime);
+        timerUpdate = setInterval(() => {
+            timer = timer - 200;
+            // console.log(timer);
+            if (timer <= -graceTime) {
+                finish();
+            }
+        }, 200);
+
+        // timeOut = setTimeout(() => {
+        //     finish();
+        // }, graceTime + maxTime);
     });
 
     page.subscribe((v) => {
@@ -86,12 +94,16 @@
             min="0"
         >
             <div
-                class=" w-full shadow-sm bg-red-400 bg-gradient-to-r from-red-600 to-red-400 h-8"
+                class="{timer / maxTime < 0.7
+                    ? 'animate-pulse'
+                    : ''} transition-transfrom duration-200 w-full shadow-sm bg-red-400 bg-gradient-to-r from-red-600 to-red-400 h-8"
                 id="timer"
                 min="0"
                 max={maxTime}
                 value={timer}
-                style="width: {100 * Math.min(1.0, timer / maxTime)}%"
+                style="transform-origin: top left;
+                transition-timing-function: linear;
+                transform: scale({Math.min(1.0, timer / maxTime)}, 1);"
             />
         </div>
     </div>
