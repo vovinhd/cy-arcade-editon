@@ -26,7 +26,7 @@
 <div
     class="bg-zinc-50 rounded-md shadow-lg hero md:inset-16 md:mb-48 inset-0 inset-y-16 grid grid-flow-row attract md:overflow-hidden"
     style="grid-template-rows: 1fr 1fr;"
-    out:fly={{ x: -200, duration: 500 }}
+    transition:fly={{ x: -200, duration: 500 }}
 >
     <!-- <h1 class="text-center p-8 text-2xl">Attract Screen</h1> -->
 

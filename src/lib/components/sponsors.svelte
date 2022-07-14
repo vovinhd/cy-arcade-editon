@@ -5,7 +5,7 @@
 <div
     class="bg-opacity-0 md:bg-zinc-50 md:bg-opacity-100  shadow-lg   lg:rounded-md  grid grid-flow-row place-content-end pt-8 pb-2  slider overflow-hidden"
     style=""
-    out:fly={{ x: -200, duration: 500 }}
+    transition:fly={{ y: 200, duration: 500 }}
 >
     <div class="text-center absolute w-full">Gefördert durch</div>
     <div
