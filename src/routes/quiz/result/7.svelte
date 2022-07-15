@@ -9,14 +9,19 @@
             durchschnittlichen deutschen Haushalt
         </h2> -->
         <p>
-            Beim Wechsel zu Ökostrom reduziert sich dein Fußabdruck des
-            Stromverbrauchs von 540 auf 40 kgCO₂eq. Berücksichtigt ist hierbei
-            auch die Vorkette, also der CO₂-Ausstoß, der bei der Gewinnung, dem
-            Transport, der Produktion oder aufgrund von Verlusten entsteht.
+            Beim Wechsel zu Ökostrom reduziert sich der durchschnittliche
+            Fußabdruck des Stromverbrauchs von 540 auf 40 kgCO₂eq.
+            Berücksichtigt ist hierbei auch die Vorkette, also der CO₂-Ausstoß,
+            der bei der Gewinnung, dem Transport, der Produktion oder aufgrund
+            von Verlusten entsteht.
         </p>
     </div>
     <div class="mx-auto ">
-        <img class="object-cover max-h-[300px]" src="/oekostrom-diagram.png" alt="Größenvergleich von Ökostrom zu Standardstrom-Fußabruck" />
+        <img
+            class="object-cover max-h-[300px]"
+            src="/oekostrom-diagram.png"
+            alt="Größenvergleich von Ökostrom zu Standardstrom-Fußabruck"
+        />
     </div>
     <span class="text-storm-light text-sm">Angaben in kgCO₂eq</span>
 </div>

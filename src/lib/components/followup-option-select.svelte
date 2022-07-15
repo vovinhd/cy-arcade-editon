@@ -1,6 +1,7 @@
 <script lang="ts">
     import { appContext } from '$lib/context';
     import type { FollowupOption } from '$lib/types';
+    import OutA from './out-a.svelte';
     export let showNoop = false;
     const selectOption = (option?: FollowupOption) => {
         let selectedFollowupOption = option
@@ -22,7 +23,16 @@
     <div class="p-8 space-y-4">
         <div class="font-bold">{$appContext.selectedChallenge.text}</div>
         {#if $appContext.selectedChallenge.explanation}
-            <div>{@html $appContext.selectedChallenge.explanation}</div>
+            {#if $appContext.selectedChallenge.id === 'oekostrom'}
+                Ich wechsle zu einem Stromanbieter mit Label aus der
+                <OutA
+                    href="https://utopia.de/bestenlisten/die-besten-oekostrom-anbieter/"
+                >
+                    Utopia-Bestenliste
+                </OutA>
+            {:else}
+                <div>{@html $appContext.selectedChallenge.explanation}</div>
+            {/if}
         {/if}
     </div>
     <div class="pt-0 p-8 space-y-4">

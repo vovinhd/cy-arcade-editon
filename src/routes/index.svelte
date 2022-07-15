@@ -6,6 +6,7 @@
     import { StatusBar } from '@capacitor/status-bar';
     import { onMount } from 'svelte';
     import BlobAnim from '$lib/components/blob-anim.svelte';
+    import Sponsors from '$lib/components/sponsors.svelte';
     const hideStatusBar = async () => {
         await StatusBar.hide();
     };
@@ -23,9 +24,9 @@
 </svelte:head>
 
 <div
-    class="bg-zinc-50 rounded-md shadow-lg hero md:inset-16 inset-0 inset-y-16 grid grid-flow-row attract"
+    class="bg-zinc-50 rounded-md shadow-lg hero md:inset-16 md:mb-48 inset-0 inset-y-16 grid grid-flow-row attract md:overflow-hidden"
     style="grid-template-rows: 1fr 1fr;"
-    out:fly={{ x: -200, duration: 500 }}
+    transition:fly={{ x: -200, duration: 500 }}
 >
     <!-- <h1 class="text-center p-8 text-2xl">Attract Screen</h1> -->
 
@@ -35,7 +36,8 @@
                 src="/kiko-slogan.webp"
                 alt="logo"
                 width="100%"
-                max-height="400"
+                max-height="200px"
+                class="object-contain h-56"
             />
         </div>
 
@@ -65,20 +67,6 @@
         </div>
     </div>
 </div>
-
-<style lang="scss">
-    .attract {
-        // animation: 2s ease-in-out 0ms infinite alternate both running attr;
-    }
-
-    @keyframes attr {
-        0% {
-            opacity: 1;
-            transform: rotateZ(-1deg);
-        }
-        100% {
-            opacity: 1;
-            transform: rotateZ(1deg);
-        }
-    }
-</style>
+<div class="absolute bottom-8 grid place-content-center w-full">
+    <Sponsors />
+</div>
