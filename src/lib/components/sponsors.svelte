@@ -3,47 +3,47 @@
 </script>
 
 <div
-    class="bg-opacity-0 md:bg-zinc-50 md:bg-opacity-100  shadow-lg   lg:rounded-md  grid grid-flow-row place-content-end pt-8 pb-2  slider overflow-hidden"
+    class="bg-opacity-0 md:bg-white md:bg-opacity-100  shadow-lg  lg:rounded-md  grid grid-flow-row place-content-end pt-8 pb-2  slider overflow-hidden"
     style=""
     transition:fly={{ y: 200, duration: 500 }}
 >
     <div class="text-center absolute w-full">Gefördert durch</div>
-    <div
-        class="slide-track grid grid-flow-col gap-4 place-content-start "
-        style=""
-    >
-        <img src="/Energie.jpeg" />
-        <img src="/Konsum.jpeg" />
-        <img src="/Ernaehrung.jpeg" />
-        <img src="/Engagement_gesellschaftlich.jpeg" />
-        <img src="/Engagement_privat.jpeg" />
-        <img src="/Mobilitaet.jpeg" />
+    <div class="slide-track grid grid-flow-col place-content-start " style="">
+        <img src="/sp_bmu.png" />
+        <img src="/sp_bremen.jpeg" />
+        <img src="/sp_lotto.jpeg" />
+        <img src="/sp_uwb.jpg" />
+        <img src="/sp_exist.png" />
+        <!-- <img src="/Mobilitaet.jpeg" /> -->
 
-        <img src="/Energie.jpeg" />
-        <img src="/Konsum.jpeg" />
-        <img src="/Ernaehrung.jpeg" />
-        <img src="/Engagement_gesellschaftlich.jpeg" />
-        <img src="/Engagement_privat.jpeg" />
-        <img src="/Mobilitaet.jpeg" />
+        <img src="/sp_bmu.png" />
+        <img src="/sp_bremen.jpeg" />
+        <img src="/sp_lotto.jpeg" />
+        <img src="/sp_uwb.jpg" />
+        <img src="/sp_exist.png" />
+        <!-- <img src="/Mobilitaet.jpeg" /> -->
     </div>
 </div>
 
 <style lang="scss">
-    $animationSpeed: 20s;
-    $width: calc((9rem + 1rem) * 6);
+    $animationSpeed: 40s;
+    $sponsorWidth: 14rem;
+    $sponsorHeight: 9rem;
+    $gapWidth: 1rem;
+    $width: calc(($sponsorWidth + $gapWidth) * 5);
     @mixin white-gradient {
         background: linear-gradient(
             to right,
-            rgba(255, 255, 255, 1) 0%,
-            rgba(255, 255, 255, 0) 100%
+            rgba(250, 250, 250, 1) 0%,
+            rgba(250, 250, 250, 0) 100%
         );
     }
 
     @mixin white-gradient {
         background: linear-gradient(
             to right,
-            rgba(255, 255, 255, 1) 0%,
-            rgba(255, 255, 255, 0) 100%
+            rgba(250, 250, 250, 1) 0%,
+            rgba(250, 250, 250, 0) 100%
         );
     }
 
@@ -89,10 +89,13 @@
             animation: scroll $animationSpeed linear infinite;
             display: flex;
             width: calc($width * 2);
+            gap: $gapWidth;
         }
 
         .slide-track > * {
-            @apply h-36 w-36 object-cover;
+            object-fit: contain;
+            width: $sponsorWidth;
+            height: $sponsorHeight;
         }
     }
 </style>

@@ -8,10 +8,17 @@
         verursacht
     </div>
     <div class="mx-auto">
-        <img class="h-[350px] object-contain" src="/historic-emissions-diagram.png" />
+        <img
+            class="h-[350px] object-contain"
+            src="/historic-emissions-diagram.png"
+        />
     </div>
     <div class="text-sm">
-        Die Ländergrößen zeigen die CO₂ Emissionen aus der Energienutzung 1850-2011. Diese historischen (auch "kumulativen") Emissionen bleiben relevant, weil CO₂ über Jahrhunderte in der Luft bleiben kann. Europa und die USA dominieren, da sie für etwa die Hälfte aller jemals ausgestoßenen CO₂ Emissionen verantwortlich sind.
+        Die Ländergrößen zeigen die CO₂ Emissionen aus der Energienutzung
+        1850-2011. Diese historischen (auch "kumulativen") Emissionen bleiben
+        relevant, weil CO₂ über Jahrhunderte in der Luft bleiben kann. Europa
+        und die USA dominieren, da sie für etwa die Hälfte aller jemals
+        ausgestoßenen CO₂ Emissionen verantwortlich sind.
     </div>
 </div>
 
