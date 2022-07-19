@@ -16,6 +16,11 @@ let {
     NODEMAILER_AUTH_PASSWORD,
     NODEMAILER_FROM_ADDRESS,
 } = process.env;
+
+const challengeTemplates: {
+    [key: string]: ChallengeData;
+} = require('./templates/challenges.json');
+
 // Provide a custom schema. Defaults to "public".
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLIC_ANON_KEY);
 
@@ -31,7 +36,9 @@ const mailTransport = createTransport({
 });
 
 const mailTextTemplate = (challengeData) => {
-    const { challengeTitle, challengeText } = challengeData;
+    const { challengeTitle, challengeText } = challengeTemplates[
+        challengeData.ch
+    ];
 
     const reply = `Hallo, 
 
