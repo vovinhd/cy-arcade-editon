@@ -62,15 +62,7 @@ const sendAcknowledgement = async (email, challenge) => {
         text: textToSend,
     };
 
-    const mailResult = await mailTransport.sendMail(mailOptions, (err, _) => {
-        if (err) {
-            console.error(err);
-            throw err;
-        } else {
-            console.log('Mail send 📧');
-            return true;
-        }
-    });
+    const mailResult = await mailTransport.sendMail(mailOptions, null);
     return mailResult;
 };
 
