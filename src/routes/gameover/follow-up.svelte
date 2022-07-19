@@ -1,9 +1,14 @@
 <script>
     import { goto } from '$app/navigation';
+    import { sendAnalytics } from '$lib/client';
     import Actions from '$lib/components/actions.svelte';
 
     import QrCode from '$lib/components/qr-code.svelte';
-    import { appContext, emptyApplicationContext } from '$lib/context';
+    import {
+        appContext,
+        clearAppContext,
+        emptyApplicationContext,
+    } from '$lib/context';
     import { onMount } from 'svelte';
 
     const makeFollowupLink = () => {
@@ -19,7 +24,7 @@
     };
 
     const resetGame = async () => {
-        clearAppContext();
+        clearAppContext(true);
         await goto('/');
         location.reload(true);
     };
@@ -29,13 +34,25 @@
         goto('/challengeselect');
     };
 
-    const clearAppContext = () => {
-        appContext.set(emptyApplicationContext);
-        appContext.set({ ...$appContext, quizStart: '5' });
-    };
+    // const clearAppContext = () => {
+    //     appContext.set(emptyApplicationContext);
+    //     appContext.set({ ...$appContext, quizStart: '5' });
+    // };
 
     let followupLink;
-    onMount(() => (followupLink = makeFollowupLink()));
+    onMount(() => {
+        followupLink = makeFollowupLink();
+        sendAnalytics(
+            'follow_up_options',
+            {
+                selected_followup_option:
+                    $appContext.selectedFollowupOption.delay,
+                single_player: $appContext.singlePlayer,
+                selected_challenge: $appContext.selectedChallenge.id,
+            },
+            $appContext.contextId
+        );
+    });
 </script>
 
 <div

@@ -4,9 +4,10 @@
     import { goto, prefetch } from '$app/navigation';
     import Actions from '$lib/components/actions.svelte';
     import { onMount } from 'svelte';
-    import { init, nkReady, socket } from '$lib/client';
+    import { init, nkReady, sendAnalytics, socket } from '$lib/client';
     import { appContext, matchstatus, singlePlayer } from '$lib/context';
     import BackButton from '$lib/components/back-button.svelte';
+    import { v4 } from 'uuid';
     let hasSelectedChallenge = false;
 
     const startSingle = () => {
@@ -15,8 +16,19 @@
             return {
                 ...ctx,
                 selectedAnswers: [],
+                contextId: v4(),
             };
         });
+
+        sendAnalytics(
+            'startSingle',
+            {
+                start_question: $appContext.quizStart,
+                selected_challenge: $appContext.selectedChallenge.id,
+            },
+            $appContext.contextId
+        );
+
         goto(`/quiz/question/${$appContext.quizStart}`);
     };
 

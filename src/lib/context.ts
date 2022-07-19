@@ -48,7 +48,7 @@ export const matchstatus = writable<Match>(null);
 export const matchdata = writable<MatchData>(null);
 export const singlePlayer = writable<Boolean>(true);
 
-export const clearAppContext = (reset: boolean) => {
+export const clearAppContext = (reset: boolean = false) => {
     if (reset) {
         appContext.set(emptyApplicationContext);
     } else {

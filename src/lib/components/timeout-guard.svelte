@@ -3,7 +3,11 @@
 
     import { page } from '$app/stores';
     import { leaveMatch } from '$lib/client';
-    import { appContext, emptyApplicationContext } from '$lib/context';
+    import {
+        appContext,
+        clearAppContext,
+        emptyApplicationContext,
+    } from '$lib/context';
     import { onDestroy, onMount } from 'svelte';
 
     export let limit = 60 * 5 * 1000;
@@ -20,10 +24,10 @@
         goto('/');
     };
 
-    const clearAppContext = () => {
-        appContext.set(emptyApplicationContext);
-        // appContext.set({ ...$appContext, quizStart: '1' });
-    };
+    // const clearAppContext = () => {
+    //     appContext.set(emptyApplicationContext);
+    //     // appContext.set({ ...$appContext, quizStart: '1' });
+    // };
 
     const resetTimer = () => {
         timeout = limit;

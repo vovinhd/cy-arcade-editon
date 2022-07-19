@@ -1,7 +1,7 @@
 <script lang="ts">
     import { goto, prefetch } from '$app/navigation';
     import { page } from '$app/stores';
-    import { OpCode, sendMatchData, socket } from '$lib/client';
+    import { OpCode, sendAnalytics, sendMatchData, socket } from '$lib/client';
     import { appContext, matchstatus, singlePlayer } from '$lib/context';
 
     import type { Answer } from '$lib/types';
@@ -42,6 +42,17 @@
     };
 
     const finish = () => {
+        sendAnalytics(
+            'question_answer',
+            {
+                question_id: id,
+                answer: selectedanswer ?? 'dnf',
+                time: graceTime + maxTime - timer,
+                single_player: $singlePlayer,
+            },
+            $appContext.contextId
+        );
+
         invalidateTimers();
         if (!$singlePlayer)
             sendMatchData(OpCode.client_set_answer, selectedanswer);

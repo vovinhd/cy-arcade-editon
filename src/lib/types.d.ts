@@ -29,6 +29,7 @@ export type ApplicationContext = {
     quizStart: string;
     result: number;
     reason?: string;
+    contextId?: string;
 };
 
 export type OutlinkState = {

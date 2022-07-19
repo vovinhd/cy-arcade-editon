@@ -1,7 +1,13 @@
 <script lang="ts">
     import { goto, prefetch } from '$app/navigation';
     import { session } from '$app/stores';
-    import { leaveMatch, OpCode, sendMatchData, socket } from '$lib/client';
+    import {
+        leaveMatch,
+        OpCode,
+        sendAnalytics,
+        sendMatchData,
+        socket,
+    } from '$lib/client';
     import ContinueButton from '$lib/components/continue-button.svelte';
 
     import {
@@ -41,18 +47,42 @@
     const nextQuestionId = $appContext.quiz[$appContext.currentQuestionId];
     const nextQuestionOrResult = () => {
         console.log($appContext);
+
         if (nextQuestionId) {
             goto(`/quiz/question/${nextQuestionId}`);
         } else {
             if ($appContext.singlePlayer) {
-                goto(
-                    `/gameover/${getSingleplayerQuizResult() ? 'won' : 'lost'}`
+                let result = getSingleplayerQuizResult();
+
+                sendAnalytics(
+                    'singleplayer_result',
+                    {
+                        question_id: $appContext.currentQuestionId,
+                        answers: $appContext.selectedAnswers,
+                        result,
+                        single_player: true,
+                        selected_challenge: $appContext.selectedChallenge,
+                    },
+                    $appContext.contextId
                 );
+
+                goto(`/gameover/${result ? 'won' : 'lost'}`);
             }
         }
     };
 
     const cancel = () => {
+        sendAnalytics(
+            'match_cancel',
+            {
+                question_id: $appContext.currentQuestionId,
+                answer: currentlySelectedAnswer,
+                single_player: $singlePlayer,
+                selected_challenge: $appContext.selectedChallenge,
+            },
+            $appContext.contextId
+        );
+
         console.log('cancel');
         leaveMatch();
         clearAppContext(true);

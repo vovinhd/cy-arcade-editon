@@ -1,4 +1,4 @@
-import { Client, WebSocketAdapterText, Session, type Match, type MatchData } from '@heroiclabs/nakama-js';
+import { Client, WebSocketAdapterText, Session, type Match, type MatchData, type Socket, type WriteStorageObject } from '@heroiclabs/nakama-js';
 import { v4 } from 'uuid';
 import { writable } from 'svelte/store';
 import { appContext, matchdata, matchstatus, ownPresenceId, singlePlayer } from './context';
@@ -18,7 +18,7 @@ var client = new Client(
 let deviceId: string;
 let session: Session;
 let reconnectHandle
-export let socket = client.createSocket(
+export let socket: Socket = client.createSocket(
     import.meta.env.VITE_NAKAMA_USE_SSL === 'true',
     false,
     new WebSocketAdapterText()
@@ -154,6 +154,15 @@ socket.onmatchdata = (matchData) => {
     switch (matchData.op_code) {
         case OpCode.server_match_started:
             console.log('match started');
+            let appCtx;
+            appContext.update(ctx => {
+                let newCtx = {...ctx, contextId: matchId}
+                appCtx = newCtx;
+                return newCtx
+            });
+            sendAnalytics('start_mp', {
+                
+            }, matchId);
             goto(`/quiz/question/${matchData.data.current_question}`);
         case OpCode.server_match_end:
             console.log('Match ended');
@@ -191,3 +200,27 @@ export const sendMatchData = (opcode, data = null, presence = null) => {
     socket.sendMatchState(matchId, opcode, data, presence )
 }
 
+
+
+export const sendAnalytics = async (event: string, data: any, contextId?: string) => {
+
+    let writeObjects: WriteStorageObject[] = [{
+        collection: 'client_telemetry',
+        key: `${event}_ctx:${contextId ?? 'NO_CONTEXT'}_evId:${v4()}`,
+        permission_read: 0,
+        permission_write: 0,
+        value: {
+            event,
+            device: deviceId,
+            data,
+            contextId: contextId ?? null,
+        }
+    }];
+
+    try {
+        await client.writeStorageObjects(session, writeObjects)
+    } catch (e) {
+        console.error(e);
+    }
+
+}
