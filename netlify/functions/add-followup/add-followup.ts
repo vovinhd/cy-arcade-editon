@@ -62,7 +62,7 @@ const sendAcknowledgement = async (email, challenge) => {
         text: textToSend,
     };
 
-    const mailResult = await mailTransport.sendMail(mailOptions, null);
+    const mailResult = await mailTransport.sendMail(mailOptions);
     return mailResult;
 };
 
