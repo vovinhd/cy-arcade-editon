@@ -61,7 +61,7 @@ const handle = async (event) => {
     }
 
     let updates = 0;
-    data.map((followup: FollowUp) => {
+    data.map(async (followup: FollowUp) => {
         if (followup.remind_at > new Date()) {
             return;
         }
@@ -83,7 +83,7 @@ const handle = async (event) => {
             text: textToSend,
         };
 
-        mailTransport.sendMail(mailOptions, async (err, _) => {
+        await mailTransport.sendMail(mailOptions, async (err, _) => {
             if (err) {
                 console.error(err);
                 return {
