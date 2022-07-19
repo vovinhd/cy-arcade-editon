@@ -44,7 +44,7 @@ const mailTextTemplate = (challengeData) => {
     return reply;
 };
 
-const sendAcknowledgement = (email, challenge) => {
+const sendAcknowledgement = async (email, challenge) => {
     let htmlToSend,
         textToSend = '';
     if (challenge) {
@@ -62,14 +62,16 @@ const sendAcknowledgement = (email, challenge) => {
         text: textToSend,
     };
 
-    mailTransport.sendMail(mailOptions, async (err, _) => {
+    const mailResult = await mailTransport.sendMail(mailOptions, (err, _) => {
         if (err) {
             console.error(err);
             throw err;
         } else {
             console.log('Mail send 📧');
+            return true;
         }
     });
+    return mailResult;
 };
 
 const dateToTZStr = (date) => {
@@ -160,11 +162,12 @@ export const handler: Handler = async (event, context) => {
             };
         }
 
-        sendAcknowledgement(email, challengeData);
+        const mailResult = sendAcknowledgement(email, challengeData);
         return {
             statusCode: 200,
             body: JSON.stringify({
                 message: 'Record added',
+                mail_ack_send: mailResult,
             }),
         };
     } catch (error) {
