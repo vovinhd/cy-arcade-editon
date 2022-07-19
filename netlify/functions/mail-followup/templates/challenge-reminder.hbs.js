@@ -6,6 +6,10 @@ export const template = `<html>
 
 <body>
     <div>
+        <p>
+            danke, dass Du dir eine unserer Challenges vorgenommen hattest. 
+         </p>
+
         <h1 style="font-weight: bold;"> Challenge Reminder </h1>
         <p>
             <span>{{challengeTitle}}</span>
@@ -13,13 +17,6 @@ export const template = `<html>
         <p>
             <span>{{challengeText}}</span>
         </p>
-
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste officia ratione, ad dolor quaerat possimus
-            ipsam
-            blanditiis deserunt, ut at magni vel saepe, minus maxime voluptas aut culpa non expedita.
-        </p>
-
         <p>
             <span>Herzliche Grüße vom climactivity-Team</span>
         </p>
