@@ -7,10 +7,9 @@ export const template = `<html>
 <body>
     <div>
         <p>
-            danke, dass Du dir eine unserer Challenges vorgenommen hattest. 
+            danke, dass Du dir eine unserer Challenges für {{weeks}} Woche{{plural}} vorgenommen hattest. 
          </p>
 
-        <h1 style="font-weight: bold;"> Challenge Reminder </h1>
         <p>
             <span>{{challengeTitle}}</span>
         </p>
