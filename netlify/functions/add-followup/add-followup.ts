@@ -154,7 +154,7 @@ export const handler: Handler = async (event, context) => {
             };
         }
 
-        const mailResult = sendAcknowledgement(email, challengeData);
+        const mailResult = await sendAcknowledgement(email, challengeData);
         return {
             statusCode: 200,
             body: JSON.stringify({
