@@ -6,6 +6,7 @@ import type { ChallengeData, FollowUp } from './types';
 import { compile } from 'handlebars';
 import { template } from './templates/challenge-reminder.hbs';
 let {
+    API_SECRET,
     SUPABASE_URL,
     SUPABASE_PUBLIC_ANON_KEY,
     NODEMAILER_SMTP,
