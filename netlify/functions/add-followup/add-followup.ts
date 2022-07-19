@@ -1,10 +1,75 @@
 import { Handler } from '@netlify/functions';
 import { createClient } from '@supabase/supabase-js';
 
-let { SUPABASE_URL, SUPABASE_PUBLIC_ANON_KEY, API_SECRET } = process.env;
-
+import { createTransport } from 'nodemailer';
+import type { ChallengeData, FollowUp } from './types';
+import { compile } from 'handlebars';
+import { template } from './templates/challenge-reminder.hbs';
+let {
+    SUPABASE_URL,
+    SUPABASE_PUBLIC_ANON_KEY,
+    NODEMAILER_SMTP,
+    NODEMAILER_PORT,
+    NODEMAILER_USESSL,
+    NODEMAILER_AUTH_USERNAME,
+    NODEMAILER_AUTH_PASSWORD,
+    NODEMAILER_FROM_ADDRESS,
+} = process.env;
 // Provide a custom schema. Defaults to "public".
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLIC_ANON_KEY);
+
+const mailMainTemplate = compile(template);
+const mailTransport = createTransport({
+    host: NODEMAILER_SMTP,
+    port: NODEMAILER_PORT,
+    secure: NODEMAILER_USESSL,
+    auth: {
+        user: NODEMAILER_AUTH_USERNAME,
+        pass: NODEMAILER_AUTH_PASSWORD,
+    },
+});
+
+const mailTextTemplate = (challengeData) => {
+    const { challengeTitle, challengeText } = challengeData;
+
+    const reply = `Hallo, 
+
+    danke, dass Du dir eine unserer Challenges vorgenommen hattest. 
+
+    ${challengeTitle}
+    ${challengeText}
+
+    Herzliche Grüße vom climactivity-Team`;
+    return reply;
+};
+
+const sendAcknowledgement = (email, challenge) => {
+    let htmlToSend,
+        textToSend = '';
+    if (challenge) {
+        htmlToSend = mailMainTemplate(challenge);
+        textToSend = mailTextTemplate(challenge);
+    }
+
+    const subject = 'Erinnerung an deine Challenge';
+
+    const mailOptions = {
+        from: NODEMAILER_FROM_ADDRESS,
+        to: email,
+        subject,
+        html: htmlToSend,
+        text: textToSend,
+    };
+
+    mailTransport.sendMail(mailOptions, async (err, _) => {
+        if (err) {
+            console.error(err);
+            throw err;
+        } else {
+            console.log('Mail send 📧');
+        }
+    });
+};
 
 const dateToTZStr = (date) => {
     const offset = date.getTimezoneOffset();
@@ -93,6 +158,8 @@ export const handler: Handler = async (event, context) => {
                 }),
             };
         }
+
+        sendAcknowledgement(email, challengeData);
         return {
             statusCode: 200,
             body: JSON.stringify({

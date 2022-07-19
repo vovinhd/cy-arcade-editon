@@ -39,7 +39,7 @@ const mailTextTemplate = (challengeData) => {
     const reply = `Hallo, 
 
     danke, dass Du dir eine unserer Challenges vorgenommen hattest. 
-    
+
     ${challengeTitle}
     ${challengeText}
 
@@ -72,9 +72,7 @@ const handle = async (event) => {
                 ...challengeData[followup.challenge],
             });
 
-            textToSend = `Erinnerung an: ${
-                challengeData[followup.challenge].challengeTitle
-            } ${challengeData[followup.challenge].challengeText}`;
+            textToSend = mailTextTemplate(challengeData[followup.challenge]);
         }
 
         const mailOptions = {
