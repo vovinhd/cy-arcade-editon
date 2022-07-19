@@ -36,9 +36,7 @@ const mailTransport = createTransport({
 });
 
 const mailTextTemplate = (challengeData) => {
-    const { challengeTitle, challengeText } = challengeTemplates[
-        challengeData.ch
-    ];
+    const { challengeTitle, challengeText } = challengeData;
 
     const reply = `Hallo, 
 
@@ -52,11 +50,12 @@ const mailTextTemplate = (challengeData) => {
 };
 
 const sendAcknowledgement = async (email, challenge) => {
+    const challengeData = challengeTemplates[challenge.ch];
     let htmlToSend,
         textToSend = '';
-    if (challenge) {
-        htmlToSend = mailMainTemplate(challenge);
-        textToSend = mailTextTemplate(challenge);
+    if (challengeData) {
+        htmlToSend = mailMainTemplate(challengeData);
+        textToSend = mailTextTemplate(challengeData);
     }
 
     const subject = 'Erinnerung an deine Challenge';
