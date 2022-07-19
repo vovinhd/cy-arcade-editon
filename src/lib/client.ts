@@ -161,14 +161,24 @@ socket.onmatchdata = (matchData) => {
                 return newCtx
             });
             sendAnalytics('start_mp', {
-                
+
             }, matchId);
             goto(`/quiz/question/${matchData.data.current_question}`);
         case OpCode.server_match_end:
+            appContext.update(ctx => ({...ctx, matchDone: true}));
+
             console.log('Match ended');
             break;
         case OpCode.server_presence_left:
             console.log('Presence left');
+            let context
+            appContext.update(ctx => {
+                context = ctx; 
+                return ctx
+            });
+            if (context.matchDone) {
+                break;
+            }
             console.warn('opponent left, ending match');
             leaveMatch();
             appContext.update(ctx => ({...ctx, reason: 'opponent left'}));
@@ -181,7 +191,7 @@ socket.onmatchdata = (matchData) => {
         case OpCode.server_match_result:
             let result = getMpQuizResult(matchData.data, _ownPresenceId);
             console.log("Match ended, match result:", matchData.data, result);
-            appContext.update(ctx => ({...ctx, result}));
+            appContext.update(ctx => ({...ctx, result, matchDone: true}));
             if (result === 0) {
                 goto('/gameover/draw');
             } else if (result > 0) {

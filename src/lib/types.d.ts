@@ -30,6 +30,7 @@ export type ApplicationContext = {
     result: number;
     reason?: string;
     contextId?: string;
+    matchDone?: boolean;
 };
 
 export type OutlinkState = {
