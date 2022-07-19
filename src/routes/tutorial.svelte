@@ -21,6 +21,22 @@
     <!-- <a href="#" class="6 "> -->
     <div class="grid md:px-16 grid-flow-row gap-4 hints md:text-2xl ">
         <div
+            class="rounded-lg bg-gradient-to-bl from-yellow-100 to-white md:h-36 grid
+md:place-content-center place-content-start p-8 quiz relative "
+        >
+            <img
+                src="/check.svg"
+                alt=""
+                class="blur-[2px] md:blur-sm  md:w-56 md:h-36 w-16 h-16 top-2 right-4 rotate-12
+  absolute"
+            />
+
+            <div class="relative blur-0 text-center">
+                ➤ Such dir eine Challenge als Spieleinsatz aus
+            </div>
+        </div>
+
+        <div
             class="rounded-lg bg-gradient-to-bl from-blue-100 to-white md:h-36 grid
         md:place-content-center place-content-start p-8 quiz relative "
         >
@@ -32,23 +48,8 @@
             />
 
             <div class="relative blur-0 text-center">
-                ➤ Drei Fragen aus verschiedenen Bereichen des Klimaschutzes
-            </div>
-        </div>
-
-        <div
-            class="rounded-lg bg-gradient-to-bl from-yellow-100 to-white md:h-36 grid
-    md:place-content-center place-content-start p-8 quiz relative "
-        >
-            <img
-                src="/check.svg"
-                alt=""
-                class="blur-[2px] md:blur-sm  md:w-56 md:h-36 w-16 h-16 top-2 right-4 rotate-12
-      absolute"
-            />
-
-            <div class="relative blur-0 text-center">
-                ➤ Eine Challenge als Spieleinsatz aussuchen
+                ➤ Beantworte drei Fragen aus verschiedenen Bereichen des
+                Klimaschutzes
             </div>
         </div>
 
@@ -64,7 +65,7 @@
             />
 
             <div class="relative blur-0 text-center">
-                ➤ Alleine oder gegen die Person gegenüber
+                ➤ Spiele alleine oder gegen die Person gegenüber
             </div>
         </div>
         <div

@@ -82,5 +82,5 @@
 </div>
 
 siehe <OutA href="https://uba.co2-rechner.de/de_DE/footprint#panel-calc"
-    >UBA CO2-Rechner</OutA
+    >UBA CO2-Rechner (2022)</OutA
 >

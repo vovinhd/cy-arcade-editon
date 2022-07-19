@@ -117,7 +117,7 @@
 </div>
 siehe
 <OutA href="https://www.bdl.aero/de/publikation/verbraucherumfrage/">
-    BDL.aero
+    BDL.aero (2018)
 </OutA>
 
 <style lang="scss">

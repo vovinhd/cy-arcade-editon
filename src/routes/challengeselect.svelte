@@ -74,7 +74,7 @@
             <ChallengeButton
                 challenge={{
                     id: 'bike',
-                    text: 'Mit dem Rad zur arbeit',
+                    text: 'Mit dem Rad zur Arbeit',
                     options: [
                         { option: 'Ich probiere es für eine Woche', delay: 7 },
                         {
