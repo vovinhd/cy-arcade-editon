@@ -7,7 +7,7 @@ export const template = `<html>
 <body>
     <div>
         <p>
-            danke, dass Du dir eine unserer Challenges für {{weeks}} Woche{{plural}} vorgenommen hattest. 
+            danke, dass Du dir eine unserer Challenges für {{weeks}} Woche{{plural}} vorgenommen hast. 
          </p>
 
         <p>

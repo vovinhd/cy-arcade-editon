@@ -45,7 +45,7 @@ const mailTextTemplate = (challengeData) => {
     } = challengeData;
     const reply = `Hallo, 
 
-    danke, dass Du dir eine unserer Challenges für ${weeks} Woche${plural} vorgenommen hattest. 
+    danke, dass Du dir eine unserer Challenges für ${weeks} Woche${plural} vorgenommen hast. 
 
     ${challengeTitle}
     ${challengeText}
