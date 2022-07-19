@@ -30,7 +30,7 @@ export const handler: Handler = async (event, context) => {
     try {
         let body = JSON.parse(event.body);
         email = body?.email;
-        challengeBase64 = body?.challengeBase64;
+        challengeBase64 = body?.challenge;
     } catch (e) {
         return {
             statusCode: 400,
@@ -66,6 +66,7 @@ export const handler: Handler = async (event, context) => {
                 statusCode: 200,
                 body: JSON.stringify({
                     message: 'Record added',
+                    challenge: { challengeBase64 },
                 }),
             };
         }
