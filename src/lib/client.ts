@@ -12,12 +12,14 @@ var client = new Client(
     import.meta.env.VITE_NAKAMA_HOST,
     import.meta.env.VITE_NAKAMA_PORT,
     import.meta.env.VITE_NAKAMA_USE_SSL === 'true',
-    3000,
+    7000,
     true
 );
 let deviceId: string;
 let session: Session;
 let reconnectHandle
+let matchId, _ownPresenceId; 
+
 export let socket: Socket = client.createSocket(
     import.meta.env.VITE_NAKAMA_USE_SSL === 'true',
     false,
@@ -61,27 +63,24 @@ export const connectSocket = async (session) => {
     return socket;
 };
 
-socket.ondisconnect = (e) => {
+socket.ondisconnect = async (e) => {
     console.log('connection to gameserver lost!');
     nkReady.set(false);
-    setTimeout(() => {
-        reconnectHandle = setInterval(() => {
+    setTimeout(async () => {
         try {
-            console.log('attempting to reconnect');
-            init();
+            await init();
+            await socket.joinMatch(matchId)
         } catch (e) {
-            console.error("Reconnect failed:", e); 
+            console.warn('match disbanded! switching to single player');
+            singlePlayer.set(true)
+            appContext.update(ctx => ({...ctx, reason: 'connection lost'}));
+            goto('/gameover/draw');
         }
-
-    }, 3000);
     }, 2000); 
 
+    // localStorage.setItem("LAST_MATCH_ID", matchId);
 
     // downgrade to single player if connection to server is lost during match
-    console.warn('match disbanded! switching to single player');
-    singlePlayer.set(true)
-    appContext.update(ctx => ({...ctx, reason: 'connection lost'}));
-    goto('/gameover/draw');
 
 };
 
@@ -92,7 +91,6 @@ export const leaveMatch = async () => {
     }
 }
 
-let matchId, _ownPresenceId; 
 socket.onmatchmakermatched = async (matched) => {
     matchId = matched.match_id
     const match : Match = await socket.joinMatch(matched.match_id, matched.token);
