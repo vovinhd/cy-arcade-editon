@@ -9,19 +9,25 @@
 >
     <div class="text-center absolute w-full">Gefördert durch</div>
     <div class="slide-track grid grid-flow-col place-content-start " style="">
-        <img src="/sp_bmu.png" />
-        <img src="/sp_bremen.jpeg" />
-        <img src="/sp_lotto.jpeg" />
-        <img src="/sp_uwb.jpg" />
-        <img src="/sp_exist.png" />
-        <!-- <img src="/Mobilitaet.jpeg" /> -->
+        <img src="/sp/sp_bmu.png" />
+        <img src="/sp/sp_bmwi.jpg" />
+        <img src="/sp/sp_bremen.jpeg" />
+        <img src="/sp/sp_esf.jpg" />
+        <img src="/sp/sp_esf_claim.jpg" />
+        <img src="/sp/sp_eu.jpg" />
+        <img src="/sp/sp_exist.png" />
+        <img src="/sp/sp_lotto.jpeg" />
+        <img src="/sp/sp_uwb.jpg" />
 
-        <img src="/sp_bmu.png" />
-        <img src="/sp_bremen.jpeg" />
-        <img src="/sp_lotto.jpeg" />
-        <img src="/sp_uwb.jpg" />
-        <img src="/sp_exist.png" />
-        <!-- <img src="/Mobilitaet.jpeg" /> -->
+        <img src="/sp/sp_bmu.png" />
+        <img src="/sp/sp_bmwi.jpg" />
+        <img src="/sp/sp_bremen.jpeg" />
+        <img src="/sp/sp_esf.jpg" />
+        <img src="/sp/sp_esf_claim.jpg" />
+        <img src="/sp/sp_eu.jpg" />
+        <img src="/sp/sp_exist.png" />
+        <img src="/sp/sp_lotto.jpeg" />
+        <img src="/sp/sp_uwb.jpg" />
     </div>
 </div>
 
@@ -30,7 +36,7 @@
     $sponsorWidth: 14rem;
     $sponsorHeight: 9rem;
     $gapWidth: 1rem;
-    $width: calc(($sponsorWidth + $gapWidth) * 5);
+    $width: calc(($sponsorWidth + $gapWidth) * 9);
     @mixin white-gradient {
         background: linear-gradient(
             to right,
