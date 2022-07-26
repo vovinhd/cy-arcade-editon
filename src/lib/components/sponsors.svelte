@@ -9,25 +9,97 @@
 >
     <div class="text-center absolute w-full">Gefördert durch</div>
     <div class="slide-track grid grid-flow-col place-content-start " style="">
-        <img src="/sp/sp_bmu.png" />
-        <img src="/sp/sp_bmwi.jpg" />
-        <img src="/sp/sp_bremen.jpeg" />
-        <img src="/sp/sp_esf.jpg" />
-        <img src="/sp/sp_esf_claim.jpg" />
-        <img src="/sp/sp_eu.jpg" />
-        <img src="/sp/sp_exist.png" />
-        <img src="/sp/sp_lotto.jpeg" />
-        <img src="/sp/sp_uwb.jpg" />
+        <img
+            alt="Sponsoren Logo"
+            aria-roledescription="Sponsoren Logo"
+            src="/sp/sp_bmu.png"
+        />
+        <img
+            alt="Sponsoren Logo"
+            aria-roledescription="Sponsoren Logo"
+            src="/sp/sp_bmwi.jpg"
+        />
+        <img
+            alt="Sponsoren Logo"
+            aria-roledescription="Sponsoren Logo"
+            src="/sp/sp_bremen.jpeg"
+        />
+        <img
+            alt="Sponsoren Logo"
+            aria-roledescription="Sponsoren Logo"
+            src="/sp/sp_esf.jpg"
+        />
+        <img
+            alt="Sponsoren Logo"
+            aria-roledescription="Sponsoren Logo"
+            src="/sp/sp_esf_claim.jpg"
+        />
+        <img
+            alt="Sponsoren Logo"
+            aria-roledescription="Sponsoren Logo"
+            src="/sp/sp_eu.jpg"
+        />
+        <img
+            alt="Sponsoren Logo"
+            aria-roledescription="Sponsoren Logo"
+            src="/sp/sp_exist.png"
+        />
+        <img
+            alt="Sponsoren Logo"
+            aria-roledescription="Sponsoren Logo"
+            src="/sp/sp_lotto.jpeg"
+        />
+        <img
+            alt="Sponsoren Logo"
+            aria-roledescription="Sponsoren Logo"
+            src="/sp/sp_uwb.jpg"
+        />
 
-        <img src="/sp/sp_bmu.png" />
-        <img src="/sp/sp_bmwi.jpg" />
-        <img src="/sp/sp_bremen.jpeg" />
-        <img src="/sp/sp_esf.jpg" />
-        <img src="/sp/sp_esf_claim.jpg" />
-        <img src="/sp/sp_eu.jpg" />
-        <img src="/sp/sp_exist.png" />
-        <img src="/sp/sp_lotto.jpeg" />
-        <img src="/sp/sp_uwb.jpg" />
+        <img
+            alt="Sponsoren Logo"
+            aria-roledescription="Sponsoren Logo"
+            src="/sp/sp_bmu.png"
+        />
+        <img
+            alt="Sponsoren Logo"
+            aria-roledescription="Sponsoren Logo"
+            src="/sp/sp_bmwi.jpg"
+        />
+        <img
+            alt="Sponsoren Logo"
+            aria-roledescription="Sponsoren Logo"
+            src="/sp/sp_bremen.jpeg"
+        />
+        <img
+            alt="Sponsoren Logo"
+            aria-roledescription="Sponsoren Logo"
+            src="/sp/sp_esf.jpg"
+        />
+        <img
+            alt="Sponsoren Logo"
+            aria-roledescription="Sponsoren Logo"
+            src="/sp/sp_esf_claim.jpg"
+        />
+        <img
+            alt="Sponsoren Logo"
+            aria-roledescription="Sponsoren Logo"
+            src="/sp/sp_eu.jpg"
+        />
+        <img
+            alt="Sponsoren Logo"
+            aria-roledescription="Sponsoren Logo"
+            src="/sp/sp_exist.png"
+        />
+        <img
+            alt="Sponsoren Logo"
+            aria-roledescription="Sponsoren Logo"
+            src="/sp/sp_lotto.jpeg"
+        />
+        <img
+            alt="Sponsoren Logo"
+            aria-roledescription="Sponsoren Logo"
+            src="/sp/sp_uwb.jpg"
+        />
     </div>
 </div>
 

@@ -24,8 +24,8 @@
 </svelte:head>
 
 <div
-    class="bg-zinc-50 rounded-md shadow-lg hero md:inset-16 md:mb-48 inset-0 inset-y-16 grid grid-flow-row attract md:overflow-hidden"
-    style="grid-template-rows: 1fr 1fr;"
+    class=" hero bg-zinc-50 rounded-md shadow-lg  grid  attract"
+    style=""
     transition:fly={{ x: -200, duration: 500 }}
 >
     <!-- <h1 class="text-center p-8 text-2xl">Attract Screen</h1> -->
@@ -37,11 +37,11 @@
                 alt="logo"
                 width="100%"
                 max-height="200px"
-                class="object-contain h-56"
+                class="logo"
             />
         </div>
 
-        <p class="  md:text-2xl md:px-16 px-8 py-8">
+        <p class="   md:px-16 px-8 py-8">
             Wir entwickeln eine neue Version unserer App, die dir beim
             Klimaschutz hilft. Sie wird im Herbst veröffentlicht, aber hier
             kannst du sie jetzt schon ausprobieren.
@@ -70,3 +70,49 @@
 <div class="absolute bottom-8 grid place-content-center w-full">
     <Sponsors />
 </div>
+
+<style lang="scss">
+    .attract {
+        top: 4rem /* 64px */;
+        bottom: 4rem /* 64px */;
+        right: 0px;
+        left: 0px;
+        grid-auto-flow: row;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .logo {
+        object-fit: contain;
+        height: 14rem;
+    }
+    @media (min-width: 768px) {
+        .attract {
+            top: 4rem /* 64px */;
+            right: 4rem /* 64px */;
+            bottom: 4rem /* 64px */;
+            left: 4rem /* 64px */;
+            margin-bottom: 12rem /* 192px */;
+            overflow: hidden;
+            font-size: 1.5rem /* 24px */;
+            line-height: 2rem /* 32px */;
+        }
+    }
+
+    @media (max-height: 826px) and (min-width: 768px) {
+        .attract {
+            top: 0rem /* 64px */;
+            bottom: 0rem /* 64px */;
+            right: 0px;
+            left: 0px;
+            font-size: 1rem /* 24px */;
+            line-height: 1.5rem /* 32px */;
+            grid-auto-flow: column;
+            grid-template-rows: 1fr;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .logo {
+            height: 8rem;
+        }
+    }
+</style>
