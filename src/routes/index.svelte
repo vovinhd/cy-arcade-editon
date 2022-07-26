@@ -59,7 +59,7 @@
 
             <a
                 sveltekit:prefetch
-                class="relative z-10 action-button max-w-full text-center ring-heart-dark ring-2 ring-offset-2 bg-heart text-white text-2xl shadow-2xl"
+                class="cta relative z-50 action-button max-w-full text-center ring-heart-dark ring-2 ring-offset-2 bg-heart text-white text-2xl shadow-2xl"
                 href="/tutorial"
             >
                 Los geht's
@@ -67,16 +67,19 @@
         </div>
     </div>
 </div>
-<div class="absolute bottom-8 grid place-content-center w-full">
+<div
+    class="absolute md:bottom-8 bottom-0 grid place-content-center w-full sponsors"
+>
     <Sponsors />
 </div>
 
 <style lang="scss">
     .attract {
-        top: 4rem /* 64px */;
-        bottom: 4rem /* 64px */;
+        top: 0rem /* 64px */;
+        bottom: 0rem /* 64px */;
         right: 0px;
         left: 0px;
+        padding-bottom: 4rem;
         grid-auto-flow: row;
         grid-template-rows: 1fr 1fr;
     }
@@ -97,7 +100,22 @@
             line-height: 2rem /* 32px */;
         }
     }
-
+    @media (max-height: 350px) and (min-width: 768px) {
+        .attract {
+            top: 0rem /* 64px */;
+            right: 0rem /* 64px */;
+            bottom: 0rem /* 64px */;
+            left: 0rem /* 64px */;
+        }
+        .cta {
+            z-index: 10000 !important;
+            position: fixed;
+            right: 1rem;
+        }
+        .sponsors {
+            display: none;
+        }
+    }
     @media (max-height: 826px) and (min-width: 768px) {
         .attract {
             top: 0rem /* 64px */;

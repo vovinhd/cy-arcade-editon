@@ -7,7 +7,9 @@
     style=""
     transition:fly={{ y: 200, duration: 500 }}
 >
-    <div class="text-center absolute w-full">Gefördert durch</div>
+    <div class="text-center absolute w-full md:visible hidden aaaaa">
+        Gefördert durch
+    </div>
     <div class="slide-track grid grid-flow-col place-content-start " style="">
         <img
             alt="Sponsoren Logo"
@@ -104,6 +106,9 @@
 </div>
 
 <style lang="scss">
+    .aaaaa {
+        visibility: inherit;
+    }
     $animationSpeed: 40s;
     $sponsorWidth: 14rem;
     $sponsorHeight: 9rem;
